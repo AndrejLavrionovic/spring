@@ -37,7 +37,7 @@
 
 	<!-- ::::::::::::::::::::::::CONTEXT LOADER LISTENER::::::::::::::::::::::::: -->
 	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener.class</listener-class>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
 	<context-param>

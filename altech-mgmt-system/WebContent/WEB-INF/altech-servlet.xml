@@ -17,4 +17,5 @@
 		</property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	<mvc:resources location="/resources/" mapping="/src/**"></mvc:resources>
 </beans>

@@ -5,8 +5,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home Page</title>
+<link href="${pageContext.request.contextPath}/src/css/home.css" type="text/css" rel="stylesheet" "/>
 </head>
 <body>
-	<p>This is home.jsp page.</p>
+	<div id="container">
+	    <header id="hd">
+	        <img src="${pageContext.request.contextPath}/src/img/hdAlmaxx.png" width="800"></a>
+	    </header>
+	    <nav id="nav">
+	        <ul>
+	            <li id="btn"><a href="/">Home</a></li>
+	            <li id="btn"><a href="/">Click in</a></li>
+	            <li id="btn"><a href="/">Payroll</a></li>
+	            <li id="btn"><a href="/">Hollidays</a></li>
+	            <li id="btn"><a href="/">Messanger</a></li>
+	        </ul>
+	    </nav>
+	    <div id="body">
+	        <div id="mainsection"></div>
+	    </div>
+	</div>
 </body>
 </html>
