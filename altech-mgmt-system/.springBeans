@@ -8,6 +8,7 @@
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>WebContent/WEB-INF/altech-servlet.xml</config>
+		<config>src/ie/gmit/sw/config/dao-context.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
