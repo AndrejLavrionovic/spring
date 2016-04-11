@@ -12,7 +12,7 @@ public class User {
 	private Date registered;
 	private Date dob;
 	private int tel;
-	private String emai;
+	private String email;
 	private String nationality;
 	private int status;
 	private int siteid;
@@ -23,11 +23,30 @@ public class User {
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
 	public User(){}
 	
+	public User(String firstname, String lastname, int empnum,
+			Date registered, Date dob, int tel, String email,
+			String nationality, int status, int siteid, int addressid){
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.empnum = empnum;
+		this.registered = registered;
+		this.dob = dob;
+		this.tel = tel;
+		this.email = email;
+		this.nationality = nationality;
+		this.status = status;
+		this.siteid = siteid;
+		this.addressid = addressid;
+	}
+	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// GETTERS/SETTERS
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
 	public int getUserid() {
 		return userid;
+	}
+	public void setUserid(int userid){
+		this.userid = userid;
 	}
 	public String getFirstname() {
 		return firstname;
@@ -50,6 +69,9 @@ public class User {
 	public Date getRegistered() {
 		return registered;
 	}
+	public void setRegistered(Date registered){
+		this.registered = registered;
+	}
 	public Date getDob() {
 		return dob;
 	}
@@ -62,11 +84,11 @@ public class User {
 	public void setTel(int tel) {
 		this.tel = tel;
 	}
-	public String getEmai() {
-		return emai;
+	public String getEmail() {
+		return email;
 	}
-	public void setEmai(String emai) {
-		this.emai = emai;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getNationality() {
 		return nationality;
