@@ -44,6 +44,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			classpath:ie/gmit/sw/config/dao-context.xml
+			classpath:ie/gmit/sw/config/service-context.xml
 		</param-value>
 	</context-param>
 
