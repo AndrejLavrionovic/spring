@@ -1,0 +1,72 @@
+@CHARSET "utf-8";
+
+#mainAside{
+	float: left;
+	width: 140px;
+	padding: 20px;
+	background: #E2E2E2;
+	margin: 5px 5px 0 0;
+	padding: 10px;
+	min-height: 400px;
+}
+
+#mainSection{
+	float: left;
+	width: 608px;
+	border: 1px solid #c0c0c0;
+	porder-radius: 4px;
+	margin: 5px 0 0 5px;
+	padding: 10px;
+	min-height: 400px;
+}
+
+.sideNav{
+	display: block;
+	height: 24px;
+	margin-top: 5px;
+	width: 120px;
+	list-style: none;
+	font-family: verdana;
+	font-size: 13px;
+	background-color: #404040;
+	text-align: center;
+}
+
+.sideNav a:active, .sideNav a:hover, .sideNav a{
+	color: #EFE6E6;
+	text-decoration: none;
+	line-height: 20px;
+}
+
+#hdrSearchUser{
+	font: bolder 15px arial;
+	color: #2D2C2C;
+}
+
+#lblFindUserById{
+	display: inline-block;
+	width: 40px;
+	font: normal 14px verdana;
+	color: #2D2C2C;
+	margin: 20px 0 5px 0;
+}
+
+#txtUserid{
+	display: inline-block;
+	width: 100px;
+	border: 1px solid #2D2C2C;
+	height: 20px;
+	padding: 0 10px;
+	font: bolder 14px calibri;
+	color: #9E6060;
+	margin: 20px 10px 5px 0;
+}
+
+#btnfindUser{
+	display: inline-block;
+	width: 100px;
+	background-color: #7A90A0;
+	color: #EFE6E6;
+	border: 1px solid #303030;
+	margin: 20px 0 5px 0;
+}

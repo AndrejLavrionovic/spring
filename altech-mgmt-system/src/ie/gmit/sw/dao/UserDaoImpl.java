@@ -11,6 +11,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Component;
 
 @Component("userDaoImpl")
@@ -112,6 +114,22 @@ public class UserDaoImpl implements UserDAO {
 		" VALUES (:firstname, :lastname, :empnum, :registered, :dob, :tel, :email," +
 		" :nationality, :status, :siteid, :addressid)";
 		return jdbc.update(sql, params) == 1;
+	}
+	
+
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// CREATE BUNCH OF USERS
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	public int[] createUsers(List<User> users){
+		
+		String sql = "INSERT INTO users (firstname, lastname, empnum, registered," +
+		" dob, tel, email, nationality, status, siteid, addressid)" +
+		" VALUES (:firstname, :lastname, :empnum, :registered, :dob, :tel, :email," +
+		" :nationality, :status, :siteid, :addressid)";
+		
+		SqlParameterSource[] batchArgs = SqlParameterSourceUtils.createBatch(users.toArray());
+		
+		return jdbc.batchUpdate(sql, batchArgs);
 	}
 	
 	

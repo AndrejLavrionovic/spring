@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home Page</title>
-<link href="${pageContext.request.contextPath}/src/css/home.css" type="text/css" rel="stylesheet" "/>
+<link href="${pageContext.request.contextPath}/src/css/main.css" type="text/css" rel="stylesheet" "/>
 </head>
 <body>
 	<div id="container">
@@ -19,6 +19,7 @@
 	            <li id="btn"><a href="/">Payroll</a></li>
 	            <li id="btn"><a href="/">Hollidays</a></li>
 	            <li id="btn"><a href="/">Messanger</a></li>
+	            <li id="btn"><a href="/">Users</a></li>
 	        </ul>
 	    </nav>
 	    <div id="body">

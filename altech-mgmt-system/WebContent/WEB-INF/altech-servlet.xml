@@ -11,11 +11,15 @@
 
 	<context:component-scan base-package="ie.gmit.sw.controller"></context:component-scan>
 	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	<!-- :::::::::::::::::JSP RESOLVER::::::::::::::::::::: -->
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsps/">
 		</property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	
+	<!-- :::::::::::::::::RESOURCES RESOLVER::::::::::::::::::::: -->
 	<mvc:resources location="/resources/" mapping="/src/**"></mvc:resources>
 </beans>
