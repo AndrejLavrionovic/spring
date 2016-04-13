@@ -41,14 +41,12 @@ public class UserDaoImpl implements UserDAO {
 				user.setFirstname(rs.getString("firstname"));
 				user.setLastname(rs.getString("lastname"));
 				user.setEmpnum(rs.getInt("empnum"));
-				user.setRegistered(rs.getDate("registered"));
-				user.setDob(rs.getDate("dob"));
+				user.setRegistered(rs.getDate("regDate"));
 				user.setTel(rs.getInt("tel"));
 				user.setEmail(rs.getString("email"));
 				user.setNationality(rs.getString("nationality"));
 				user.setStatus(rs.getInt("statusid"));
-				user.setSiteid(rs.getInt("siteid"));
-				user.setAddressid(rs.getInt("addressid"));
+				user.setPosid(rs.getInt("positionid"));
 				
 				return user;
 				
@@ -68,19 +66,16 @@ public class UserDaoImpl implements UserDAO {
 		return jdbc.queryForObject(sql, param, new RowMapper<User>(){
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException{
 				User user = new User();
-				
-				user.setUserid(rs.getInt("userid"));
+
 				user.setFirstname(rs.getString("firstname"));
 				user.setLastname(rs.getString("lastname"));
 				user.setEmpnum(rs.getInt("empnum"));
-				user.setRegistered(rs.getDate("registered"));
-				user.setDob(rs.getDate("dob"));
+				user.setRegistered(rs.getDate("regDate"));
 				user.setTel(rs.getInt("tel"));
 				user.setEmail(rs.getString("email"));
 				user.setNationality(rs.getString("nationality"));
 				user.setStatus(rs.getInt("statusid"));
-				user.setSiteid(rs.getInt("siteid"));
-				user.setAddressid(rs.getInt("addressid"));
+				user.setPosid(rs.getInt("positionid"));
 				
 				return user;
 				
@@ -109,10 +104,10 @@ public class UserDaoImpl implements UserDAO {
 		
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
 		
-		String sql = "INSERT INTO users (firstname, lastname, empnum, registered," +
-		" dob, tel, email, nationality, status, siteid, addressid)" +
-		" VALUES (:firstname, :lastname, :empnum, :registered, :dob, :tel, :email," +
-		" :nationality, :status, :siteid, :addressid)";
+		String sql = "INSERT INTO users (firstname, lastname, empnum, regDate," +
+		" tel, email, nationality, statusid, positionid)" +
+		" VALUES (:firstname, :lastname, :empnum, NOW(), :tel, :email," +
+		" :nationality, :statusid, :positionid)";
 		return jdbc.update(sql, params) == 1;
 	}
 	
@@ -121,11 +116,11 @@ public class UserDaoImpl implements UserDAO {
 	// CREATE BUNCH OF USERS
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	public int[] createUsers(List<User> users){
-		
-		String sql = "INSERT INTO users (firstname, lastname, empnum, registered," +
-		" dob, tel, email, nationality, status, siteid, addressid)" +
-		" VALUES (:firstname, :lastname, :empnum, :registered, :dob, :tel, :email," +
-		" :nationality, :status, :siteid, :addressid)";
+
+		String sql = "INSERT INTO users (firstname, lastname, empnum, regDate," +
+		" tel, email, nationality, statusid, positionid)" +
+		" VALUES (:firstname, :lastname, :empnum, NOW(), :tel, :email," +
+		" :nationality, :statusid, :positionid)";
 		
 		SqlParameterSource[] batchArgs = SqlParameterSourceUtils.createBatch(users.toArray());
 		
@@ -141,9 +136,9 @@ public class UserDaoImpl implements UserDAO {
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
 		
 		String sql = "UPDATE users SET firstname=:firstname, lastname=:lastname," +
-				" empnum=:empnum, registered=:registered, dob=:dob, tel=:tel," +
-				" email=:email, nationality=:nationality, status=:status," +
-				" siteid=:siteid, addressid=:addressid" +
+				" empnum=:empnum, regDate=:regDate, tel=:tel," +
+				" email=:email, nationality=:nationality, statusid=:statusid," +
+				" positionid=:positionid" +
 				" WHERE userid=:userid";
 				return jdbc.update(sql, params);
 	}

@@ -9,14 +9,12 @@ public class User {
 	private String firstname;
 	private String lastname;
 	private int empnum;
+	private int posid;
 	private Date registered;
-	private Date dob;
 	private int tel;
 	private String email;
 	private String nationality;
 	private int status;
-	private int siteid;
-	private int addressid;
 	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// CONSTRUCTORS
@@ -24,24 +22,29 @@ public class User {
 	public User(){}
 	
 	public User(String firstname, String lastname, int empnum,
-			Date registered, Date dob, int tel, String email,
-			String nationality, int status, int siteid, int addressid){
+			Date registered, int tel, String email,
+			int posid, String nationality, int status){
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.empnum = empnum;
 		this.registered = registered;
-		this.dob = dob;
 		this.tel = tel;
 		this.email = email;
+		this.posid = posid;
 		this.nationality = nationality;
 		this.status = status;
-		this.siteid = siteid;
-		this.addressid = addressid;
 	}
 	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// GETTERS/SETTERS
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+	public int getPosid() {
+		return posid;
+	}
+	public void setPosid(int posid){
+		this.posid = userid;
+	}
 	public int getUserid() {
 		return userid;
 	}
@@ -72,12 +75,6 @@ public class User {
 	public void setRegistered(Date registered){
 		this.registered = registered;
 	}
-	public Date getDob() {
-		return dob;
-	}
-	public void setDob(Date dob) {
-		this.dob = dob;
-	}
 	public int getTel() {
 		return tel;
 	}
@@ -101,17 +98,5 @@ public class User {
 	}
 	public void setStatus(int status) {
 		this.status = status;
-	}
-	public int getSiteid() {
-		return siteid;
-	}
-	public void setSiteid(int siteid) {
-		this.siteid = siteid;
-	}
-	public int getAddressid() {
-		return addressid;
-	}
-	public void setAddressid(int addressid) {
-		this.addressid = addressid;
 	}
 }
