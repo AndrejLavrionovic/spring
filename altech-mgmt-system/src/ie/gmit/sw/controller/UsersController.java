@@ -40,8 +40,11 @@ public class UsersController {
 	@RequestMapping("/users")
 	public String showHome(){
 		
-		
-		
 		return "users";
+	}
+	
+	@RequestMapping("/usercreated")
+	public String showUserCreated(){
+		return "usercreated";
 	}
 }
