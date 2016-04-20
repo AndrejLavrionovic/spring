@@ -4,5 +4,7 @@ import java.util.List;
 
 public interface UserDAO {
 
-	public List<User> getAllUsers();
+	//public List<User> getAllUsers();
+	public boolean createUser(User user);
+	public int deleteUser(int userid);
 }

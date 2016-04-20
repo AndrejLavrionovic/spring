@@ -30,58 +30,58 @@ public class UserDaoImpl implements UserDAO {
 	// GET ALL USERS
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@Override
-	public List<User> getAllUsers() {
-		
-		String sql = "SELECT * FROM users;";
-		return jdbc.query(sql, new RowMapper<User>(){
-			public User mapRow(ResultSet rs, int rowNum) throws SQLException{
-				User user = new User();
-				
-				user.setUserid(rs.getInt("userid"));
-				user.setFirstname(rs.getString("firstname"));
-				user.setLastname(rs.getString("lastname"));
-				user.setEmpnum(rs.getInt("empnum"));
-				user.setRegistered(rs.getDate("regDate"));
-				user.setTel(rs.getString("tel"));
-				user.setEmail(rs.getString("email"));
-				user.setNationality(rs.getString("nationality"));
-				user.setStatus(rs.getInt("statusid"));
-				user.setPosid(rs.getInt("positionid"));
-				
-				return user;
-				
-			}
-		});
-	}
+//	public List<User> getAllUsers() {
+//		
+//		String sql = "SELECT * FROM users;";
+//		return jdbc.query(sql, new RowMapper<User>(){
+//			public User mapRow(ResultSet rs, int rowNum) throws SQLException{
+//				User user = new User();
+//				
+//				user.setUserid(rs.getInt("userid"));
+//				user.setFirstname(rs.getString("firstname"));
+//				user.setLastname(rs.getString("lastname"));
+//				user.setEmpnum(rs.getInt("empnum"));
+//				user.setRegistered(rs.getDate("regDate"));
+//				user.setTel(rs.getString("tel"));
+//				user.setEmail(rs.getString("email"));
+//				user.setNationality(rs.getString("nationality"));
+//				user.setStatus(rs.getInt("statusid"));
+//				user.setPosid(rs.getInt("positionid"));
+//				
+//				return user;
+//				
+//			}
+//		});
+//	}
 	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// GET USER BY ID
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	public User getUserById(int userid) {
-		
-		MapSqlParameterSource param = new MapSqlParameterSource();
-		param.addValue("userid", userid);
-		
-		String sql = "SELECT * FROM users WHERE userid=:userid";
-		return jdbc.queryForObject(sql, param, new RowMapper<User>(){
-			public User mapRow(ResultSet rs, int rowNum) throws SQLException{
-				User user = new User();
-
-				user.setFirstname(rs.getString("firstname"));
-				user.setLastname(rs.getString("lastname"));
-				user.setEmpnum(rs.getInt("empnum"));
-				user.setRegistered(rs.getDate("regDate"));
-				user.setTel(rs.getString("tel"));
-				user.setEmail(rs.getString("email"));
-				user.setNationality(rs.getString("nationality"));
-				user.setStatus(rs.getInt("statusid"));
-				user.setPosid(rs.getInt("positionid"));
-				
-				return user;
-				
-			}
-		});
-	}
+//	public User getUserById(int userid) {
+//		
+//		MapSqlParameterSource param = new MapSqlParameterSource();
+//		param.addValue("userid", userid);
+//		
+//		String sql = "SELECT * FROM users WHERE userid=:userid";
+//		return jdbc.queryForObject(sql, param, new RowMapper<User>(){
+//			public User mapRow(ResultSet rs, int rowNum) throws SQLException{
+//				User user = new User();
+//
+//				user.setFirstname(rs.getString("firstname"));
+//				user.setLastname(rs.getString("lastname"));
+//				user.setEmpnum(rs.getInt("empnum"));
+//				user.setRegistered(rs.getDate("regDate"));
+//				user.setTel(rs.getString("tel"));
+//				user.setEmail(rs.getString("email"));
+//				user.setNationality(rs.getString("nationality"));
+//				user.setStatus(rs.getInt("statusid"));
+//				user.setPosid(rs.getInt("positionid"));
+//				
+//				return user;
+//				
+//			}
+//		});
+//	}
 	
 
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -104,9 +104,12 @@ public class UserDaoImpl implements UserDAO {
 		
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
 		
-		String sql = "INSERT INTO users (firstname, lastname, empnum, regDate," +
-		" tel, email, nationality, statusid, positionid)" +
-		" VALUES (:firstname, :lastname, :empnum, NOW(), :tel, :email," +
+//		String sql = "INSERT INTO users (firstname, lastname)" +
+//				" VALUES (:firstname, :lastname)";
+		
+		String sql = "INSERT INTO users (firstname, lastname, empnum," +
+		" tel, regDate, email, nationality, statusid, positionid)" +
+		" VALUES (:firstname, :lastname, :empnum, :tel, DATE(NOW()), :email," +
 		" :nationality, :statusid, :positionid)";
 		return jdbc.update(sql, params) == 1;
 	}

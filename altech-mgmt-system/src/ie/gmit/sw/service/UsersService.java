@@ -6,20 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ie.gmit.sw.dao.User;
+import ie.gmit.sw.dao.UserDAO;
 import ie.gmit.sw.dao.UserDaoImpl;
 
 @Service("usersService")
 public class UsersService {
 
-	private UserDaoImpl userDao;
+	private UserDAO userDao;
 	
 	@Autowired
-	public void setUserDao(UserDaoImpl userDao) {
+	public void setUserDao(UserDAO userDao) {
 		this.userDao = userDao;
 	}
 
-	public  List<User> getCurrent(){
-		return userDao.getAllUsers();
+//	public  List<User> getCurrent(){
+//		return userDao.getAllUsers();
+//	}
+
+	// create user
+	public void create(User user) {
+		userDao.createUser(user);
 	}
 	
 }

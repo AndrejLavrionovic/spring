@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,16 +20,17 @@ public class UsersController {
 	
 	private UsersService userService;
 	
+	@Autowired
 	public void setUserService(UsersService userService) {
 		this.userService = userService;
 	}
 
-	public void showUsers(Model model){
-		
-		List<User> users = userService.getCurrent();
-		
-		model.addAttribute("users", users);
-	}
+//	public void showUsers(Model model){
+//		
+//		List<User> users = userService.getCurrent();
+//		
+//		model.addAttribute("users", users);
+//	}
 	
 
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -51,10 +53,12 @@ public class UsersController {
 		//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 		if(result.hasErrors()){
 			
-			return "create";
-		}else{
-			return "usercreated";
+			System.out.println("NOT VALID");
 		}
+		
+		userService.create(user);
+		
+		return "usercreated";
 	}
 
 	@RequestMapping("/users")
