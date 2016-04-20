@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -49,21 +50,27 @@
 	    		
 	    		<!-- :::::::::::::::::::::: FORM NEW USER ::::::::::::::::::::: -->
 	    		<div id="newUserSection">
-	    			<form method="post" action="${pageContext.request.contextPath}/dorequest" id="frmNewUser">
+	    			<sf:form method="post" action="${pageContext.request.contextPath}/docreate" id="frmNewUser" commandName="user">
 	    			
 	    			<div id="frmUser">
 	    				<label class="lblNew" id="lblFirstname">Firstname:</label>
-	    				<input class="txtNew" type="text" id="txtFirstname" name="firstname" /></br>
+	    				<sf:input path="firstname" class="txtNew" type="text" id="txtFirstname" name="firstname" />
+	    				<div id="divError"><sf:errors path="firstname" cssClass="error"></sf:errors></div></br>
 	    				<label class="lblNew" id="lblLastname">Lastname:</label>
-	    				<input class="txtNew" type="text" id="txtLastname" name="lastname" /></br>
+	    				<sf:input path="lastname" class="txtNew" type="text" id="txtLastname" name="lastname" />
+	    				<div id="divError"><sf:errors path="lastname" cssClass="error"></sf:errors></div></br>
 	    				<label class="lblNew" id="lblEmpnum">Employee Num:</label>
-	    				<input class="txtNew" type="text" id="txtEmpnum" name="empnum" /></br>
+	    				<sf:input path="empnum" class="txtNew" type="text" id="txtEmpnum" name="empnum" />
+	    				<div id="divError"><sf:errors path="empnum" cssClass="error"></sf:errors></div></br>
 	    				<label class="lblNew" id="lblTel">Telephone Num:</label>
-	    				<input class="txtNew" type="text" id="txtTel" name="tel" /></br>
+	    				<sf:input path="tel" class="txtNew" type="text" id="txtTel" name="tel" />
+	    				<div id="divError"><sf:errors path="tel" cssClass="error"></sf:errors></div></br>
 	    				<label class="lblNew" id="lblEmail">Email:</label>
-	    				<input class="txtNew" type="text" id="txtEmail" name="email" /></br>
+	    				<sf:input path="email" class="txtNew" type="text" id="txtEmail" name="email" />
+	    				<div id="divError"><sf:errors path="email" cssClass="error"></sf:errors></div></br>
 	    				<label class="lblNew" id="lblNationality">Nationality:</label>
-	    				<input class="txtNew" type="text" id="txtNationality" name="nationality" /></br>
+	    				<sf:input path="nationality" class="txtNew" type="text" id="txtNationality" name="nationality" />
+	    				<div id="divError"><sf:errors path="nationality" cssClass="error"></sf:errors></div></br>
 	    				<label class="lblNew id="lblPosid">Position:</label>
 	    				
 	    				<select class="txtNew" name="posid" style="width: 222px; height: 22px">
@@ -93,7 +100,7 @@
 	    				
 	    				<label class="lblNew id="lblStatus">Admin Status:</label>
 	    				
-	    				<select class="txtNew" name="status" style="width: 222px; height: 22px">
+	    				<select class="txtNew" name="statusid" style="width: 222px; height: 22px">
 	    					<option selected="selected" value="0"></option>
 							<option value="1" >Employee</option>
 						 	<option value="2">Office Manager</option>
@@ -105,14 +112,14 @@
 	    			
 	    			<div id="frmAddress">
 	    				<label class="lblNew" id="lblAddress1">Address1 :</label>
-	    				<input class="txtNew" type="text" id="txtAddress2" name="" /></br>
+	    				<input class="txtNew" type="text" id="txtAddress2" name="address1" /></br>
 	    				<label class="lblNew" id="lblAddress2">Address2:</label>
-	    				<input class="txtNew" type="text" id="txtAddress2" /></br>
+	    				<input class="txtNew" type="text" id="txtAddress2" name="address2" /></br>
 	    				<label class="lblNew" id="lblTown">Town/City:</label>
-	    				<input class="txtNew" type="text" id="txtTown" /></br>
+	    				<input class="txtNew" type="text" id="txtTown" name="town" /></br>
 	    				<label class="lblNew" id="lblCounty">County:</label>
 	    				
-	    				<select class="txtNew" name="ddlCounty" style="width: 222px; height: 22px">
+	    				<select class="txtNew" name="county" style="width: 222px; height: 22px">
 	    					<option selected="selected" value="0"></option>
 							<option value="Antrim" >Antrim</option>
 						 	<option value="Armagh">Armagh</option>
@@ -155,7 +162,7 @@
 	    				<input class="buttons" type="button" id="btnBack" name="back" value="Back" />
 	    			</div>
 	    			
-	    			</form>
+	    			</sf:form>
 	    		</div>
 	    	
 	    	</section>

@@ -42,7 +42,7 @@ public class UserDaoImpl implements UserDAO {
 				user.setLastname(rs.getString("lastname"));
 				user.setEmpnum(rs.getInt("empnum"));
 				user.setRegistered(rs.getDate("regDate"));
-				user.setTel(rs.getInt("tel"));
+				user.setTel(rs.getString("tel"));
 				user.setEmail(rs.getString("email"));
 				user.setNationality(rs.getString("nationality"));
 				user.setStatus(rs.getInt("statusid"));
@@ -71,7 +71,7 @@ public class UserDaoImpl implements UserDAO {
 				user.setLastname(rs.getString("lastname"));
 				user.setEmpnum(rs.getInt("empnum"));
 				user.setRegistered(rs.getDate("regDate"));
-				user.setTel(rs.getInt("tel"));
+				user.setTel(rs.getString("tel"));
 				user.setEmail(rs.getString("email"));
 				user.setNationality(rs.getString("nationality"));
 				user.setStatus(rs.getInt("statusid"));

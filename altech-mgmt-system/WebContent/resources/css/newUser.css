@@ -44,3 +44,14 @@
 	margin: 0 0 5px 0;
 }
 
+#divError{
+	border: 0px solid #909090;
+	width: 216px;
+	height: 20px;
+	display: inline-block;
+}
+.error{
+	color: red;
+	font: normal 12px calibri;
+}
+

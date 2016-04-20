@@ -2,19 +2,44 @@ package ie.gmit.sw.dao;
 
 import java.util.Date;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class User {
 	
 	// fields
 	private int userid;
+	
+	@Size(min=3, max=40, message="The name must be 3-40 characters long.")
 	private String firstname;
+	
+	@Size(min=3, max=40, message="The lastname must be 3-40 characters long.")
 	private String lastname;
+	
+	@NotNull(message="Employee number field must be completed.")
+	@Min(value=100000, message="Employee number must be higher than 100000.")
 	private int empnum;
+	
+	@NotNull(message="Employee number field must be completed.")
 	private int posid;
+	
 	private Date registered;
-	private int tel;
+	
+	@Size(min=10, max=10, message="Telephone must contain 9 characters")
+	private String tel;
+	
+	@NotNull
+	@Pattern(regexp=".*\\@.*\\..*", message="Email is not valid.")
 	private String email;
+	
+	@NotNull
+	@Size(min=3, max=3, message="Enter 3 character for nationality.")
 	private String nationality;
-	private int status;
+	
+	@NotNull
+	private int statusid;
 	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// CONSTRUCTORS
@@ -22,8 +47,8 @@ public class User {
 	public User(){}
 	
 	public User(String firstname, String lastname, int empnum,
-			Date registered, int tel, String email,
-			int posid, String nationality, int status){
+			Date registered, String tel, String email,
+			int posid, String nationality, int statusid){
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.empnum = empnum;
@@ -32,7 +57,7 @@ public class User {
 		this.email = email;
 		this.posid = posid;
 		this.nationality = nationality;
-		this.status = status;
+		this.statusid = statusid;
 	}
 	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -75,10 +100,10 @@ public class User {
 	public void setRegistered(Date registered){
 		this.registered = registered;
 	}
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 	public String getEmail() {
@@ -94,9 +119,9 @@ public class User {
 		this.nationality = nationality;
 	}
 	public int getStatus() {
-		return status;
+		return statusid;
 	}
-	public void setStatus(int status) {
-		this.status = status;
+	public void setStatus(int statusid) {
+		this.statusid = statusid;
 	}
 }
