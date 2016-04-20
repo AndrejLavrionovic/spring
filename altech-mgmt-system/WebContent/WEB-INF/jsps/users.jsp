@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,14 +44,39 @@
 	    	
 	    	<section id="mainSection">
 	    	
-	    		<header id="hdrTitle">Search User by ID:</header>
+	    		<header id="hdrTitle">Search User:</header>
 	    		
 	    		<div id="searchUserForm">
-	    			<form action="">
-	    				<label id="lblFindUserById">ID:</label>
-	    				<input type="text" id="txtUserid" />
-	    				<input type="button" id="btnfindUser" name="findUser" value="Find" />
+	    			<form action="${pageContext.request.contextPath}/getuserbyid" method="post">
+	    				<label id="lblFindUserById">Emp No:</label>
+	    				<input type="text" id="txtUserid" name="empnum" />
+	    				<input type="submit" id="btnfindUser" name="findUserById" value="Find" />
 	    			</form>
+	    			<form action="${pageContext.request.contextPath}/getuserbyname" method="post">
+	    				<label id="lblFindUserById">Firstname:</label>
+	    				<input type="text" id="txtUserid" />
+	    				<input type="submit" id="btnfindUser" name="findUserByName" value="Find" />
+	    			</form>
+	    			<br />
+	    		</div>
+	    		
+	    		<div id="getUsers">
+	    			<table id="tblGetUsers">
+	    			
+	    				<thead class="tblHeader">
+	    					<tr><td class="col1">Emp No.</td><td class="col2">Firstname</td><td class="col3">Lastname</td><td class="col4">Email</td><td class="col5">Tel</td></tr>
+	    				</thead>
+	    				<tbody class="tblBody"><c:forEach var="user" items="${users}">
+	    					<tr>
+	    						<td><c:out value="${user.empnum }"></c:out></td>
+	    						<td><c:out value="${user.firstname }"></c:out></td>
+	    						<td><c:out value="${user.lastname }"></c:out></td>
+	    						<td><c:out value="${user.email }"></c:out></td>
+	    						<td><c:out value="${user.tel }"></c:out></td>
+	    					</tr>
+	    				</c:forEach></tbody>
+	    			
+	    			</table>
 	    		</div>
 	    	
 	    	</section>

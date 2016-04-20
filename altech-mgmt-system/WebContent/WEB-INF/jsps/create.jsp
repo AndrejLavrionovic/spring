@@ -109,7 +109,8 @@
 					 	</select>
 	    				</br>
 	    			</div>
-	    			
+	    
+<!-- 
 	    			<div id="frmAddress">
 	    				<label class="lblNew" id="lblAddress1">Address1 :</label>
 	    				<input class="txtNew" type="text" id="txtAddress2" name="address1" /></br>
@@ -155,6 +156,7 @@
 							<option value="Wicklow">Wicklow</option>
 					 	</select> </br>
 	    			</div>
+-->
 	    			
 	    			<div id="frmBtns">
 	    				<input class="buttons" type="submit" id="btnNewUser" name="newUser" value="Create" />

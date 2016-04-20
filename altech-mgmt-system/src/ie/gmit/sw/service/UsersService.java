@@ -19,13 +19,21 @@ public class UsersService {
 		this.userDao = userDao;
 	}
 
-//	public  List<User> getCurrent(){
-//		return userDao.getAllUsers();
-//	}
+	public  List<User> getCurrent(){
+		return userDao.getAllUsers();
+	}
 
 	// create user
 	public void create(User user) {
 		userDao.createUser(user);
+	}
+	
+	// get users
+	public User getUser(int empnum){
+		return userDao.getUserByEmpnum(empnum);
+	}
+	public void getUser(String name){
+		
 	}
 	
 }

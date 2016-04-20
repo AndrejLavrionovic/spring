@@ -25,12 +25,22 @@ public class UsersController {
 		this.userService = userService;
 	}
 
-//	public void showUsers(Model model){
-//		
-//		List<User> users = userService.getCurrent();
-//		
-//		model.addAttribute("users", users);
-//	}
+
+	
+	
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// USERS.JSP PAGE EXECUTION
+	// POPULATES TABLE WITH USERS
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	@RequestMapping("/users")
+	public String showUsers(Model model){
+		
+		List<User> users = userService.getCurrent();
+		
+		model.addAttribute("users", users);
+		
+		return "users";
+	}
 	
 
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -44,7 +54,7 @@ public class UsersController {
 	}
 
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	// FORM EXECUTION
+	// CREATE USER FORM EXECUTION
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@RequestMapping(value="/docreate", method=RequestMethod.POST)
 	public String doCreate(Model model, @Valid User user, BindingResult result){
@@ -58,17 +68,6 @@ public class UsersController {
 		
 		userService.create(user);
 		
-		return "usercreated";
-	}
-
-	@RequestMapping("/users")
-	public String showHome(){
-		
-		return "users";
-	}
-	
-	@RequestMapping("/usercreated")
-	public String showUserCreated(){
 		return "usercreated";
 	}
 }

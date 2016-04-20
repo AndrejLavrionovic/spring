@@ -7,4 +7,6 @@ public interface UserDAO {
 	//public List<User> getAllUsers();
 	public boolean createUser(User user);
 	public int deleteUser(int userid);
+	User getUserByEmpnum(int empnum);
+	List<User> getAllUsers();
 }
