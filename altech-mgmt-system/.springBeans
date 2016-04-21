@@ -10,6 +10,7 @@
 		<config>WebContent/WEB-INF/altech-servlet.xml</config>
 		<config>src/ie/gmit/sw/config/dao-context.xml</config>
 		<config>src/ie/gmit/sw/config/service-context.xml</config>
+		<config>src/ie/gmit/sw/config/security-context.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

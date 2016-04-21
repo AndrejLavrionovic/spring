@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- ::::::::::::::::::USER-ADMIN AUTHENTICATION CONFIGURATION:::::::::::::::::::::: -->
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="g00196984" authorities="admin"
+					password="ZqGbpU$8" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	<!-- :::::::::::::::::::ACCESS CONFIGURATION:::::::::::::::::::::: -->
+	<security:http use-expressions="true">
+		<security:intercept-url pattern="/create" access="isAuthenticated()" />
+		<security:intercept-url pattern="/users" access="isAuthenticated()" />
+		<security:intercept-url pattern="/hollidays" access="isAuthenticated()" />
+		<security:intercept-url pattern="/clock" access="isAuthenticated()" />
+		<security:intercept-url pattern="/" access="permitAll" />
+		<security:intercept-url pattern="/src/**" access="permitAll" />
+		<security:intercept-url pattern="/**" access="denyAll" />
+		<security:form-login />
+	</security:http>
+</beans>

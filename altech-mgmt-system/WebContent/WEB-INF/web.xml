@@ -35,18 +35,18 @@
     <param-value>
 			classpath:ie/gmit/sw/config/dao-context.xml
 			classpath:ie/gmit/sw/config/service-context.xml
+			classpath:ie/gmit/sw/config/security-context.xml
 		</param-value>
   </context-param>
   
-  <!-- :::::::::::::::::::::::::::::::::::FILTER:::::::::::::::::::::::::::::::::::::: -->
+  <!-- :::::::::::::::::::::::::::::SPRING SECURITY FILTER::::::::::::::::::::::::::::::::::::: -->
   <filter>
-  	<display-name>AltechFilter</display-name>
-  	<filter-name>AltechFilter</filter-name>
-  	<filter-class>ie.gmit.sw.filters.AltechFilter</filter-class>
+    <display-name>springSecurityFilterChain</display-name>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
   </filter>
   <filter-mapping>
-  	<filter-name>AltechFilter</filter-name>
-  	<url-pattern>/*</url-pattern>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
 </web-app>
