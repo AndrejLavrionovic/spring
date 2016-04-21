@@ -62,8 +62,8 @@ public class UsersController {
 		// Validation #1
 		//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 		if(result.hasErrors()){
-			
 			System.out.println("NOT VALID");
+			return "create";
 		}
 		
 		userService.create(user);

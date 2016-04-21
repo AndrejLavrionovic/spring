@@ -73,7 +73,7 @@
 	    				<div id="divError"><sf:errors path="nationality" cssClass="error"></sf:errors></div></br>
 	    				<label class="lblNew id="lblPosid">Position:</label>
 	    				
-	    				<select class="txtNew" name="posid" style="width: 222px; height: 22px">
+	    				<select class="txtNew" name="positionid" style="width: 222px; height: 22px">
 	    					<option selected="selected" value="0"></option>
 							<option value="1" >Customer Support Administrator</option>
 						 	<option value="2">Customer Support Specialist</option>
