@@ -7,6 +7,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -14,6 +15,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component("userDaoImpl")
 public class UserDaoImpl implements UserDAO {
@@ -98,18 +100,33 @@ public class UserDaoImpl implements UserDAO {
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// CREATE USER
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	@Transactional
 	public boolean createUser(User user){
 		
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
 		
-//		String sql = "INSERT INTO users (firstname, lastname)" +
-//				" VALUES (:firstname, :lastname)";
-		
-		String sql = "INSERT INTO users (firstname, lastname, empnum," +
+		String sql1 = "INSERT INTO users (firstname, lastname, empnum," +
 		" tel, regDate, email, nationality, statusid, positionid)" +
 		" VALUES (:firstname, :lastname, :empnum, :tel, DATE(NOW()), :email," +
 		" :nationality, :statusid, :positionid)";
-		return jdbc.update(sql, params) == 1;
+
+		User u = new User();
+		if(jdbc.update(sql1, params) == 1){
+			jdbc.query("SELECT MAX(userid) FROM users;", new RowMapper<User>(){
+				public User mapRow(ResultSet rs, int rowNum) throws SQLException{
+					u.setUserid(rs.getInt("userid"));
+					return u;
+				}
+			});
+		}
+		
+		String sql2 = "INSERT INTO address (address1, address2, town, county, userid" +
+				" VALUES (:address1, :address2, :town, :county, " + u.getUserid() + ")";
+		jdbc.update(sql2, params);
+		
+		String sql3 = "INSERT INTO login (username, password, email, empnum, userid" +
+				" VALUES (:username, :password, :email, :empnum, " + u.getUserid() + ")";
+		return jdbc.update(sql3, params) == 1;
 	}
 	
 

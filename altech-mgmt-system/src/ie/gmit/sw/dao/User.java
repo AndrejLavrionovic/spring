@@ -41,13 +41,24 @@ public class User {
 	@NotNull
 	private int statusid;
 	
+	private String address1;
+	private String address2;
+	private String town;
+	private String county;
+	
+	private String username;
+	private String password;
+	private int enabled;
+	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// CONSTRUCTORS
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
 	public User(){}
 	
 	public User(String firstname, String lastname, int empnum, Date regDate,
-			String tel, String email, int positionid, String nationality, int statusid){
+			String tel, String email, int positionid, String nationality, int statusid,
+			String address1, String address2, String town, String county,
+			String username, String password, int enabled){
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.empnum = empnum;
@@ -57,6 +68,13 @@ public class User {
 		this.positionid = positionid;
 		this.nationality = nationality;
 		this.statusid = statusid;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.town = town;
+		this.county = county;
+		this.username = username;
+		this.password = password;
+		this.enabled = enabled;
 	}
 
 	
@@ -141,6 +159,62 @@ public class User {
 
 	public void setStatusid(int statusid) {
 		this.statusid = statusid;
+	}
+
+	public String getAddress1() {
+		return address1;
+	}
+
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public String getTown() {
+		return town;
+	}
+
+	public void setTown(String town) {
+		this.town = town;
+	}
+
+	public String getCounty() {
+		return county;
+	}
+
+	public void setCounty(String county) {
+		this.county = county;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
 	}
 	
 }

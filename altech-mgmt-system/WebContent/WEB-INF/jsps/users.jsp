@@ -25,10 +25,10 @@
 	    <nav id="nav">
 	        <ul>
 	            <li id="btn"><a href="${pageContext.request.contextPath}/">Home</a></li>
-	            <li id="btn"><a href="${pageContext.request.contextPath}/">Clock IN/OUT</a></li>
-	            <li id="btn"><a href="${pageContext.request.contextPath}/">Payroll</a></li>
-	            <li id="btn"><a href="${pageContext.request.contextPath}/">Hollidays</a></li>
-	            <li id="btn"><a href="${pageContext.request.contextPath}/">Messanger</a></li>
+	            <li id="btn"><a href="${pageContext.request.contextPath}/clock">Clock IN/OUT</a></li>
+	            <li id="btn"><a href="${pageContext.request.contextPath}/payroll">Payroll</a></li>
+	            <li id="btn"><a href="${pageContext.request.contextPath}/hollidays">Hollidays</a></li>
+	            <li id="btn"><a href="${pageContext.request.contextPath}/msg">Messanger</a></li>
 	            <li id="btn"><a href="${pageContext.request.contextPath}/users">Users</a></li>
 	        </ul>
 	    </nav>

@@ -4,13 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home Page</title>
 <link href="${pageContext.request.contextPath}/src/css/main.css" type="text/css" rel="stylesheet" "/>
-<link href="${pageContext.request.contextPath}/src/css/home.css" type="text/css" rel="stylesheet" "/>
-
-
+<link href="${pageContext.request.contextPath}/src/css/login.css" type="text/css" rel="stylesheet" "/>
+<title>Login page</title>
 </head>
-<body onload='document.f.username.focus();'>
+<body onload='document.f.j_username.focus();'>
+
 	<div id="container">
 	    <header id="hd">
 	        <img src="${pageContext.request.contextPath}/src/img/hdAlmaxx.png" width="800"></a>
@@ -28,7 +27,7 @@
 	    <div id="body">
 	        <div id="mainsection">
 	    	
-	    		<header id="hdrTitle">Well come the AMS (Altech Management System):</header>
+	    		<header id="hdrTitle">Login to the system here:</header>
 	    		
 	    		<div id="login">
 	    			<header id="hLog">Login</header>
@@ -37,11 +36,11 @@
 	    				8 and 16 characters.</p>
 	    			</div>
 	    			<section id="sLog">
-	    				<form name='f' method="post" action=''>
+	    				<form name='f' method="post" action='${pageContext.request.contextPath}/j_spring_security_check'>
 		    				<label class="lblLog" id="email">Username:</label>
-		    				<input class="txtLog" type="text" name="username" /></br>
+		    				<input class="txtLog" type="text" name="j_username" /></br>
 		    				<label class="lblLog" id="password">Password:</label>
-		    				<input class="txtLog" type="password" name="password" /></br>
+		    				<input class="txtLog" type="password" name="j_password" /></br>
 		    				<div id="logBtns">
 		    					<input type="submit" name="submit" value="Login" />
 		    				</div>

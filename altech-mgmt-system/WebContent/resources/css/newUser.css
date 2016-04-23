@@ -16,6 +16,12 @@
 	margin-bottom: 10px;
 }
 
+#login{
+	border: 1px solid #FFC477;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
 #frmBtns{
 	border: 0px solid #aaaaaa;
 	padding: 10px;

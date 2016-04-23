@@ -29,6 +29,8 @@
 	    		<header id="hdrTitle">Clock IN/OUT:</header>
 	    		
 	    		<div id="clock">
+	    		
+	    			
 	    			<form method="post" action="">
 	    				<label id=""></label>
 	    			</form>

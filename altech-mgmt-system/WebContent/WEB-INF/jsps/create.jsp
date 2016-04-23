@@ -110,7 +110,7 @@
 	    				</br>
 	    			</div>
 	    
-<!-- 
+ 
 	    			<div id="frmAddress">
 	    				<label class="lblNew" id="lblAddress1">Address1 :</label>
 	    				<input class="txtNew" type="text" id="txtAddress2" name="address1" /></br>
@@ -156,7 +156,18 @@
 							<option value="Wicklow">Wicklow</option>
 					 	</select> </br>
 	    			</div>
--->
+	    			
+	    			<div id="login">
+	    				<label class="lblNew" id="lblUsername">Username:</label>
+	    				<sf:input path="username" class="txtNew" type="text" id="txtUsername" name="username" />
+	    				<div id="divError"><sf:errors path="username" cssClass="error"></sf:errors></div></br>
+	    				<label class="lblNew" id="lblPassword">Password:</label>
+	    				<sf:input path="password" class="txtNew" type="text" id="txtPassword" name="password" />
+	    				<div id="divError"><sf:errors path="password" cssClass="error"></sf:errors></div></br>
+	    				<label class="lblNew" id="lblConfirm">Confirm password:</label>
+	    				<input class="txtNew" type="text" id="txtConfirm" name="confirm" /></br>
+	    			</div>
+
 	    			
 	    			<div id="frmBtns">
 	    				<input class="buttons" type="submit" id="btnNewUser" name="newUser" value="Create" />

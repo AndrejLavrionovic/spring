@@ -39,7 +39,8 @@
 		</param-value>
   </context-param>
   
-  <!-- :::::::::::::::::::::::::::::SPRING SECURITY FILTER::::::::::::::::::::::::::::::::::::: -->
+  
+  <!-- ::::::::::::::::::::SPRING FILTER (DELEGATING FILTER PROXY)::::::::::::::::::::  -->
   <filter>
     <display-name>springSecurityFilterChain</display-name>
     <filter-name>springSecurityFilterChain</filter-name>
