@@ -1,5 +1,8 @@
 @CHARSET "utf-8";
 
+body{
+	
+}
 #login{
 	display: block;
 	margin: 80px auto 0 auto;
@@ -47,4 +50,10 @@
 
 input[type="submit"]{
 	width: 160px;
+}
+
+#loginError{
+	margin-top: 20px;
+	font:normal 14px verdana;
+	color: red;
 }
