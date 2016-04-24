@@ -80,15 +80,7 @@
 	    		</div>
 	    	
 	    	</section>
-	    	
-	    	
-	    	
 	    </div>
-	    
-	    <footer>
-	    
-	    </footer>
-		
 	</div>
 	
 </body>

@@ -27,30 +27,52 @@
 	    </nav>
 	    <div id="body">
 	        <div id="mainsection">
-	    	
-	    		<header id="hdrTitle">Well come the AMS (Altech Management System):</header>
-	    		
-	    		<div id="login">
-	    			<header id="hLog">Login</header>
-	    			<div id="logNotes">
-	    				<p>Password must contain both numbers and letters and must be between
-	    				8 and 16 characters.</p>
-	    			</div>
-	    			<section id="sLog">
-	    				<form name='f' method="post" action=''>
-		    				<label class="lblLog" id="email">Username:</label>
-		    				<input class="txtLog" type="text" name="username" /></br>
-		    				<label class="lblLog" id="password">Password:</label>
-		    				<input class="txtLog" type="password" name="password" /></br>
-		    				<div id="logBtns">
-		    					<input type="submit" name="submit" value="Login" />
-		    				</div>
-	    				</form>
-	    			</section>
-	    		</div>
+	        
+	        	<div id="hdrImg">
+	        		<img alt="altech_logo" src="${pageContext.request.contextPath}/src/img/altech_logo.png">
+	        	</div>
 	        	
+	        	<div id="homePageText">
+	        		<p>Welcome to the AMS (Altech Management System)</p><br>
+	        		<p>AMS performs as a readily available source of information between the organisation
+	        		and the employee. Contact information, salary information, posts, work schedule,
+	        		holidays booking and other features are available for employees and management.
+	        		AMS makes it easy to check and track human resources department at the press of a button.</p><br>
+	        		<p>A member of the organisation can easily retrieve information such us
+	        		employee's details, memos, notifications and be in touch with his/her colleagues.</p><br>
+	        		<p>Administrators would be very pleased if users of AMS will leave a notes or featback
+	        		about AMS. Problems and issues also will help to improve system performance.</p>
+	        	</div>
+	        	
+	        	<div id="frmDiv">
+	        		<form method="post" action="">
+	        			<textarea id="notes" rows="5" cols="50"></textarea><br>
+	        			<input type="submit" name="" value="Send message.">
+	        		</form>
+	        	</div>
+	        	
+	        	<div id="botomDiv">
+	        		<span>Thanks for using AMS.</span>
+	        	</div>
 	        </div>
 	    </div>
+	    
+	    <footer id="mainFooter">
+	    	<div id="ftrRights">
+	    		<span>© 2016 Altech Technology. All Rights Reserved.</span>
+	    	</div>
+	    	<div id="ftrAddress">
+	    		<p>Email: service@altech.com</p>
+	    		<p>Tel: (+353) 91 123456</p>
+	    		<p>Address:</p>
+	    		
+	    		<div id="address">
+	    			<p>GMIT</p>
+	    			<p>Old Dublin Road</p>
+	    			<p>Galway, Republic of Ireland</p>
+	    		</div>
+	    	</div>
+	    </footer>
 	</div>
 </body>
 </html>

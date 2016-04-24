@@ -181,10 +181,6 @@
 	    	</section>
 	    	
 	    </div>
-	    
-	    <footer>
-	    
-	    </footer>
 		
 	</div>
 

@@ -16,11 +16,12 @@
 			</security:user-service>
 		</security:authentication-provider>
 	</security:authentication-manager>
-	
-	
+
+
 	<security:http use-expressions="true">
 		<security:intercept-url pattern="/create" access="hasAnyRole('hr', 'admin')" />
 		<security:intercept-url pattern="/users" access="hasRole('hr')" />
+		<security:intercept-url pattern="/clock" access="hasRole('hr')" />
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/login" access="permitAll" />
 		<security:intercept-url pattern="/src/**" access="permitAll" />
