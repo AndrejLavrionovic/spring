@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -66,7 +68,18 @@ public class UsersController {
 			return "create";
 		}
 		
-		userService.create(user);
+		if(userService.exists(user.getUsername())){
+			result.rejectValue("username", "DuplicateKey.users.username", "This username allready exists!");
+			return "create";
+		}
+		
+		try {
+			userService.create(user);
+		} catch (DuplicateKeyException e) {
+			result.rejectValue("username", "DuplicateKey.users.username", "This username allready exists!");
+			return "create";
+		}
+		
 		
 		return "usercreated";
 	}

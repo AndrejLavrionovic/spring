@@ -7,16 +7,22 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class User {
 	
 	// fields
 	private int userid;
 	
+	@NotBlank(message="Username cannot be blank.")
 	@Size(min=3, max=45, message="The username must be 3-40 characters long.")
 	@NotNull
+	@Pattern(regexp="^\\w{8,}$", message="User can only consist numbers, letters")
 	private String username;
 	@Size(min=4, max=16, message="The password must be 3-40 characters long.")
 	@NotNull
+	@NotBlank(message="Password cannot be blank.")
+	@Pattern(regexp="^\\S+$", message="Password cannot contain spaces.")
 	private String password;
 	private boolean enabled = false;
 	

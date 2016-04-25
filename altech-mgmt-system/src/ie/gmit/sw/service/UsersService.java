@@ -15,7 +15,7 @@ public class UsersService {
 	private UserDAO userDao;
 	
 	@Autowired
-	public void setUserDao(UserDAO userDao) {
+	public void setUserDao(UserDaoImpl userDao) {
 		this.userDao = userDao;
 	}
 
@@ -35,5 +35,9 @@ public class UsersService {
 	public void getUser(String name){
 		
 	}
-	
+
+	public boolean exists(String username) {
+		userDao.exists(username);
+		return false;
+	}
 }

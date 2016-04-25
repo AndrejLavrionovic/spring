@@ -6,4 +6,5 @@ public interface UserDAO {
 
 	public List<User> getAllUsers();
 	public boolean createUser(User user);
+	public boolean exists(String username);
 }
