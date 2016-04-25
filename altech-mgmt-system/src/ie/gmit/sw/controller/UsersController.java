@@ -57,7 +57,7 @@ public class UsersController {
 	// CREATE USER FORM EXECUTION
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@RequestMapping(value="/docreate", method=RequestMethod.POST)
-	public String doCreate(Model model, @Valid User user, BindingResult result){
+	public String doCreate(@Valid User user, BindingResult result){
 		
 		// Validation #1
 		//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

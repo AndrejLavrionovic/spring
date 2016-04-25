@@ -15,14 +15,20 @@
 					password="bbbbbb" />
 			</security:user-service>
 		</security:authentication-provider>
+		<security:authentication-provider>
+			<security:jdbc-user-service data-source-ref="dataSource" />
+		</security:authentication-provider>
 	</security:authentication-manager>
 
 
 	<security:http use-expressions="true">
-		<security:intercept-url pattern="/create" access="hasAnyRole('hr', 'admin')" />
+		<security:intercept-url pattern="/create" access="hasRole('hr')" />
 		<security:intercept-url pattern="/users" access="hasRole('hr')" />
-		<security:intercept-url pattern="/clock" access="hasRole('hr')" />
+		<security:intercept-url pattern="/docreate" access="hasRole('hr')" />
+		<security:intercept-url pattern="/clock" access="hasRole('user')" />
+		<security:intercept-url pattern="/payroll" access="hasRole('user')" />
 		<security:intercept-url pattern="/" access="permitAll" />
+		<security:intercept-url pattern="/usercreated" access="permitAll" />
 		<security:intercept-url pattern="/login" access="permitAll" />
 		<security:intercept-url pattern="/src/**" access="permitAll" />
 		<security:intercept-url pattern="/**" access="denyAll" />

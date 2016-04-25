@@ -53,6 +53,9 @@
 	    			<sf:form method="post" action="${pageContext.request.contextPath}/docreate" id="frmNewUser" commandName="user">
 	    			
 	    			<div id="frmUser">
+	    				<label class="lblNew" id="lblUserid">User ID:</label>
+	    				<sf:input path="userid" class="txtNew" type="text" id="txtUserid" name="userid" />
+	    				<div id="divError"><sf:errors path="userid" cssClass="error"></sf:errors></div></br>
 	    				<label class="lblNew" id="lblFirstname">Firstname:</label>
 	    				<sf:input path="firstname" class="txtNew" type="text" id="txtFirstname" name="firstname" />
 	    				<div id="divError"><sf:errors path="firstname" cssClass="error"></sf:errors></div></br>
@@ -68,93 +71,17 @@
 	    				<label class="lblNew" id="lblEmail">Email:</label>
 	    				<sf:input path="email" class="txtNew" type="text" id="txtEmail" name="email" />
 	    				<div id="divError"><sf:errors path="email" cssClass="error"></sf:errors></div></br>
-	    				<label class="lblNew" id="lblNationality">Nationality:</label>
-	    				<sf:input path="nationality" class="txtNew" type="text" id="txtNationality" name="nationality" />
-	    				<div id="divError"><sf:errors path="nationality" cssClass="error"></sf:errors></div></br>
-	    				<label class="lblNew id="lblPosid">Position:</label>
 	    				
-	    				<select class="txtNew" name="positionid" style="width: 222px; height: 22px">
+	    				<label class="lblNew id="lblStatus">Authority:</label>
+	    				
+	    				<select class="txtNew" name="authority" style="width: 220px; height: 22px">
 	    					<option selected="selected" value="0"></option>
-							<option value="1" >Customer Support Administrator</option>
-						 	<option value="2">Customer Support Specialist</option>
-						 	<option value="3">Database Administrator</option>
-						 	<option value="4">Front End Developer</option>
-							<option value="5">Help Desk Specialist</option>
-						 	<option value="6">Junior Software Engineer</option>
-						 	<option value="7">Network Architect</option>
-						 	<option value="8">Network Engineer</option>
-							<option value="9">Network Systems Administrator</option>
-						 	<option value="10">Programmer Analyst</option>
-						 	<option value="11">Security Specialist</option>
-						 	<option value="12">Senior Database Administrator</option>
-							<option value="13">Senior Software Engineer</option>
-						 	<option value="14">Software Architech</option>
-						 	<option value="15">Software Engineer</option>
-						 	<option value="16">Software Quality Assurance Analyst</option>
-							<option value="17">Systems Administrator</option>
-						 	<option value="18">System Architect</option>
-						 	<option value="19">Web Administrator</option>
-						 	<option value="20">Web Developer</option>
+							<option value="user" >Employee</option>
+						 	<option value="man">Office Manager</option>
+						 	<option value="head">Head Manager</option>
+						 	<option value="hr">HR Admin</option>
 					 	</select>
 	    				</br>
-	    				
-	    				<label class="lblNew id="lblStatus">Admin Status:</label>
-	    				
-	    				<select class="txtNew" name="statusid" style="width: 222px; height: 22px">
-	    					<option selected="selected" value="0"></option>
-							<option value="1" >Employee</option>
-						 	<option value="2">Office Manager</option>
-						 	<option value="3">Head Manager</option>
-						 	<option value="4">HR Admin</option>
-					 	</select>
-	    				</br>
-	    			</div>
-	    
- 
-	    			<div id="frmAddress">
-	    				<label class="lblNew" id="lblAddress1">Address1 :</label>
-	    				<input class="txtNew" type="text" id="txtAddress2" name="address1" /></br>
-	    				<label class="lblNew" id="lblAddress2">Address2:</label>
-	    				<input class="txtNew" type="text" id="txtAddress2" name="address2" /></br>
-	    				<label class="lblNew" id="lblTown">Town/City:</label>
-	    				<input class="txtNew" type="text" id="txtTown" name="town" /></br>
-	    				<label class="lblNew" id="lblCounty">County:</label>
-	    				
-	    				<select class="txtNew" name="county" style="width: 222px; height: 22px">
-	    					<option selected="selected" value="0"></option>
-							<option value="Antrim" >Antrim</option>
-						 	<option value="Armagh">Armagh</option>
-						 	<option value="Carlow">Carlow</option>
-						 	<option value="Cavan">Cavan</option>
-							<option value="Clare">Clare</option>
-						 	<option value="Cork">Cork</option>
-						 	<option value="Donegal">Donegal</option>
-						 	<option value="Down">Down</option>
-							<option value="Dublin">Dublin</option>
-						 	<option value="Fermanagh">Fermanagh</option>
-						 	<option value="Galway">Galway</option>
-						 	<option value="Kerry">Kerry</option>
-							<option value="Kildare">Kildare</option>
-						 	<option value="Kilkenny">Kilkenny</option>
-						 	<option value="Laois">Laois</option>
-						 	<option value="Leitrim">Leitrim</option>
-							<option value="Limerick">Limerick</option>
-						 	<option value="Londonderry">Londonderry</option>
-						 	<option value="Longford">Longford</option>
-						 	<option value="Louth">Louth</option>
-							<option value="Mayo">Mayo</option>
-						 	<option value="Meath">Meath</option>
-						 	<option value="Monaghan">Monaghan</option>
-						 	<option value="Offaly">Offaly</option>
-						 	<option value="Roscommon">Roscommon</option>
-						 	<option value="Sligo">Sligo</option>
-						 	<option value="Tipperary">Tipperary</option>
-							<option value="Tyrone">Tyrone</option>
-						 	<option value="Waterford">Waterford</option>
-						 	<option value="Westmeath">Westmeath</option>
-						 	<option value="Wexford">Wexford</option>
-							<option value="Wicklow">Wicklow</option>
-					 	</select> </br>
 	    			</div>
 	    			
 	    			<div id="login">

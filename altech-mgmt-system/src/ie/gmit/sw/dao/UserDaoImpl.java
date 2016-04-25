@@ -34,21 +34,21 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public List<User> getAllUsers() {
 		
-		String sql = "SELECT * FROM users;";
+		String sql = "SELECT * FROM users inner join authorities on users.userid = authorities.userid;";
 		return jdbc.query(sql, new RowMapper<User>(){
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException{
 				User user = new User();
 				
-				user.setUserid(rs.getInt("userid"));
-				user.setFirstname(rs.getString("firstname"));
-				user.setLastname(rs.getString("lastname"));
-				user.setEmpnum(rs.getInt("empnum"));
-				user.setRegDate(rs.getDate("regDate"));
-				user.setTel(rs.getString("tel"));
-				user.setEmail(rs.getString("email"));
-				user.setNationality(rs.getString("nationality"));
-				user.setStatusid(rs.getInt("statusid"));
-				user.setPositionid(rs.getInt("positionid"));
+				user.setUserid(rs.getInt("users.userid"));
+				user.setFirstname(rs.getString("users.firstname"));
+				user.setLastname(rs.getString("users.lastname"));
+				user.setEmpnum(rs.getInt("users.empnum"));
+				user.setTel(rs.getInt("users.tel"));
+				user.setEmail(rs.getString("users.email"));
+				user.setUsername(rs.getString("users.username"));
+				user.setPassword(rs.getString("users.password"));
+				user.setEnabled(rs.getBoolean("users.enabled"));
+				user.setAuthority(rs.getString("authorities.authority"));
 				
 				return user;
 			}
@@ -58,43 +58,43 @@ public class UserDaoImpl implements UserDAO {
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// GET USER BY ID
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	public User getUserByEmpnum(int empnum) {
-		
-		MapSqlParameterSource param = new MapSqlParameterSource();
-		param.addValue("empnum", empnum);
-		
-		String sql = "SELECT * FROM users WHERE empnum=:empnum";
-		return jdbc.queryForObject(sql, param, new RowMapper<User>(){
-			public User mapRow(ResultSet rs, int rowNum) throws SQLException{
-				User user = new User();
-
-				user.setFirstname(rs.getString("firstname"));
-				user.setLastname(rs.getString("lastname"));
-				user.setEmpnum(rs.getInt("empnum"));
-				user.setRegDate(rs.getDate("regDate"));
-				user.setTel(rs.getString("tel"));
-				user.setEmail(rs.getString("email"));
-				user.setNationality(rs.getString("nationality"));
-				user.setStatusid(rs.getInt("statusid"));
-				user.setPositionid(rs.getInt("positionid"));
-				
-				return user;
-			}
-		});
-	}
+//	public User getUserByEmpnum(int empnum) {
+//		
+//		MapSqlParameterSource param = new MapSqlParameterSource();
+//		param.addValue("empnum", empnum);
+//		
+//		String sql = "SELECT * FROM users WHERE empnum=:empnum";
+//		return jdbc.queryForObject(sql, param, new RowMapper<User>(){
+//			public User mapRow(ResultSet rs, int rowNum) throws SQLException{
+//				User user = new User();
+//
+//				user.setFirstname(rs.getString("firstname"));
+//				user.setLastname(rs.getString("lastname"));
+//				user.setEmpnum(rs.getInt("empnum"));
+//				user.setRegDate(rs.getDate("regDate"));
+//				user.setTel(rs.getString("tel"));
+//				user.setEmail(rs.getString("email"));
+//				user.setNationality(rs.getString("nationality"));
+//				user.setStatusid(rs.getInt("statusid"));
+//				user.setPositionid(rs.getInt("positionid"));
+//				
+//				return user;
+//			}
+//		});
+//	}
 	
 
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// DELETE USER BY ID
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	public int deleteUser(int userid){
-		
-		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("userid", userid);
-		
-		String sql = "DELETE FROM users WHERE userid=:userid";
-		return jdbc.update(sql, params);
-	}
+//	public int deleteUser(int userid){
+//		
+//		MapSqlParameterSource params = new MapSqlParameterSource();
+//		params.addValue("userid", userid);
+//		
+//		String sql = "DELETE FROM users WHERE userid=:userid";
+//		return jdbc.update(sql, params);
+//	}
 	
 	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -105,28 +105,13 @@ public class UserDaoImpl implements UserDAO {
 		
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
 		
-		String sql1 = "INSERT INTO users (firstname, lastname, empnum," +
-		" tel, regDate, email, nationality, statusid, positionid)" +
-		" VALUES (:firstname, :lastname, :empnum, :tel, DATE(NOW()), :email," +
-		" :nationality, :statusid, :positionid)";
+		String users = "insert into users (userid, username, password, email, empnum, firstname, lastname, tel)" +
+		" VALUES (:userid, :username, :password, :email, :empnum, :firstname, :lastname, :tel)";
+		
+		String authorities = "insert into authorities (username, authority, userid) values(:username, :authority, :userid)";
 
-		User u = new User();
-		if(jdbc.update(sql1, params) == 1){
-			jdbc.query("SELECT MAX(userid) FROM users;", new RowMapper<User>(){
-				public User mapRow(ResultSet rs, int rowNum) throws SQLException{
-					u.setUserid(rs.getInt("userid"));
-					return u;
-				}
-			});
-		}
-		
-		String sql2 = "INSERT INTO address (address1, address2, town, county, userid" +
-				" VALUES (:address1, :address2, :town, :county, " + u.getUserid() + ")";
-		jdbc.update(sql2, params);
-		
-		String sql3 = "INSERT INTO login (username, password, email, empnum, userid" +
-				" VALUES (:username, :password, :email, :empnum, " + u.getUserid() + ")";
-		return jdbc.update(sql3, params) == 1;
+		jdbc.update(users, params);
+		return jdbc.update(authorities, params) == 1;
 	}
 	
 
