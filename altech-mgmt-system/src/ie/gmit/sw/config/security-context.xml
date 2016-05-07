@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
@@ -16,27 +15,41 @@
 			</security:user-service>
 		</security:authentication-provider>
 		<security:authentication-provider>
-			<security:jdbc-user-service data-source-ref="dataSource" />
+			<security:jdbc-user-service
+				data-source-ref="dataSource" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 
 
 	<security:http use-expressions="true">
-		<security:intercept-url pattern="/create" access="hasRole('hr')" />
-		<security:intercept-url pattern="/users" access="hasRole('hr')" />
-		<security:intercept-url pattern="/docreate" access="hasRole('hr')" />
-		<security:intercept-url pattern="/clock" access="isAuthenticated()" />
-		<security:intercept-url pattern="/payroll" access="isAuthenticated()" />
-		<security:intercept-url pattern="/createamsmsg" access="isAuthenticated()" />
+		<security:intercept-url pattern="/create"
+			access="hasRole('hr')" />
+		<security:intercept-url pattern="/users"
+			access="hasRole('hr')" />
+		<security:intercept-url pattern="/docreate"
+			access="hasRole('hr')" />
+		<security:intercept-url pattern="/clock"
+			access="isAuthenticated()" />
+		<security:intercept-url pattern="/payroll"
+			access="isAuthenticated()" />
+		<security:intercept-url pattern="/createamsmsg"
+			access="isAuthenticated()" />
 		<security:intercept-url pattern="/" access="permitAll" />
-		<security:intercept-url pattern="/loggedout" access="permitAll" />
-		<security:intercept-url pattern="/error" access="permitAll" />
-		<security:intercept-url pattern="/usercreated" access="permitAll" />
-		<security:intercept-url pattern="/amsmsgcreated" access="permitAll" />
-		<security:intercept-url pattern="/login" access="permitAll" />
-		<security:intercept-url pattern="/src/**" access="permitAll" />
+		<security:intercept-url pattern="/loggedout"
+			access="permitAll" />
+		<security:intercept-url pattern="/error"
+			access="permitAll" />
+		<security:intercept-url pattern="/usercreated"
+			access="permitAll" />
+		<security:intercept-url pattern="/amsmsgcreated"
+			access="permitAll" />
+		<security:intercept-url pattern="/login"
+			access="permitAll" />
+		<security:intercept-url pattern="/src/**"
+			access="permitAll" />
 		<security:intercept-url pattern="/**" access="denyAll" />
 		<security:form-login login-page="/login"
 			authentication-failure-url="/login?error=true" />
+		<security:logout logout-success-url="/loggedout" />
 	</security:http>
 </beans>
