@@ -18,11 +18,9 @@ public class LoginController {
 		return "login";
 	}
 	
-	@RequestMapping(value="/dologin", method=RequestMethod.POST)
-	public String doLogin(User user){
+	@RequestMapping("loggedout")
+	public String showLoggedout(User user){
 		
-		System.out.println("Username is: " + user.getUsername() + " - " + user.getPassword());
-		
-		return "home";
+		return "loggedout";
 	}
 }

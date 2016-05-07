@@ -25,10 +25,12 @@
 		<security:intercept-url pattern="/create" access="hasRole('hr')" />
 		<security:intercept-url pattern="/users" access="hasRole('hr')" />
 		<security:intercept-url pattern="/docreate" access="hasRole('hr')" />
-		<security:intercept-url pattern="/clock" access="hasRole('user')" />
-		<security:intercept-url pattern="/payroll" access="hasRole('user')" />
+		<security:intercept-url pattern="/clock" access="isAuthenticated()" />
+		<security:intercept-url pattern="/payroll" access="isAuthenticated()" />
 		<security:intercept-url pattern="/createamsmsg" access="isAuthenticated()" />
 		<security:intercept-url pattern="/" access="permitAll" />
+		<security:intercept-url pattern="/loggedout" access="permitAll" />
+		<security:intercept-url pattern="/error" access="permitAll" />
 		<security:intercept-url pattern="/usercreated" access="permitAll" />
 		<security:intercept-url pattern="/amsmsgcreated" access="permitAll" />
 		<security:intercept-url pattern="/login" access="permitAll" />

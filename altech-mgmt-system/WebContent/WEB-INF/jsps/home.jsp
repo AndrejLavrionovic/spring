@@ -11,7 +11,7 @@
 
 
 </head>
-<body onload='document.f.username.focus();'>
+<body>
 	<div id="container">
 	    <header id="hd">
 	        <img src="${pageContext.request.contextPath}/src/img/hdAlmaxx.png" width="800"></a>
