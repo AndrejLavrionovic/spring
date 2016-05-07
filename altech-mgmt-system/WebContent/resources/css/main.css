@@ -94,3 +94,23 @@ div, section, article, header, footer, nav
 #wrapper{
 	height: auto;
 }
+
+
+/*************************************************************
+TIME BAR
+**************************************************************/
+#timebar{
+	border: 0px solid #909090;
+	text-align: right;
+}
+
+#blockLogout{
+	display: inline-block;
+	margin-right: 50px;
+	padding: 5px;
+}
+
+#blockLogout input{
+	width: 80px;
+	height: 20px;
+}

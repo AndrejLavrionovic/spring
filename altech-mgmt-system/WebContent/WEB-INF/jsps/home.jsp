@@ -26,6 +26,15 @@
 	            <li id="btn"><a href="${pageContext.request.contextPath}/users">Users</a></li>
 	        </ul>
 	    </nav>
+	    
+	    <div id="timebar">
+	    	<div id="blockLogout">
+	    		<sf:form method="post" action="${pageContext.request.contextPath}/j_spring_security_logout">
+	    			<input class="btnLogout" type="submit" value="Logout" />
+	    		</sf:form>
+	    	</div>
+	    </div>
+	    
 	    <div id="body">
 	        <div id="mainsection">
 	        

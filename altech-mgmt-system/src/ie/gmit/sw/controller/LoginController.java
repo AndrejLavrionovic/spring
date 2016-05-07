@@ -18,8 +18,8 @@ public class LoginController {
 		return "login";
 	}
 	
-	@RequestMapping("loggedout")
-	public String showLoggedout(User user){
+	@RequestMapping("/loggedout")
+	public String showLoggedout(){
 		
 		return "loggedout";
 	}
