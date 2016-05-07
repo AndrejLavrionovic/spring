@@ -40,9 +40,9 @@
 	    			<section id="sLog">
 	    				<form name='f' method="post" action='${pageContext.request.contextPath}/j_spring_security_check'>
 		    				<label class="lblLog" id="email">Username:</label>
-		    				<input class="txtLog" type="text" name="j_username" /></br>
+		    				<input class="txtLog" type="text" name="j_username"/></br>
 		    				<label class="lblLog" id="password">Password:</label>
-		    				<input class="txtLog" type="password" name="j_password" /></br>
+		    				<input class="txtLog" type="password" name="j_password""/></br>
 		    				
 		    				<!-- ::::::ERROR (USERNAME OR PASSWORD IS NOT CORRECT):::::: -->
 		    				<c:if test="${param.error != null }">
