@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,7 +28,9 @@
 	            <li id="btn"><a href="${pageContext.request.contextPath}/">Payroll</a></li>
 	            <li id="btn"><a href="${pageContext.request.contextPath}/">Hollidays</a></li>
 	            <li id="btn"><a href="${pageContext.request.contextPath}/">Messanger</a></li>
-	            <li id="btn"><a href="${pageContext.request.contextPath}/users">Users</a></li>
+	            <sec:authorize access="hasRole('hr')">
+	            	<li id="btn"><a href="${pageContext.request.contextPath}/users">Users</a></li>
+	            </sec:authorize>
 	        </ul>
 	    </nav>
 	    

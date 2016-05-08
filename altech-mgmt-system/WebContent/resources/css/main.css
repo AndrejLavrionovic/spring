@@ -99,9 +99,38 @@ div, section, article, header, footer, nav
 /*************************************************************
 TIME BAR
 **************************************************************/
+/****Logout Button****/
 #timebar{
 	border: 0px solid #909090;
-	text-align: right;
+	text-align: left;
+}
+
+#datetime{
+	display: inline-block;
+	border: 0px solid #909090;
+	font: normal 14px verdana;
+	color: #170056;
+}
+
+#blockLogin{
+	display: inline-block;
+	border: 0px solid #606060;
+	height: 20px;
+	margin: 5px 50px 0 0;
+	padding: 0 0 0 20px;
+}
+
+#blockLogin span{
+	display: inline-block;
+	padding: 0 5px 0 20px;
+	font: bolder 13px verdana;
+	color: #362B54;
+}
+
+#blockLogin a, #blockLogin a:ACTIVE, #blockLogin a:HOVER, #blockLogin a:VISITED, #blockLogin a:LINK{
+	text-decoration: none;
+	font: normal 14px verdana;
+	color: #0094FF;
 }
 
 #blockLogout{
@@ -110,7 +139,13 @@ TIME BAR
 	padding: 5px;
 }
 
+#blockWelcome{
+	display: inline-block;
+	padding: 0 5px 0 20px;
+	font: bolder 13px verdana;
+	color: #362B54;
+}
+
 #blockLogout input{
 	width: 80px;
-	height: 20px;
 }
