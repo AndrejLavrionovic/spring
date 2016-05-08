@@ -103,6 +103,8 @@ TIME BAR
 #timebar{
 	border: 0px solid #909090;
 	text-align: left;
+	background-color: #FFF6E0;
+	margin-top: 5px;
 }
 
 #datetime{
@@ -110,6 +112,7 @@ TIME BAR
 	border: 0px solid #909090;
 	font: normal 14px verdana;
 	color: #170056;
+	padding-left: 5px;
 }
 
 #blockLogin{

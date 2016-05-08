@@ -29,13 +29,25 @@
 	    </nav>
 	    
 	    <div id="timebar">
+	    	<div id="datetime"></div>
+	    	<sec:authorize access="!isAuthenticated()">
+	    		
+	    		<div id="blockLogin">
+	    			<span>You are not signed in!</span>
+	    			<a href="${pageContext.request.contextPath}/login">Sign in</a>
+	    		</div>
+	    	</sec:authorize>
 	    	<sec:authorize access="isAuthenticated()">
+	    		<div id="blockWelcome">
+		    		<span>Welcome User.</span>
+	    		</div>
 		    	<div id="blockLogout">
 		    		<sf:form method="post" action="${pageContext.request.contextPath}/j_spring_security_logout">
 		    			<input class="btnLogout" type="submit" value="Logout" />
 		    		</sf:form>
 		    	</div>
 	    	</sec:authorize>
+	    	
 	    </div>
 	    
 	    <div id="body">
@@ -71,5 +83,7 @@
 	    	</div>
 	    </footer>
 	</div>
+	
+	<script src="${pageContext.request.contextPath}/src/js/showdate.js"></script>
 </body>
 </html>
