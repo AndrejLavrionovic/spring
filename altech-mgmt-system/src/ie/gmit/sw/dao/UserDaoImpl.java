@@ -34,12 +34,11 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public List<User> getAllUsers() {
 		
-		String sql = "SELECT * FROM users inner join authorities on users.userid = authorities.userid;";
+		String sql = "SELECT * FROM users inner join authorities on users.username = authorities.username;";
 		return jdbc.query(sql, new RowMapper<User>(){
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException{
 				User user = new User();
 				
-				user.setUserid(rs.getInt("users.userid"));
 				user.setFirstname(rs.getString("users.firstname"));
 				user.setLastname(rs.getString("users.lastname"));
 				user.setEmpnum(rs.getInt("users.empnum"));
@@ -105,10 +104,10 @@ public class UserDaoImpl implements UserDAO {
 		
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
 		
-		String users = "insert into users (userid, username, password, email, empnum, firstname, lastname, tel)" +
-		" VALUES (:userid, :username, :password, :email, :empnum, :firstname, :lastname, :tel)";
+		String users = "insert into users (username, password, email, empnum, firstname, lastname, tel)" +
+		" VALUES (:username, :password, :email, :empnum, :firstname, :lastname, :tel)";
 		
-		String authorities = "insert into authorities (username, authority, userid) values(:username, :authority, :userid)";
+		String authorities = "insert into authorities (username, authority) values(:username, :authority)";
 
 		jdbc.update(users, params);
 		return jdbc.update(authorities, params) == 1;
@@ -120,10 +119,8 @@ public class UserDaoImpl implements UserDAO {
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	public int[] createUsers(List<User> users){
 
-		String sql = "INSERT INTO users (firstname, lastname, empnum, regDate," +
-		" tel, email, nationality, statusid, positionid)" +
-		" VALUES (:firstname, :lastname, :empnum, NOW(), :tel, :email," +
-		" :nationality, :statusid, :positionid)";
+		String sql = "insert into users (username, password, email, empnum, firstname, lastname, tel)" +
+				" VALUES (:username, :password, :email, :empnum, :firstname, :lastname, :tel)";
 		
 		SqlParameterSource[] batchArgs = SqlParameterSourceUtils.createBatch(users.toArray());
 		

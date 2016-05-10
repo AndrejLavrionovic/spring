@@ -31,7 +31,7 @@
 	            <li id="btn"><a href="${pageContext.request.contextPath}/payroll">Payroll</a></li>
 	            <li id="btn"><a href="${pageContext.request.contextPath}/hollidays">Hollidays</a></li>
 	            <li id="btn"><a href="${pageContext.request.contextPath}/msg">Messanger</a></li>
-	            <sec:authorize access="hasRole('hr')">
+	            <sec:authorize access="hasAnyRole('hr', 'admin')">
 	            	<li id="btn"><a href="${pageContext.request.contextPath}/users">Users</a></li>
 	            </sec:authorize>
 	        </ul>
@@ -79,9 +79,6 @@
 	    			<sf:form method="post" action="${pageContext.request.contextPath}/docreate" id="frmNewUser" commandName="user">
 	    			
 	    			<div id="frmUser">
-	    				<label class="lblNew" id="lblUserid">User ID:</label>
-	    				<sf:input path="userid" class="txtNew" type="text" id="txtUserid" name="userid" />
-	    				<div id="divError"><sf:errors path="userid" cssClass="error"></sf:errors></div></br>
 	    				<label class="lblNew" id="lblFirstname">Firstname:</label>
 	    				<sf:input path="firstname" class="txtNew" type="text" id="txtFirstname" name="firstname" />
 	    				<div id="divError"><sf:errors path="firstname" cssClass="error"></sf:errors></div></br>

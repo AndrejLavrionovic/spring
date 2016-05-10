@@ -12,12 +12,9 @@ import org.hibernate.validator.constraints.NotBlank;
 public class User {
 	
 	// fields
-	private int userid;
-	
 	@NotBlank(message="Username cannot be blank.")
 	@Size(min=3, max=45, message="The username must be 3-40 characters long.")
 	@NotNull
-	@Pattern(regexp="^\\w{8,}$", message="User can only consist numbers, letters")
 	private String username;
 	@Size(min=4, max=16, message="The password must be 3-40 characters long.")
 	@NotNull
@@ -51,9 +48,8 @@ public class User {
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
 	public User(){}
 	
-	public User(int userid, String username, String password, boolean enabled, String email, int empnum,
+	public User(String username, String password, boolean enabled, String email, int empnum,
 			String firstname, String lastname, int tel, String authority) {
-		this.userid = userid;
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
@@ -63,15 +59,6 @@ public class User {
 		this.lastname = lastname;
 		this.tel = tel;
 		this.authority = authority;
-	}
-	
-
-	public int getUserid() {
-		return userid;
-	}
-
-	public void setUserid(int userid) {
-		this.userid = userid;
 	}
 
 	public String getUsername() {

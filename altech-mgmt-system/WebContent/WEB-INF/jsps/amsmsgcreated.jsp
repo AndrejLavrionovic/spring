@@ -23,7 +23,7 @@
 	            <li id="btn"><a href="${pageContext.request.contextPath}/payroll">Payroll</a></li>
 	            <li id="btn"><a href="${pageContext.request.contextPath}/hollidays">Hollidays</a></li>
 	            <li id="btn"><a href="${pageContext.request.contextPath}/msg">Messanger</a></li>
-	            <sec:authorize access="hasRole('hr')">
+	            <sec:authorize access="hasAnyRole('hr', 'admin')">
 	            	<li id="btn"><a href="${pageContext.request.contextPath}/users">Users</a></li>
 	            </sec:authorize>
 	        </ul>
