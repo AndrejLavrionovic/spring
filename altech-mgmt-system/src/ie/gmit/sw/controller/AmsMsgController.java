@@ -1,9 +1,12 @@
 package ie.gmit.sw.controller;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,5 +31,19 @@ public class AmsMsgController {
 	@Autowired
 	public void setUsersService(UsersService userService){
 		this.userService = userService;
+	}
+	
+	@RequestMapping(value="/createamsmsg", method=RequestMethod.POST)
+	public String doCreateMsg(AmsMessage amsMessage, Principal principal){
+		
+		String username = principal.getName();
+		
+		amsMessage.getUser().setUsername(username);
+		
+		System.out.println(amsMessage.toString());
+		
+		amsMsgService.createMsg(amsMessage);
+		
+		return "home";
 	}
 }

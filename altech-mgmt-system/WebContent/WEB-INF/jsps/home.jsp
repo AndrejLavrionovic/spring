@@ -73,8 +73,8 @@
 	        	
 	        	<div id="frmDiv">
 	        		<sf:form method="post" action="${pageContext.request.contextPath}/createamsmsg" commandName="amsMessage">
-	        			<textarea id="notes" rows="5" cols="50"></textarea><br>
-	        			<input type="submit" name="" value="Send message.">
+	        			<textarea id="notes" name="msg" rows="5" cols="50"></textarea><br>
+	        			<input type="submit" name="amsMessage" value="Send message.">
 	        		</sf:form>
 	        	</div>
 	        	

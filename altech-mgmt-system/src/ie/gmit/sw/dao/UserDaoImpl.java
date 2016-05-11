@@ -7,6 +7,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -31,28 +32,40 @@ public class UserDaoImpl implements UserDAO {
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// GET ALL USERS
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//	@Override
+//	public List<User> getAllUsers() {
+//		
+//		String sql = "SELECT * FROM users;";
+//		return jdbc.query(sql, new RowMapper<User>(){
+//			public User mapRow(ResultSet rs, int rowNum) throws SQLException{
+//				User user = new User();
+//				
+//				user.setFirstname(rs.getString("users.firstname"));
+//				user.setLastname(rs.getString("users.lastname"));
+//				user.setEmpnum(rs.getInt("users.empnum"));
+//				user.setTel(rs.getInt("users.tel"));
+//				user.setEmail(rs.getString("users.email"));
+//				user.setUsername(rs.getString("users.username"));
+//				user.setPassword(rs.getString("users.password"));
+//				user.setEnabled(rs.getBoolean("users.enabled"));
+//				user.setAuthority(rs.getString("users.authority"));
+//				
+//				return user;
+//			}
+//		});
+//	}
+	
+
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// GET ALL USERS VERSION 2
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@Override
 	public List<User> getAllUsers() {
 		
-		String sql = "SELECT * FROM users inner join authorities on users.username = authorities.username;";
-		return jdbc.query(sql, new RowMapper<User>(){
-			public User mapRow(ResultSet rs, int rowNum) throws SQLException{
-				User user = new User();
-				
-				user.setFirstname(rs.getString("users.firstname"));
-				user.setLastname(rs.getString("users.lastname"));
-				user.setEmpnum(rs.getInt("users.empnum"));
-				user.setTel(rs.getInt("users.tel"));
-				user.setEmail(rs.getString("users.email"));
-				user.setUsername(rs.getString("users.username"));
-				user.setPassword(rs.getString("users.password"));
-				user.setEnabled(rs.getBoolean("users.enabled"));
-				user.setAuthority(rs.getString("authorities.authority"));
-				
-				return user;
-			}
-		});
+		String sql = "SELECT * FROM users;";
+		return jdbc.query(sql, BeanPropertyRowMapper.newInstance(User.class));
 	}
+	
 	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// GET USER BY ID
@@ -104,13 +117,10 @@ public class UserDaoImpl implements UserDAO {
 		
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
 		
-		String users = "insert into users (username, password, email, empnum, firstname, lastname, tel)" +
-		" VALUES (:username, :password, :email, :empnum, :firstname, :lastname, :tel)";
-		
-		String authorities = "insert into authorities (username, authority) values(:username, :authority)";
+		String users = "insert into users (username, password, email, empnum, firstname, lastname, tel, authority)" +
+		" VALUES (:username, :password, :email, :empnum, :firstname, :lastname, :tel, :authority)";
 
-		jdbc.update(users, params);
-		return jdbc.update(authorities, params) == 1;
+		return jdbc.update(users, params) == 1;
 	}
 	
 

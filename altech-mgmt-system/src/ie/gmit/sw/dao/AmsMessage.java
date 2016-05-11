@@ -14,7 +14,9 @@ public class AmsMessage {
 	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// CONSTRUCRTORS
 	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	public AmsMessage(){}
+	public AmsMessage(){
+		this.user = new User();
+	}
 	
 	public AmsMessage(String msg, User user){
 		this.msg = msg;
@@ -69,6 +71,10 @@ public class AmsMessage {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public String getUsername(){
+		return user.getUsername();
 	}
 	
 
