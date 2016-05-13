@@ -33,7 +33,7 @@ public class AmsMsgDaoImpl implements AmsMsgDao {
 	@Override
 	public List<AmsMessage> getAllMsgs() {
 		
-		String sql = "select * from systemmsg, users where systemmsg.username = users.username;";
+		String sql = "select * from systemmsg, users where systemmsg.username = users.username order by systemmsg.date desc, systemmsg.msgid desc limit 10;";
 		return jdbc.query(sql, new RowMapper<AmsMessage>(){
 			public AmsMessage mapRow(ResultSet rs, int rowNum) throws SQLException{
 				

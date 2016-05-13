@@ -17,6 +17,8 @@
 	<security:http use-expressions="true" jaas-api-provision="false">
 		<security:intercept-url pattern="/create"
 			access="hasAnyRole('hr', 'admin')" />
+		<security:intercept-url pattern="/showmsgs"
+			access="hasAnyRole('hr', 'admin')" />
 		<security:intercept-url pattern="/users"
 			access="hasAnyRole('hr', 'admin')" />
 		<security:intercept-url pattern="/docreate"
@@ -38,6 +40,8 @@
 		<security:intercept-url pattern="/error"
 			access="permitAll" />
 		<security:intercept-url pattern="/usercreated"
+			access="permitAll" />
+		<security:intercept-url pattern="/amssent"
 			access="permitAll" />
 		<security:intercept-url pattern="/amsmsgcreated"
 			access="permitAll" />

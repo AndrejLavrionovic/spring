@@ -66,6 +66,7 @@
 	    		<ul>
 	    			<li class="sideNav"><a href="${pageContext.request.contextPath}/users">Find User</a>
 	    			<li class="sideNav"><a href="${pageContext.request.contextPath}/create">Create User</a>
+	    			<li class="sideNav"><a href="${pageContext.request.contextPath}/showmsgs">Messages</a>
 	    		</ul>
 	    	</aside>
 	    	

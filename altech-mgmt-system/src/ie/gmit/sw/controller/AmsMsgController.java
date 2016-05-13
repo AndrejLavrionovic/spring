@@ -1,6 +1,7 @@
 package ie.gmit.sw.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -24,7 +25,7 @@ public class AmsMsgController {
 	private UsersService userService;
 	
 	@Autowired
-	public void setAmsMsgService(AmsMsgServiceImpl amsMsgService) {
+	public void setAmsMsgService(AmsMsgService amsMsgService) {
 		this.amsMsgService = amsMsgService;
 	}
 	
@@ -40,10 +41,18 @@ public class AmsMsgController {
 		
 		amsMessage.getUser().setUsername(username);
 		
-		System.out.println(amsMessage.toString());
-		
 		amsMsgService.createMsg(amsMessage);
 		
 		return "home";
+	}
+	
+	@RequestMapping("/showmsgs")
+	public String showMsgs(Model model){
+		
+		List<AmsMessage> msgs = amsMsgService.getCurrent();
+		
+		model.addAttribute("msgs", msgs);
+		
+		return "showmsgs";
 	}
 }

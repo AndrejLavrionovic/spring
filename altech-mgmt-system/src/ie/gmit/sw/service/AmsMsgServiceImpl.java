@@ -1,5 +1,7 @@
 package ie.gmit.sw.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +25,10 @@ public class AmsMsgServiceImpl implements AmsMsgService {
 	@Override
 	public void createMsg(AmsMessage msg) {
 		amsMsgDao.createMsg(msg);
+	}
+
+	@Override
+	public List<AmsMessage> getCurrent() {
+		return amsMsgDao.getAllMsgs();
 	}
 }
