@@ -29,9 +29,9 @@ public class UsersService {
 	}
 	
 	// get users
-//	public User getUser(int empnum){
-//		return userDao.getUserByEmpnum(empnum);
-//	}
+	public User getUser(int empnum){
+		return userDao.getUserByEmpnum(empnum);
+	}
 	public void getUser(String name){
 		
 	}

@@ -74,11 +74,33 @@
 	    		<header id="hdrTitle">Search User:</header>
 	    		
 	    		<div id="searchUserForm">
-	    			<form action="${pageContext.request.contextPath}/getuserbyid" method="post">
+	    			<sf:form action="${pageContext.request.contextPath}/getuserbyid" method="post" commandName="empnum">
 	    				<label id="lblFindUserById">Emp No:</label>
 	    				<input type="text" id="txtUserid" name="empnum" />
 	    				<input type="submit" id="btnfindUser" name="findUserById" value="Find" />
-	    			</form>
+	    			</sf:form>
+	    			
+	    			
+	    			<div id="userbyidBlock">
+	    				<c:if test="${user != null}">
+	    					<table id="tblGetUsers">
+	    			
+			    				<thead class="tblHeader">
+			    					<tr><td class="col1">Emp No.</td><td class="col2">Firstname</td><td class="col3">Lastname</td><td class="col4">Email</td><td class="col5">Tel</td></tr>
+			    				</thead>
+			    				<tbody class="tblBody">
+			    					<tr>
+			    						<td><c:out value="${user.empnum}"></c:out></td>
+			    						<td><c:out value="${user.firstname}"></c:out></td>
+			    						<td><c:out value="${user.lastname}"></c:out></td>
+			    						<td><c:out value="${user.email}"></c:out></td>
+			    						<td><c:out value="${user.tel}"></c:out></td>
+			    					</tr>
+			    				</tbody>
+	    					</table>
+	    				</c:if>
+	    			</div>
+	    			
 	    			<form action="${pageContext.request.contextPath}/getuserbyname" method="post">
 	    				<label id="lblFindUserById">Firstname:</label>
 	    				<input type="text" id="txtUserid" />
@@ -87,6 +109,7 @@
 	    			<br />
 	    		</div>
 	    		
+	    		<c:if test="${users != null}">
 	    		<div id="getUsers">
 	    			<table id="tblGetUsers">
 	    			
@@ -105,6 +128,7 @@
 	    			
 	    			</table>
 	    		</div>
+	    		</c:if>
 	    	
 	    	</section>
 	    </div>

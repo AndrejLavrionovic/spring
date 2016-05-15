@@ -83,4 +83,15 @@ public class UsersController {
 		
 		return "usercreated";
 	}
+	
+	@RequestMapping(value="/getuserbyid", method=RequestMethod.POST)
+	public String showUserById(Model model, int empnum){
+		
+		User user = userService.getUser(empnum);
+		
+		model.addAttribute("user", user);
+		
+		System.out.println(user.toString());
+		return "users";
+	}
 }

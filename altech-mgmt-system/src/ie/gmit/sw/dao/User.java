@@ -132,4 +132,10 @@ public class User {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
+
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", email=" + email + ", empnum=" + empnum + ", firstname=" + firstname
+				+ ", lastname=" + lastname + ", tel=" + tel + ", authority=" + authority + "]";
+	}
 }
