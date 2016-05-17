@@ -1,5 +1,7 @@
 package ie.gmit.sw.controller;
 
+import java.security.Principal;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -25,7 +27,17 @@ public class LoginController {
 	}
 	
 	@RequestMapping("/denied")
-	public String showDenied(){
+	public String showDenied(Model model, Principal principal){
+		
+		String username = null;
+		try{
+			username = principal.getName();
+			model.addAttribute("username", username);
+		}
+		catch(NullPointerException ex){
+			model.addAttribute("username", null);
+		}
+		
 		return "denied";
 	}
 }

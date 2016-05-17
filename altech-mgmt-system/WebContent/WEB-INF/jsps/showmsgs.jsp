@@ -47,7 +47,9 @@
 	    	</sec:authorize>
 	    	<sec:authorize access="isAuthenticated()">
 	    		<div id="blockWelcome">
-		    		<span>Welcome User.</span>
+	    			<c:if test="${username != null}">
+		    		<span>Welcome <c:out value="${username}"></c:out>.</span>
+		    		</c:if>
 	    		</div>
 		    	<div id="blockLogout">
 		    		<sf:form method="post" action="${pageContext.request.contextPath}/j_spring_security_logout">

@@ -35,7 +35,7 @@ public class AmsMsgController {
 	}
 	
 	@RequestMapping(value="/createamsmsg", method=RequestMethod.POST)
-	public String doCreateMsg(AmsMessage amsMessage, Principal principal){
+	public String doCreateMsg(Model model, AmsMessage amsMessage, Principal principal){
 		
 		String username = principal.getName();
 		
@@ -43,15 +43,26 @@ public class AmsMsgController {
 		
 		amsMsgService.createMsg(amsMessage);
 		
+		model.addAttribute("username", username);
+		
 		return "home";
 	}
 	
 	@RequestMapping("/showmsgs")
-	public String showMsgs(Model model){
+	public String showMsgs(Model model, Principal principal){
 		
 		List<AmsMessage> msgs = amsMsgService.getCurrent();
 		
 		model.addAttribute("msgs", msgs);
+		
+		String username = null;
+		try{
+			username = principal.getName();
+			model.addAttribute("username", username);
+		}
+		catch(NullPointerException ex){
+			model.addAttribute("username", null);
+		}
 		
 		return "showmsgs";
 	}

@@ -1,5 +1,6 @@
 package ie.gmit.sw.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -35,7 +36,16 @@ public class UsersController {
 	// POPULATES TABLE WITH USERS
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@RequestMapping("/users")
-	public String showUsers(Model model){
+	public String showUsers(Model model, Principal principal){
+		
+		String username = null;
+		try{
+			username = principal.getName();
+			model.addAttribute("username", username);
+		}
+		catch(NullPointerException ex){
+			model.addAttribute("username", null);
+		}
 		
 		List<User> users = userService.getCurrent();
 		
@@ -49,8 +59,17 @@ public class UsersController {
 	// CREATE.JSP PAGE EXECUTION
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@RequestMapping("/create")
-	public String createUser(Model model){
+	public String createUser(Model model, Principal principal){
 		model.addAttribute("user", new User());
+		
+		String username = null;
+		try{
+			username = principal.getName();
+			model.addAttribute("username", username);
+		}
+		catch(NullPointerException ex){
+			model.addAttribute("username", null);
+		}
 		
 		return "create";
 	}
@@ -59,7 +78,7 @@ public class UsersController {
 	// CREATE USER FORM EXECUTION
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@RequestMapping(value="/docreate", method=RequestMethod.POST)
-	public String doCreate(@Valid User user, BindingResult result){
+	public String doCreate(@Valid User user, BindingResult result, Model model, Principal principal){
 		
 		// Validation #1
 		//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -80,18 +99,36 @@ public class UsersController {
 			return "create";
 		}
 		
+		String username = null;
+		try{
+			username = principal.getName();
+			model.addAttribute("username", username);
+		}
+		catch(NullPointerException ex){
+			model.addAttribute("username", null);
+		}
 		
 		return "usercreated";
 	}
 	
 	@RequestMapping(value="/getuserbyid", method=RequestMethod.POST)
-	public String showUserById(Model model, int empnum){
+	public String showUserById(Model model, int empnum, Principal principal){
 		
 		User user = userService.getUser(empnum);
 		
 		model.addAttribute("user", user);
 		
 		System.out.println(user.toString());
+		
+		String username = null;
+		try{
+			username = principal.getName();
+			model.addAttribute("username", username);
+		}
+		catch(NullPointerException ex){
+			model.addAttribute("username", null);
+		}
+		
 		return "users";
 	}
 }
