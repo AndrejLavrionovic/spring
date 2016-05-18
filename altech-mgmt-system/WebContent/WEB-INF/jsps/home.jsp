@@ -18,6 +18,7 @@
 	    <header id="hd">
 	        <img src="${pageContext.request.contextPath}/src/img/hdAlmaxx.png" width="800"></a>
 	    </header>
+	    
 	    <nav id="nav">
 	        <ul>
 	            <li id="btn"><a href="${pageContext.request.contextPath}/">Home</a></li>

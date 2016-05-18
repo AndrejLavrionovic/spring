@@ -2,7 +2,14 @@
 
 body{
 	background-color: #FBFBEF;
+	display: -moz-box;
+	display: -webkit-box;
+	display: -chrome-box;
+	-moz-box-pack: center;
+	-webkit-box-pack: center;
+	width: 100%;
 }
+
 *
 {
 	margin: 0px;
@@ -12,13 +19,28 @@ div, section, article, header, footer, nav
 {
 	display: block;
 }
+
 #container{
-    width: 800px;
+    max-width: 800px;
     min-height: 600px;
     margin: 0 auto;
     border-radius: 6px;
-    display: box;
+    display: -moz-box;
+    display: -webkit-box;
+    -moz-box-orient: vertical;
+    -webkit-box-orient: vertical;
+    -moz-box-flex: 0;
+    -webkit-box-flex: 0;
 }
+
+#wrapper{
+	display: -moz-box;
+	display: -webkit-box;
+	-moz-box-orient: horizontal;
+	-webkit-box-orient: horizontal;
+	margin-bottom: 4px;
+}
+
 #hd{
     height: 164px;
     text-align: center;
@@ -27,8 +49,6 @@ div, section, article, header, footer, nav
     border-top: 1px solid orangered;
     border-bottom: 1px solid orangered;
     width: 800px;
-    height: 32px;
-    line-height: 26px;
     padding: 5px 0;
 }
 #nav ul li{
@@ -37,7 +57,8 @@ div, section, article, header, footer, nav
     border: 1px solid blueviolet;
     border-radius: 4px;
     width: 120px;
-    height: 30px;
+    height: 12px;
+    padding: 2px 0 10px 0;
     text-align: center;
     background-color: whitesmoke;
 }
@@ -63,6 +84,7 @@ div, section, article, header, footer, nav
 }
 
 #mainFooter{
+	clear: both;
 	padding: 40px 20px;
 	border: 0px solid red;
 	background-color: #404160;
@@ -89,10 +111,6 @@ div, section, article, header, footer, nav
 	font: normal 12px calibri;
 	color: #F2F2F2;
 	margin: 0 0 0 20px;
-}
-
-#wrapper{
-	height: auto;
 }
 
 

@@ -59,9 +59,8 @@
 	    	</sec:authorize>
 	    	
 	    </div>
-	    
-	    
-	    <div id="wrapper">
+    	
+    	<div id="wrapper">
 	    
 	    	<aside id="mainAside">
 	    		<ul>
@@ -70,7 +69,7 @@
 	    			<li class="sideNav"><a href="${pageContext.request.contextPath}/showmsgs">Messages</a>
 	    		</ul>
 	    	</aside>
-	    	
+    	
 	    	<section id="mainSection">
 	    	
 	    		<header id="hdrTitle">Search User:</header>
@@ -133,7 +132,24 @@
 	    		</c:if>
 	    	
 	    	</section>
-	    </div>
+    	</div>
+	    
+	    <footer id="mainFooter">
+	    	<div id="ftrRights">
+	    		<span>© 2016 Altech Technology. All Rights Reserved.</span>
+	    	</div>
+	    	<div id="ftrAddress">
+	    		<p>Email: service@altech.com</p>
+	    		<p>Tel: (+353) 91 123456</p>
+	    		<p>Address:</p>
+	    		
+	    		<div id="address">
+	    			<p>GMIT</p>
+	    			<p>Old Dublin Road</p>
+	    			<p>Galway, Republic of Ireland</p>
+	    		</div>
+	    	</div>
+	    </footer>
 	</div>
 	
 	<script src="${pageContext.request.contextPath}/src/js/showdate.js"></script>

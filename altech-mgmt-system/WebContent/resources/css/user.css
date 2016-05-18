@@ -1,18 +1,17 @@
 @CHARSET "utf-8";
 
+
 #mainAside{
-	float: left;
-	width: 136px;
 	padding: 20px;
 	background: #E2E2E2;
 	margin: 5px 5px 0 0;
 	padding: 10px;
-	min-height: 402px;
+	-moz-box-flex: 1;
+	-webkit-box-flex: 1;
 }
 
 #mainSection{
-	float: left;
-	width: 610px;
+	width: 611px;
 	border: 1px solid #c0c0c0;
 	porder-radius: 4px;
 	margin: 5px 0 0 5px;
