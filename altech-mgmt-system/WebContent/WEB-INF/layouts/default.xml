@@ -9,5 +9,9 @@
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/content.jsp"></put-attribute>
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/main.css" />
+			<add-attribute value="/src/css/home.css" />
+		</put-list-attribute>
 	</definition>
 </tiles-definitions>
