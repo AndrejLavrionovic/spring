@@ -4,14 +4,72 @@
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
        
 <tiles-definitions>
-	<definition name="home" template="/WEB-INF/templates/default.jsp">
-		<put-attribute name="title" value="AMS Home page."></put-attribute>
+	
+	<definition name="header.date" template="/WEB-INF/tiles/headerDefault.jsp">
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
+		<put-attribute name="date" value="/WEB-INF/tiles/datebar.jsp"></put-attribute>
+	</definition>
+	
+	
+	<definition name="altech.base" template="/WEB-INF/templates/default.jsp">
+		<put-attribute name="title" value="AMS Home page."></put-attribute>
+		<put-attribute name="header" value="header.date"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/content.jsp"></put-attribute>
 		<put-list-attribute name="stylesheets">
 			<add-attribute value="/src/css/main.css" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="home" extends="altech.base">
+		<put-attribute name="title" value="AMS Home page."></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/home.jsp"></put-attribute>
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/home.css" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="clock" extends="altech.base">
+		<put-attribute name="title" value="AMS Home page."></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/clock.jsp"></put-attribute>
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/main.css" />
+			<add-attribute value="/src/css/clock.css" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="payroll" extends="altech.base">
+		<put-attribute name="title" value="AMS Home page."></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/payroll.jsp"></put-attribute>
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/main.css" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="hollidays" extends="altech.base">
+		<put-attribute name="title" value="AMS Home page."></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/hollidays.jsp"></put-attribute>
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/main.css" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="msg" extends="altech.base">
+		<put-attribute name="title" value="AMS Home page."></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/msg.jsp"></put-attribute>
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/main.css" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="login" extends="altech.base">
+		<put-attribute name="title" value="AMS Login page."></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/login.jsp"></put-attribute>
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/main.css" />
+			<add-attribute value="/src/css/login.css" />
 		</put-list-attribute>
 	</definition>
 </tiles-definitions>

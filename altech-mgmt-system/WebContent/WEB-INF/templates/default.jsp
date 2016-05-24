@@ -6,6 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <tiles:importAttribute name="stylesheets" />
+<tiles:importAttribute name="header" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,15 +19,13 @@
 </head>
 <body>
 	<div id="container">
-
-		Welcome to the Altech websource.
-		We are not ready yet!
-		The site is under construction.
 		
 		<div id = "header"><tiles:insertAttribute name="header"></tiles:insertAttribute></div>
 		<div id = "content"><tiles:insertAttribute name="content"></tiles:insertAttribute></div>
 		<div id = "footer"><tiles:insertAttribute name="footer"></tiles:insertAttribute></div>
 
 	</div>
+	
+	<script src="${pageContext.request.contextPath}/src/js/showdate.js"></script>
 </body>
 </html>
