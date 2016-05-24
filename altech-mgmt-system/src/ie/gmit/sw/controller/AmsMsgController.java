@@ -45,7 +45,7 @@ public class AmsMsgController {
 		
 		model.addAttribute("username", username);
 		
-		return "home";
+		return "amsmsgcreated";
 	}
 	
 	@RequestMapping("/showmsgs")
