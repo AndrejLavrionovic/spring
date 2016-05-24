@@ -110,6 +110,15 @@
 		</put-list-attribute>
 	</definition>
 	
+	<definition name="error" extends="altech.base">
+		<put-attribute name="title" value="AMS Database Error."></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/error.jsp"></put-attribute>
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/main.css" />
+			<add-attribute value="/src/css/error.css" />
+		</put-list-attribute>
+	</definition>
+	
 	<definition name="amsmsgcreated" extends="altech.base">
 		<put-attribute name="title" value="AMS Message sent."></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/amsmsgcreated.jsp"></put-attribute>
