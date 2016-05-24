@@ -41,7 +41,7 @@
 
 .txtNew{
 	display: inline-block;
-	width: 200px;
+	width: 180px;
 	border: 1px solid #2D2C2C;
 	height: 20px;
 	padding: 0 5px;
@@ -52,7 +52,7 @@
 
 #divError{
 	border: 0px solid #909090;
-	width: 216px;
+	width: 214px;
 	height: 20px;
 	display: inline-block;
 }
