@@ -10,6 +10,12 @@
 		<put-attribute name="date" value="/WEB-INF/tiles/datebar.jsp"></put-attribute>
 	</definition>
 	
+	<definition name="usersdefault" template="/WEB-INF/tiles/usersdefault.jsp">
+		<put-attribute name="usersaside" value="/WEB-INF/tiles/usersMainAside.jsp"></put-attribute>
+		<put-attribute name="userssection" value="/WEB-INF/tiles/usersMainSection.jsp"></put-attribute>
+	</definition>
+
+	<definition name="users.content" extends="usersdefault"></definition>
 	
 	<definition name="altech.base" template="/WEB-INF/templates/default.jsp">
 		<put-attribute name="title" value="AMS Home page."></put-attribute>
@@ -98,6 +104,16 @@
 		<put-list-attribute name="stylesheets">
 			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/amsMessageCreated.css" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="users" extends="altech.base">
+		<put-attribute name="title" value="AMS Home page."></put-attribute>
+		<put-attribute name="content" value="users.content"></put-attribute>
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/main.css" />
+			<add-attribute value="/src/css/user.css" />
+			<add-attribute value="/src/css/users.css" />
 		</put-list-attribute>
 	</definition>
 </tiles-definitions>

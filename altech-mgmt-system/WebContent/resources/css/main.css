@@ -33,14 +33,6 @@ div, section, article, header, footer, nav
     -webkit-box-flex: 0;
 }
 
-#wrapper{
-	display: -moz-box;
-	display: -webkit-box;
-	-moz-box-orient: horizontal;
-	-webkit-box-orient: horizontal;
-	margin-bottom: 4px;
-}
-
 #hd{
     height: 164px;
     text-align: center;

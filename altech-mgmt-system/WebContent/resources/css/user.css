@@ -1,11 +1,23 @@
 @CHARSET "utf-8";
 
 
+#wrapper{
+	border: 0px solid black;
+	width: 800px;
+	display: -moz-box;
+	display: -webkit-box;
+	-moz-box-orient: horizontal;
+	-webkit-box-orient: horizontal;
+	margin-bottom: 4px;
+}
+
 #mainAside{
+	width: *;
 	padding: 20px;
 	background: #E2E2E2;
 	margin: 5px 5px 0 0;
 	padding: 10px;
+	box-flex: 1;
 	-moz-box-flex: 1;
 	-webkit-box-flex: 1;
 }
