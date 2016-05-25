@@ -36,6 +36,7 @@
 		<put-attribute name="content" value="/WEB-INF/tiles/content.jsp"></put-attribute>
 		<put-list-attribute name="stylesheets">
 			<add-attribute value="/src/css/main.css" />
+			<add-attribute value="/src/css/normalize.css" />
 		</put-list-attribute>
 	</definition>
 	
@@ -43,6 +44,7 @@
 		<put-attribute name="title" value="AMS Home page."></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/home.jsp"></put-attribute>
 		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
 			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/home.css" />
 		</put-list-attribute>
@@ -52,6 +54,7 @@
 		<put-attribute name="title" value="AMS Clock In/Out."></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/clock.jsp"></put-attribute>
 		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
 			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/clock.css" />
 		</put-list-attribute>
@@ -61,6 +64,7 @@
 		<put-attribute name="title" value="AMS Payroll."></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/payroll.jsp"></put-attribute>
 		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
 			<add-attribute value="/src/css/main.css" />
 		</put-list-attribute>
 	</definition>
@@ -69,6 +73,7 @@
 		<put-attribute name="title" value="AMS Holidays."></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/hollidays.jsp"></put-attribute>
 		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
 			<add-attribute value="/src/css/main.css" />
 		</put-list-attribute>
 	</definition>
@@ -77,6 +82,7 @@
 		<put-attribute name="title" value="AMS Messages."></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/msg.jsp"></put-attribute>
 		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
 			<add-attribute value="/src/css/main.css" />
 		</put-list-attribute>
 	</definition>
@@ -86,6 +92,7 @@
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/login.jsp"></put-attribute>
 		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
 			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/login.css" />
 		</put-list-attribute>
@@ -96,6 +103,7 @@
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/loggedout.jsp"></put-attribute>
 		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
 			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/loggedout.css" />
 		</put-list-attribute>
@@ -105,6 +113,7 @@
 		<put-attribute name="title" value="AMS Access denied."></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/denied.jsp"></put-attribute>
 		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
 			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/denied.css" />
 		</put-list-attribute>
@@ -114,6 +123,7 @@
 		<put-attribute name="title" value="AMS Database Error."></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/error.jsp"></put-attribute>
 		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
 			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/error.css" />
 		</put-list-attribute>
@@ -123,6 +133,7 @@
 		<put-attribute name="title" value="AMS Message sent."></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/amsmsgcreated.jsp"></put-attribute>
 		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
 			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/amsMessageCreated.css" />
 		</put-list-attribute>
@@ -132,6 +143,7 @@
 		<put-attribute name="title" value="AMS User created."></put-attribute>
 		<put-attribute name="content" value="usercreated.content"></put-attribute>
 		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
 			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/user.css" />
 			<add-attribute value="/src/css/userCreated.css" />
@@ -142,6 +154,7 @@
 		<put-attribute name="title" value="AMS Users."></put-attribute>
 		<put-attribute name="content" value="users.content"></put-attribute>
 		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
 			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/user.css" />
 			<add-attribute value="/src/css/users.css" />
@@ -152,6 +165,7 @@
 		<put-attribute name="title" value="AMS Create new user."></put-attribute>
 		<put-attribute name="content" value="create.content"></put-attribute>
 		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
 			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/user.css" />
 			<add-attribute value="/src/css/newUser.css" />
@@ -162,6 +176,7 @@
 		<put-attribute name="title" value="AMS Show ASM messages."></put-attribute>
 		<put-attribute name="content" value="showmsgs.content"></put-attribute>
 		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
 			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/user.css" />
 			<add-attribute value="/src/css/showmsgs.css" />
