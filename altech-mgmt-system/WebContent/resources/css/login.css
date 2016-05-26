@@ -39,6 +39,7 @@ body{
 	padding: 0 5px;
 	color: #9E6060;
 	margin: 0 0 5px 0;
+	font: bolder 13px verdana;
 }
 
 #logBtns{
@@ -49,7 +50,11 @@ body{
 }
 
 input[type="submit"]{
-	width: 160px;
+	width: 100px;
+	height: 30px;
+	color: #120044;
+	font: bolder 14px verdana;
+	border: 1px solid #124E44;
 }
 
 #loginError{

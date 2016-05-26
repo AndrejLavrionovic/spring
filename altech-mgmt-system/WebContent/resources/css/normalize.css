@@ -302,6 +302,12 @@ html [type="button"], /* 1 */
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button; /* 2 */
+  /* altech's adjustments */
+	color: #120044;
+	font: normal 14px verdana;
+	border: 1px solid #124E44;
+	padding: 5px;
+	width: 100px;
 }
 
 /**
