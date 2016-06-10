@@ -32,16 +32,17 @@
  					</tr>
  				</tbody>
 				</table>
+				
+				<!-- Choose options -->
+				<div id="divoptions">
+					<a class="btnlink" href="<c:url value='/edituser?u=${user.username}' />" ><div id="btnUser">Edit User</div></a>
+					<a class="btnlink" href=""><div id="btnUser">Delete User</div></a>
+				</div>
 			</c:if>
 		</div>
-		
-		<form action="${pageContext.request.contextPath}/getuserbyname" method="post">
-			<label id="lblFindUserById">Firstname:</label>
-			<input type="text" id="txtUserid" />
-			<input type="submit" id="btnfindUser" name="findUserByName" value="Find" />
-		</form>
-		<br />
 	</div>
+	
+	<!-- 
 	
 	<c:if test="${users != null}">
 	<div id="getUsers">
@@ -63,3 +64,5 @@
 		</table>
 	</div>
 	</c:if>
+	
+	 -->

@@ -70,3 +70,35 @@
 .col5{
 	width: 100px;
 }
+
+#divoptions{
+	height: 22px;
+	lenght: 300px;
+	border: 0px solid black;
+}
+
+#btnUser{
+	height: 20px;
+	width: 100px;
+	font: normal 13px calibri;
+	text-align: center;
+	display: inline-block;
+}
+
+a.btnlink:link, a.btnlink:visited{
+	border: 1px solid orange;
+	background-color: #d0ccd0;
+	color: #000040;
+}
+
+a.btnlink:hover{
+	border: 1px solid orange;
+	background-color: #9a9a9a;
+	color: #cff3fe;
+}
+
+ a.btnlink:active{
+ 	border: 1px solid #ed380c;
+	background-color: #9a9a9a;
+	color: #cff3fe;
+ }

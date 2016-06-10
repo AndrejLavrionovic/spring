@@ -3,8 +3,10 @@ package ie.gmit.sw.controller;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -21,6 +24,8 @@ import ie.gmit.sw.service.UsersService;
 @Controller
 public class UsersController {
 	
+	private static Logger logger = Logger.getLogger(UsersController.class);
+	
 	private UsersService userService;
 	
 	@Autowired
@@ -28,7 +33,9 @@ public class UsersController {
 		this.userService = userService;
 	}
 
-
+	private String getUsername(Principal principal){
+		return principal.getName();
+	}
 	
 	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -37,21 +44,20 @@ public class UsersController {
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@RequestMapping("/users")
 	public String showUsers(Model model, Principal principal){
-		
-		String username = null;
 		try{
-			username = principal.getName();
-			model.addAttribute("username", username);
+			model.addAttribute("username", getUsername(principal)); // is user logged in
+			
+			List<User> users = userService.getCurrent();
+			
+			model.addAttribute("users", users);
+			
+			return "users";
 		}
 		catch(NullPointerException ex){
 			model.addAttribute("username", null);
+			
+			return "login";
 		}
-		
-		List<User> users = userService.getCurrent();
-		
-		model.addAttribute("users", users);
-		
-		return "users";
 	}
 	
 
@@ -130,5 +136,23 @@ public class UsersController {
 		}
 		
 		return "users";
+	}
+	
+	@RequestMapping(value="/edituser", method=RequestMethod.GET)
+	public String updateUser(HttpServletRequest request, Model model, Principal principal){
+
+		try{
+			model.addAttribute("username", getUsername(principal)); // is user logged in
+			
+			String user = request.getParameter("u");
+			logger.info("You choose the edit user option (" + user + ") ........");
+			
+			return "users";
+		}
+		catch(NullPointerException ex){
+			model.addAttribute("username", null);
+			
+			return "login";
+		}
 	}
 }
