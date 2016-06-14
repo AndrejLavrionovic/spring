@@ -11,22 +11,33 @@
 	    		
 	    		<!-- :::::::::::::::::::::: FORM EDIT USER ::::::::::::::::::::: -->
 	    		<div id="editUserSection">
-	    			<p>Here will be form for user editing.</p>
 	    			
 	    			
 	    			<sf:form method="post" action="${pageContext.request.contextPath}/doupdateuser" id="frmUpdateUser" commandName="user">
 	    			
-	    				<label class="lbledit" for="firstname">First name: </label>
-	    				<sf:input path="firstname" name="firstname" id="firstname" type="text" class="txtedit" />
+	    				<div id="frmEditUser">
 	    				
-	    				<label class="lbledit" for="lastname">Last name: </label>
-	    				<sf:input path="lastname" name="lastname" id="lastname" type="text" class="txtedit" />
+		    				<label class="lbledit" for="firstname">First name: </label>
+		    				<sf:input path="firstname" name="firstname" id="firstname" type="text" class="txtedit" /><br />
+		    				
+		    				<label class="lbledit" for="lastname">Last name: </label>
+		    				<sf:input path="lastname" name="lastname" id="lastname" type="text" class="txtedit" /><br />
+		    				
+		    				<label class="lbledit" for="tel">Telephone: </label>
+		    				<sf:input path="tel" name="tel" id="tel" type="text" class="txtedit" /><br />
+		    				
+		    				<label class="lbledit" for="email">Email: </label>
+		    				<sf:input path="email" name="email" id="email" type="text" class="txtedit" /><br />
+		    				
+		    				<sf:input path="username" name="username" type="hidden" />
 	    				
-	    				<label class="lbledit" for="tel">Telephone: </label>
-	    				<sf:input path="tel" name="tel" id="tel" type="text" class="txtedit" />
-	    				
-	    				<label class="lbledit" for="email">Email: </label>
-	    				<sf:input path="email" name="email" id="email" type="text" class="txtedit" />
+	    				</div>
+
+	    			
+		    			<div id="frmBtns">
+		    				<input class="buttons" type="button" id="btnClear" name="clear" value="Clear" />
+		    				<input class="buttons" type="submit" id="btnEditUser" name="edituser" value="Save Updates" />
+		    			</div>
 	    			 
 	    			</sf:form>
 	    			

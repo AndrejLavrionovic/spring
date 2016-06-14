@@ -89,16 +89,11 @@ public class UsersController {
 		// Validation #1
 		//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 		if(result.hasErrors()){
-			System.out.println("NOT VALID");
+			logger.info("Data is Not Valid");
 			return "create";
 		}
 		
-		if(userService.exists(user.getUsername())){
-			result.rejectValue("username", "DuplicateKey.users.username", "This username allready exists!");
-			return "create";
-		}
-		
-		try {
+		try { // if username allready exists
 			userService.create(user);
 		} catch (DuplicateKeyException e) {
 			result.rejectValue("username", "DuplicateKey.users.username", "This username allready exists!");
@@ -117,6 +112,10 @@ public class UsersController {
 		return "usercreated";
 	}
 	
+	
+	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// RETRIEVE USER BY HIS EMPLOYEE NUMBER
+	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@RequestMapping(value="/getuserbyid", method=RequestMethod.POST)
 	public String showUserById(Model model, int empnum, Principal principal){
 		
@@ -138,20 +137,33 @@ public class UsersController {
 		return "users";
 	}
 	
+	
+	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// PROCEED TO THE EDIT USER FORM
+	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@RequestMapping(value="/edituser", method=RequestMethod.GET)
-	public String updateUser(HttpServletRequest request, Model model, Principal principal){
-		model.addAttribute("user", new User());
+	public String goToUpdateUserForm(HttpServletRequest request, Model model, Principal principal){
+		
+		User user = null;
+		String username = null;
 
 		try{
 			model.addAttribute("username", getUsername(principal)); // is user logged in
 			
-			String username = request.getParameter("u");
+			username = request.getParameter("u");
 			logger.info("You choose the edit user option (" + username + ") ........");
 			
-			/*
-			User user = new User();
-			user = userService.getUser(username);
-			*/
+			
+			if(username != null){
+				user = userService.getUser(username);
+				logger.info("User ----> " + user.toString());
+			}
+			else{
+				user = new User();
+				logger.info("User ----> " + user.toString());
+			}
+			
+			model.addAttribute("user", user);
 			
 			return "edituserform";
 		}
@@ -160,5 +172,41 @@ public class UsersController {
 			
 			return "login";
 		}
+	}
+	
+	
+	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// UPDATE EXISTING USER
+	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	@RequestMapping(value="/doupdateuser", method=RequestMethod.POST)
+	public String doUpdateUser(@Valid User user, BindingResult result, Model model, Principal principal){
+
+		logger.info(user.toString());
+		// Validation #1
+		//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+		/*
+		if(result.hasErrors()){
+			System.out.println("NOT VALID");
+			
+			model.addAttribute("user", user);
+			return "edituserform";
+		}
+		*/
+		
+		String username = null;
+		try{
+			username = principal.getName();
+			model.addAttribute("username", username);
+		}
+		catch(NullPointerException ex){
+			model.addAttribute("username", null);
+			return "login";
+		}
+		
+		logger.info("User ---> " + user.toString());
+		userService.update(user);
+		//model.addAttribute("user", user);
+		
+		return "userupdated";
 	}
 }

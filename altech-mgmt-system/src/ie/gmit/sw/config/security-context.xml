@@ -25,6 +25,8 @@
 			access="hasAnyRole('hr', 'admin')" />
 		<security:intercept-url pattern="/docreate"
 			access="hasAnyRole('hr', 'admin')" />
+		<security:intercept-url pattern="/doupdateuser"
+			access="hasAnyRole('hr', 'admin')" />
 		<security:intercept-url pattern="/edituser"
 			access="hasAnyRole('hr', 'admin')" />
 		<security:intercept-url pattern="/edituserform"
@@ -46,6 +48,8 @@
 		<security:intercept-url pattern="/error"
 			access="permitAll" />
 		<security:intercept-url pattern="/usercreated"
+			access="permitAll" />
+		<security:intercept-url pattern="/userupdated"
 			access="permitAll" />
 		<security:intercept-url pattern="/amssent"
 			access="permitAll" />

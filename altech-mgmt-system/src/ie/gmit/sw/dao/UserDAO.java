@@ -9,4 +9,5 @@ public interface UserDAO {
 	public boolean exists(String username);
 	public User getUserByEmpnum(int empnum);
 	public User getUserByUsername(String username);
+	public int updateUser(User user);
 }

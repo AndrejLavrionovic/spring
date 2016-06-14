@@ -70,12 +70,27 @@ public class UserDaoImpl implements UserDAO {
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// GET USER BY EMPLOYEE NUMBER
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	@Override
 	public User getUserByEmpnum(int empnum) {
 		
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		param.addValue("empnum", empnum);
 		
 		String sql = "SELECT * FROM users WHERE empnum=:empnum";
+		return jdbc.queryForObject(sql, param, new UserRowMapper());
+	}
+	
+	
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// GET USER BY USERNAME
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	@Override
+	public User getUserByUsername(String username) {
+		
+		MapSqlParameterSource param = new MapSqlParameterSource();
+		param.addValue("username", username);
+		
+		String sql = "SELECT * FROM users WHERE username=:username";
 		return jdbc.queryForObject(sql, param, new UserRowMapper());
 	}
 	
@@ -125,15 +140,13 @@ public class UserDaoImpl implements UserDAO {
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// UPDATE USER
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	@Override
 	public int updateUser(User user){
 		
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
 		
 		String sql = "UPDATE users SET firstname=:firstname, lastname=:lastname," +
-				" empnum=:empnum, regDate=:regDate, tel=:tel," +
-				" email=:email, nationality=:nationality, statusid=:statusid," +
-				" positionid=:positionid" +
-				" WHERE userid=:userid";
+				" tel=:tel, email=:email WHERE username=:username";
 				return jdbc.update(sql, params);
 	}
 
@@ -142,12 +155,5 @@ public class UserDaoImpl implements UserDAO {
 	public boolean exists(String username) {
 		return jdbc.queryForObject("select count(*) from users where username=:username;",
 				new MapSqlParameterSource("username", username), Integer.class) > 0;
-	}
-
-
-	@Override
-	public User getUserByUsername(String username) {
-		
-		return null;
 	}
 }

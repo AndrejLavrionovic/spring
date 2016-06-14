@@ -40,4 +40,8 @@ public class UsersService {
 		userDao.exists(username);
 		return false;
 	}
+
+	public int update(User user) {
+		return userDao.updateUser(user);
+	}
 }
