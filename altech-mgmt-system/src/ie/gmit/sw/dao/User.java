@@ -16,11 +16,13 @@ public class User {
 	@Size(min=3, max=45, message="The username must be 3-40 characters long.")
 	@NotNull
 	private String username;
+	
 	@Size(min=4, max=16, message="The password must be 3-40 characters long.")
 	@NotNull
 	@NotBlank(message="Password cannot be blank.")
 	@Pattern(regexp="^\\S+$", message="Password cannot contain spaces.")
 	private String password;
+	
 	private boolean enabled = false;
 	
 	@NotNull
@@ -38,6 +40,7 @@ public class User {
 	@Size(min=3, max=40, message="The lastname must be 3-40 characters long.")
 	@NotNull
 	private String lastname;
+	
 	private int tel;
 	
 	@NotNull

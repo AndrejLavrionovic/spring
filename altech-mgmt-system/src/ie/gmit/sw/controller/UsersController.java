@@ -140,14 +140,20 @@ public class UsersController {
 	
 	@RequestMapping(value="/edituser", method=RequestMethod.GET)
 	public String updateUser(HttpServletRequest request, Model model, Principal principal){
+		model.addAttribute("user", new User());
 
 		try{
 			model.addAttribute("username", getUsername(principal)); // is user logged in
 			
-			String user = request.getParameter("u");
-			logger.info("You choose the edit user option (" + user + ") ........");
+			String username = request.getParameter("u");
+			logger.info("You choose the edit user option (" + username + ") ........");
 			
-			return "users";
+			/*
+			User user = new User();
+			user = userService.getUser(username);
+			*/
+			
+			return "edituserform";
 		}
 		catch(NullPointerException ex){
 			model.addAttribute("username", null);

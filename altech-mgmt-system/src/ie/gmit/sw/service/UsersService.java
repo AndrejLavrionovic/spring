@@ -32,8 +32,8 @@ public class UsersService {
 	public User getUser(int empnum){
 		return userDao.getUserByEmpnum(empnum);
 	}
-	public void getUser(String name){
-		
+	public User getUser(String username){
+		return userDao.getUserByUsername(username);
 	}
 
 	public boolean exists(String username) {

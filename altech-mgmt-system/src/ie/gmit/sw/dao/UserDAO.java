@@ -8,4 +8,5 @@ public interface UserDAO {
 	public boolean createUser(User user);
 	public boolean exists(String username);
 	public User getUserByEmpnum(int empnum);
+	public User getUserByUsername(String username);
 }
