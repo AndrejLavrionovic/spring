@@ -7,6 +7,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
@@ -73,11 +74,15 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public User getUserByEmpnum(int empnum) {
 		
-		MapSqlParameterSource param = new MapSqlParameterSource();
-		param.addValue("empnum", empnum);
-		
-		String sql = "SELECT * FROM users WHERE empnum=:empnum";
-		return jdbc.queryForObject(sql, param, new UserRowMapper());
+		try{
+			MapSqlParameterSource param = new MapSqlParameterSource();
+			param.addValue("empnum", empnum);
+			
+			String sql = "SELECT * FROM users WHERE empnum=:empnum";
+			return jdbc.queryForObject(sql, param, new UserRowMapper());
+		}catch(DataAccessException ex){
+			return null;
+		}
 	}
 	
 	
@@ -149,8 +154,11 @@ public class UserDaoImpl implements UserDAO {
 				" tel=:tel, email=:email WHERE username=:username";
 				return jdbc.update(sql, params);
 	}
-
-
+	
+	
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// IS USER EXIST
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@Override
 	public boolean exists(String username) {
 		return jdbc.queryForObject("select count(*) from users where username=:username;",

@@ -7,6 +7,9 @@
     <c:if test="${message != null}">	
     	<div id="msg"><c:out value="${message}" /></div>
     </c:if>
+    <c:if test="${error != null}">	
+    	<div id="error"><c:out value="${error}" /></div>
+    </c:if>
 
 	<header id="hdrTitle">Search User:</header>
 	

@@ -119,21 +119,24 @@ public class UsersController {
 	@RequestMapping(value="/getuserbyid", method=RequestMethod.POST)
 	public String showUserById(Model model, int empnum, Principal principal){
 		
-		User user = userService.getUser(empnum);
-		
-		model.addAttribute("user", user);
-		
-		System.out.println(user.toString());
-		
 		String username = null;
+		User user = userService.getUser(empnum);
+		String error = null;
+		
 		try{
 			username = principal.getName();
 			model.addAttribute("username", username);
 		}
 		catch(NullPointerException ex){
 			model.addAttribute("username", null);
+			return "login";
 		}
 		
+		if(user == null)
+			error = "The user with given employee number is not exist.";
+			
+		model.addAttribute("user", user);
+		model.addAttribute("error", error);
 		return "users";
 	}
 	
