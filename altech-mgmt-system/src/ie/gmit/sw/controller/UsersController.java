@@ -217,7 +217,6 @@ public class UsersController {
 	@RequestMapping(value="/deleteuser", method=RequestMethod.GET)
 	public String deleteUser(HttpServletRequest request, Model model, Principal principal){
 
-		User user = null;
 		String username = null;
 		String message = null;
 
@@ -225,21 +224,14 @@ public class UsersController {
 			model.addAttribute("username", getUsername(principal)); // is user logged in
 			
 			username = request.getParameter("u");
-			logger.info("You choose to delete user option (" + username + ") ........");
 			
 			if(username != null){
-				user = userService.getUser(username);
-				logger.info("User ----> " + user.toString());
+				if(userService.deleteUser(username)){
+					message = "The user was permanently deleted.";
+				}
 			}
-			else{
-				user = new User();
-				logger.info("User ----> " + user.toString());
-			}
-			
-			message = "The user was permanently deleted.";
 			
 			model.addAttribute("message", message);
-			model.addAttribute("user", user);
 			
 			return "users";
 		}

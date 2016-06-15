@@ -44,4 +44,8 @@ public class UsersService {
 	public int update(User user) {
 		return userDao.updateUser(user);
 	}
+
+	public boolean deleteUser(String username) {
+		return userDao.deleteUser(username);
+	}
 }

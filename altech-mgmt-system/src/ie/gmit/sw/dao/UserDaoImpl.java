@@ -156,4 +156,18 @@ public class UserDaoImpl implements UserDAO {
 		return jdbc.queryForObject("select count(*) from users where username=:username;",
 				new MapSqlParameterSource("username", username), Integer.class) > 0;
 	}
+	
+	
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// DELETE USER
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	@Override
+	public boolean deleteUser(String username) {
+
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("username", username);
+		
+		String sql = "DELETE FROM users WHERE username=:username";
+		return jdbc.update(sql, params) == 1;
+	}
 }

@@ -10,4 +10,5 @@ public interface UserDAO {
 	public User getUserByEmpnum(int empnum);
 	public User getUserByUsername(String username);
 	public int updateUser(User user);
+	public boolean deleteUser(String username);
 }
