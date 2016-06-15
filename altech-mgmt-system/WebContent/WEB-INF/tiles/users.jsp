@@ -4,6 +4,9 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
     	
+    <c:if test="${message != null}">	
+    	<div id="msg"><c:out value="${message}" /></div>
+    </c:if>
 
 	<header id="hdrTitle">Search User:</header>
 	
@@ -36,7 +39,7 @@
 				<!-- Choose options -->
 				<div id="divoptions">
 					<a class="btnlink" href="<c:url value='/edituser?u=${user.username}' />" ><div id="btnUser">Edit User</div></a>
-					<a class="btnlink" href=""><div id="btnUser">Delete User</div></a>
+					<a class="btnlink" href="<c:url value='/deleteuser?u=${user.username}' />"><div id="btnUser">Delete User</div></a>
 				</div>
 			</c:if>
 		</div>

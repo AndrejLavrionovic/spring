@@ -29,6 +29,8 @@
 			access="hasAnyRole('hr', 'admin')" />
 		<security:intercept-url pattern="/edituser"
 			access="hasAnyRole('hr', 'admin')" />
+		<security:intercept-url pattern="/deleteuser"
+			access="hasAnyRole('hr', 'admin')" />
 		<security:intercept-url pattern="/edituserform"
 			access="hasAnyRole('hr', 'admin')" />
 		<security:intercept-url pattern="/clock"
