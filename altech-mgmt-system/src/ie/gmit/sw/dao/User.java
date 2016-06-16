@@ -31,7 +31,7 @@ public class User {
 	
 	@NotNull(message="Employee number field must be completed.")
 	@Min(value=100000, message="Employee number must be higher than 100000.")
-	private int empnum;
+	private Integer empnum;
 	
 	@Size(min=3, max=40, message="The name must be 3-40 characters long.")
 	@NotNull
@@ -51,7 +51,7 @@ public class User {
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
 	public User(){}
 	
-	public User(String username, String password, boolean enabled, String email, int empnum,
+	public User(String username, String password, boolean enabled, String email, Integer empnum,
 			String firstname, String lastname, int tel, String authority) {
 		this.username = username;
 		this.password = password;
@@ -96,11 +96,11 @@ public class User {
 		this.email = email;
 	}
 
-	public int getEmpnum() {
+	public Integer getEmpnum() {
 		return empnum;
 	}
 
-	public void setEmpnum(int empnum) {
+	public void setEmpnum(Integer empnum) {
 		this.empnum = empnum;
 	}
 

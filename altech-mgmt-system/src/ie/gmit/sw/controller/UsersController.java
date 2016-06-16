@@ -50,6 +50,7 @@ public class UsersController {
 			List<User> users = userService.getCurrent();
 			
 			model.addAttribute("users", users);
+			model.addAttribute("search", new User());
 			
 			return "users";
 		}
@@ -114,13 +115,13 @@ public class UsersController {
 	
 	
 	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	// RETRIEVE USER BY HIS EMPLOYEE NUMBER
+	// RETRIEVE USER BY ITS PARAMS
 	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	@RequestMapping(value="/getuserbyid", method=RequestMethod.POST)
-	public String showUserById(Model model, int empnum, Principal principal){
+	@RequestMapping(value="/getusers", method=RequestMethod.POST)
+	public String showUserById(Model model, User search, Principal principal){
 		
 		String username = null;
-		User user = userService.getUser(empnum);
+		User user = userService.getUser(0);
 		String error = null;
 		
 		try{

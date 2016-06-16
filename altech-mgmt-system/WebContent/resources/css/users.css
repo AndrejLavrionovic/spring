@@ -97,30 +97,49 @@ a.btnlink:hover{
 	color: #cff3fe;
 }
 
- a.btnlink:active{
- 	border: 1px solid #ed380c;
-	background-color: #9a9a9a;
-	color: #cff3fe;
- }
- 
- #msg{
- 	width: 560px;
- 	height: 30px;
- 	border: 1px solid green;
- 	margin: 10px auto;
- 	opacity: 0.9;
- 	padding: 5px 10px;
- 	font: bold 18px calibri;
- 	color: green;
- }
- 
- #error{
- 	width: 560px;
- 	height: 30px;
- 	border: 1px solid red;
- 	margin: 10px auto;
- 	opacity: 0.9;
- 	padding: 5px 10px;
- 	font: bold 18px calibri;
- 	color: red;
- }
+a.btnlink:active{
+	border: 1px solid #ed380c;
+background-color: #9a9a9a;
+color: #cff3fe;
+}
+
+#msg{
+	width: 560px;
+	height: 30px;
+	border: 1px solid green;
+	margin: 10px auto;
+	opacity: 0.9;
+	padding: 5px 10px;
+	font: bold 18px calibri;
+	color: green;
+}
+
+#error{
+	width: 560px;
+	height: 30px;
+	border: 1px solid red;
+	margin: 10px auto;
+	opacity: 0.9;
+	padding: 5px 10px;
+	font: bold 18px calibri;
+	color: red;
+}
+
+#tblSearchParams{
+	
+}
+
+
+
+.txtSearch{
+	width: 150px;
+	padding: 0 5px;
+}
+
+#txtEmpnum{
+	width: 100px;
+}
+
+#rowSearchInputs td:first-child{
+	width: 100px;
+}

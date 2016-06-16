@@ -14,10 +14,35 @@
 	<header id="hdrTitle">Search User:</header>
 	
 	<div id="searchUserForm">
-		<sf:form action="${pageContext.request.contextPath}/getuserbyid" method="post" commandName="empnum">
+		<sf:form action="${pageContext.request.contextPath}/getusers" method="post" commandName="search" >
+		
+		<!-- 
 			<label id="lblFindUserById">Emp No:</label>
 			<input type="text" id="txtUserid" name="empnum" />
 			<input type="submit" id="btnfindUser" name="findUserById" value="Find" />
+		 -->
+			
+			
+			<div id="divSearchParams">
+			
+				<table class="tblSearchParams">
+					<tr>
+						<td id="colempnum"><label for="txtEmpnum">Emp No.:</td>
+						<td id="colusername"><label for="txtUsername">Username:</td>
+						<td id="colfirstname"><label for="txtFirstname">Firstname:</td>
+						<td id="collastname"><label for="txtLastname">Lastname:</td>
+					</tr>
+					<tr id="rowSearchInputs">
+						<td><sf:input class="txtSearch" path="empnum" type="text" id="txtEmpnum" name="empnum" autocomplete="off" value="" /></td>
+						<td><sf:input class="txtSearch" path="username" type="text" id="txtUsername" name="username" autocomplete="off" /></td>
+						<td><sf:input class="txtSearch" path="firstname" type="text" id="txtFirstname" name="firstname" autocomplete="off" /></td>
+						<td><sf:input class="txtSearch" path="lastname" type="text" id="txtLastname" name="lastname" autocomplete="off" /></td>
+					</tr>
+				</table>
+			</div>
+				
+			<input type="submit" id="btnfindUser" name="findUserById" value="Find" />
+			
 		</sf:form>
 		
 		
