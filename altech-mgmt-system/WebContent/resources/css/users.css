@@ -1,22 +1,12 @@
 @CHARSET "utf-8";
 
-#lblFindUserById{
-	display: inline-block;
-	width: 100px;
-	font: normal 14px verdana;
-	color: #2D2C2C;
-	margin: 20px 0 5px 0;
-}
-
-#txtUserid{
-	display: inline-block;
-	width: 100px;
-	border: 1px solid #2D2C2C;
-	height: 20px;
-	padding: 0 10px;
-	font: bolder 14px calibri;
-	color: #9E6060;
-	margin: 20px 10px 5px 0;
+#hdrParagraph{
+	font: normal 12px verdana;
+	color: #303030;
+	display: block;
+	padding-left: 10px;
+	border-left: 8px solid #909090;
+	margin: 20px 0 50px 0;
 }
 
 #btnfindUser{
@@ -125,15 +115,44 @@ color: #cff3fe;
 	color: red;
 }
 
-#tblSearchParams{
-	
+/*:::::::::::::::::::::::::::::::::::::::::::::::::SEARCH PARAMETERS TABLE:::*/
+.tblSearchParams{
+	margin-top: 30px;
 }
 
+/*:::::::::::::::::::::::::::::::::::::::::::::::::SEARCH PARAMETERS TABLE HEADER:::*/
+.tblSearchParams tr td label{
+	font: normal 13px arial;
+}
 
+/*:::::::::::::::::::::::::::::::::::::::::::::::::SEARCH PARAMETERS BLOCK:::*/
+#divSearchParams{
+	border: 1px solid #e3e3e3;
+	padding: 0 0 10px 0;
+}
 
+/*:::::::::::::::::::::::::::::::::::::::::::::::::SEARCH PARAMETERS HEADER:::*/
+#hdrSearchParams{
+	height: 26px;
+	background-color: #e3e3e3;
+	font: bold 12px verdana;
+	color: #10003D;
+	padding: 4px 0 0 10px;
+}
+
+/*:::::::::::::::::::::::::::::::::::::::::::::::::SEARCH PARAMETERS SECTION:::*/
+#sctSearchParams{
+	margin: 10px;
+}
+
+/*:::::::::::::::::::::::::::::::::::::::::::::::::SEARCH PARAMETERS TEXT FIELDS:::*/
 .txtSearch{
-	width: 150px;
+	width: 120px;
 	padding: 0 5px;
+	font: normal 14px calibri;
+	color: #404040;
+	margin-right: 6px;
+	height: 20px;
 }
 
 #txtEmpnum{
@@ -142,4 +161,28 @@ color: #cff3fe;
 
 #rowSearchInputs td:first-child{
 	width: 100px;
+}
+
+hr{
+	margin: 20px auto;
+	height: 1px;
+	border: 0px;
+	background-color: #e4e4e4;
+}
+
+/*:::::::::::::::::::::::::::::::::::::::::::::::::SEARCH EMAIL LABEL AND INPUT:::*/
+#lblEmail{
+	display: inline-block;
+	width: 106px;
+	font: normal 13px arial;
+	margin: 0 0 30px 0;
+}
+
+#txtEmail{
+	display: inline-block;
+	width: 150px;
+	height: 20px;
+	padding: 0 5px;
+	font: normal 14px calibri;
+	color: #404040;
 }

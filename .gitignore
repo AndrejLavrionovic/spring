@@ -1,1 +1,2 @@
 /.recommenders/
+git -rf --cached

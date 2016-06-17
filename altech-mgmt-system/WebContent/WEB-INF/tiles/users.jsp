@@ -11,7 +11,19 @@
     	<div id="error"><c:out value="${error}" /></div>
     </c:if>
 
-	<header id="hdrTitle">Search User:</header>
+	<header id="hdrParagraph">
+	Here you can search for user by providing one or more of his details such as username, employee number,
+	fersname, lastname, email.<br />
+	When user is found you can look his details, change user's details, delete user.
+	<p>Note, that if you have provided more then one parameter, then user will be searched in following order:</p>
+	<ol style="margin-left:16px;">
+		<li>Employee Number</li>
+		<li>Username</li>
+		<li>Firstname</li>
+		<li>Lastname</li>
+		<li>Email</li>
+	</ol>
+	</header>
 	
 	<div id="searchUserForm">
 		<sf:form action="${pageContext.request.contextPath}/getusers" method="post" commandName="search" >
@@ -25,23 +37,35 @@
 			
 			<div id="divSearchParams">
 			
-				<table class="tblSearchParams">
-					<tr>
-						<td id="colempnum"><label for="txtEmpnum">Emp No.:</td>
-						<td id="colusername"><label for="txtUsername">Username:</td>
-						<td id="colfirstname"><label for="txtFirstname">Firstname:</td>
-						<td id="collastname"><label for="txtLastname">Lastname:</td>
-					</tr>
-					<tr id="rowSearchInputs">
-						<td><sf:input class="txtSearch" path="empnum" type="text" id="txtEmpnum" name="empnum" autocomplete="off" value="" /></td>
-						<td><sf:input class="txtSearch" path="username" type="text" id="txtUsername" name="username" autocomplete="off" /></td>
-						<td><sf:input class="txtSearch" path="firstname" type="text" id="txtFirstname" name="firstname" autocomplete="off" /></td>
-						<td><sf:input class="txtSearch" path="lastname" type="text" id="txtLastname" name="lastname" autocomplete="off" /></td>
-					</tr>
-				</table>
-			</div>
+				<header id="hdrSearchParams">Search user /-s</header>
 				
-			<input type="submit" id="btnfindUser" name="findUserById" value="Find" />
+				<section id="sctSearchParams">
+			
+					<table class="tblSearchParams">
+						<tr>
+							<td id="colempnum"><label for="txtEmpnum">Emp No.:</label></td>
+							<td id="colusername"><label for="txtUsername">Username:</label></td>
+							<td id="colfirstname"><label for="txtFirstname">Firstname:</label></td>
+							<td id="collastname"><label for="txtLastname">Lastname:</label></td>
+						</tr>
+						<tr id="rowSearchInputs">
+							<td><sf:input class="txtSearch" path="empnum" type="text" id="txtEmpnum" name="empnum" autocomplete="off" value="" /></td>
+							<td><sf:input class="txtSearch" path="username" type="text" id="txtUsername" name="username" autocomplete="off" /></td>
+							<td><sf:input class="txtSearch" path="firstname" type="text" id="txtFirstname" name="firstname" autocomplete="off" /></td>
+							<td><sf:input class="txtSearch" path="lastname" type="text" id="txtLastname" name="lastname" autocomplete="off" /></td>
+						</tr>
+					</table>
+					
+					<hr />
+					
+					<label id="lblEmail" for="txtEmail">User's email:</label>
+					<sf:input type="text" path="email" name="email" id="txtEmail" autocomplete="off" /><br />
+					
+					<input type="submit" id="btnfindUser" name="findUserById" value="Find" />
+				
+				</section>
+				
+			</div>
 			
 		</sf:form>
 		
