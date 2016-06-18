@@ -92,11 +92,16 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public User getUserByUsername(String username) {
 		
-		MapSqlParameterSource param = new MapSqlParameterSource();
-		param.addValue("username", username);
-		
-		String sql = "SELECT * FROM users WHERE username=:username";
-		return jdbc.queryForObject(sql, param, new UserRowMapper());
+		try{
+			MapSqlParameterSource param = new MapSqlParameterSource();
+			param.addValue("username", username);
+			
+			String sql = "SELECT * FROM users WHERE username=:username";
+			return jdbc.queryForObject(sql, param, new UserRowMapper());
+		}
+		catch(DataAccessException ex){
+			return null;
+		}
 	}
 	
 
@@ -177,5 +182,28 @@ public class UserDaoImpl implements UserDAO {
 		
 		String sql = "DELETE FROM users WHERE username=:username";
 		return jdbc.update(sql, params) == 1;
+	}
+	
+	
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// SEARCH USER BY FIRSTNAME
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	@Override
+	public List<User> getUsersByFirstname(String firstname) {
+		
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("firstname", firstname);
+		String sql = "SELECT * FROM users WHERE	 firstname=:firstname;";
+		return jdbc.query(sql, params, BeanPropertyRowMapper.newInstance(User.class));
+	}
+
+
+	@Override
+	public List<User> getUsersByLastname(String lastname) {
+		
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("lastname", lastname);
+		String sql = "SELECT * FROM users WHERE	 lastname=:lastname;";
+		return jdbc.query(sql, params, BeanPropertyRowMapper.newInstance(User.class));
 	}
 }

@@ -15,7 +15,7 @@
 
 
 	<security:http use-expressions="true" jaas-api-provision="false">
-		<security:intercept-url pattern="/getuserbyid"
+		<security:intercept-url pattern="/getusers"
 			access="hasAnyRole('hr', 'admin')" />
 		<security:intercept-url pattern="/create"
 			access="hasAnyRole('hr', 'admin')" />

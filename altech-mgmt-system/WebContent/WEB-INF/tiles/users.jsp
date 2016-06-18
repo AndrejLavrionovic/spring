@@ -68,8 +68,10 @@
 			</div>
 			
 		</sf:form>
-		
-		
+	</div>
+	
+		<!-- 
+	
 		<div id="userbyidBlock">
 			<c:if test="${user != null}">
 				<table id="tblGetUsers">
@@ -88,18 +90,17 @@
  				</tbody>
 				</table>
 				
-				<!-- Choose options -->
+				
 				<div id="divoptions">
 					<a class="btnlink" href="<c:url value='/edituser?u=${user.username}' />" ><div id="btnUser">Edit User</div></a>
 					<a class="btnlink" href="<c:url value='/deleteuser?u=${user.username}' />"><div id="btnUser">Delete User</div></a>
 				</div>
 			</c:if>
 		</div>
-	</div>
+		
+		-->
 	
-	<!-- 
-	
-	<c:if test="${users != null}">
+	<c:if test="${users != null && users.size() > 0}">
 	<div id="getUsers">
 		<table id="tblGetUsers">
 		
@@ -119,5 +120,3 @@
 		</table>
 	</div>
 	</c:if>
-	
-	 -->

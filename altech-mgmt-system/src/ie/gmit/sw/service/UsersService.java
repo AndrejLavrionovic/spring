@@ -28,11 +28,7 @@ public class UsersService {
 		userDao.createUser(user);
 	}
 	
-	// get users
-	public User getUser(int empnum){
-		return userDao.getUserByEmpnum(empnum);
-	}
-	public User getUser(String username){
+	public User getUserByUsername(String username){
 		return userDao.getUserByUsername(username);
 	}
 
@@ -47,5 +43,17 @@ public class UsersService {
 
 	public boolean deleteUser(String username) {
 		return userDao.deleteUser(username);
+	}
+
+	public User getUserByEmpnum(Integer empnum) {
+		return userDao.getUserByEmpnum(empnum);
+	}
+
+	public List<User> getUsersByFirstname(String firstname) {
+		return userDao.getUsersByFirstname(firstname);
+	}
+
+	public List<User> getUsersByLastname(String lastname) {
+		return userDao.getUsersByLastname(lastname);
 	}
 }

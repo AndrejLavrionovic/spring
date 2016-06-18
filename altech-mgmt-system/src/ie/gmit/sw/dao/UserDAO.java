@@ -11,4 +11,6 @@ public interface UserDAO {
 	public User getUserByUsername(String username);
 	public int updateUser(User user);
 	public boolean deleteUser(String username);
+	public List<User> getUsersByFirstname(String firstname);
+	public List<User> getUsersByLastname(String lastname);
 }

@@ -1,6 +1,7 @@
 package ie.gmit.sw.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,7 +48,7 @@ public class UsersController {
 		try{
 			model.addAttribute("username", getUsername(principal)); // is user logged in
 			
-			List<User> users = userService.getCurrent();
+			List<User> users = null;
 			
 			model.addAttribute("users", users);
 			model.addAttribute("search", new User());
@@ -120,24 +121,108 @@ public class UsersController {
 	@RequestMapping(value="/getusers", method=RequestMethod.POST)
 	public String showUserById(Model model, User search, Principal principal){
 		
-		String username = null;
-		User user = userService.getUser(0);
+		String signedUser = null;
+		List<User> users = null;
+		User user = null;
 		String error = null;
+		boolean found = false;
+		
+		// Searcing parameters
+		Integer empnum = search.getEmpnum();
+		String username = search.getUsername();
+		String firstname = search.getFirstname();
+		String lastname = search.getLastname();
+		String email = search.getEmail();
+		
+		
+		
+		if(empnum == null &&
+		   username.isEmpty() &&
+		   firstname.isEmpty() &&
+		   lastname.isEmpty() &&
+		   email.isEmpty()){
+			found = false;
+			error = "Searching parameters are not provided.";
+		}
+		else{
+			users = new ArrayList<User>();
+			// if empnum is entered.
+			if(empnum != null && empnum > 100000){
+				user = userService.getUserByEmpnum(empnum);
+				
+				if(user != null){
+					found = true;
+					users.add(user);
+					model.addAttribute("users", users);
+					model.addAttribute("error", error);
+					model.addAttribute("search", new User());
+					
+					return "users";
+				}
+			}
+			if(!username.isEmpty() && username != null){ // if username is entered
+				user = userService.getUserByUsername(username);
+				
+				if(user != null){
+					found = true;
+					users.add(user);
+					model.addAttribute("users", users);
+					model.addAttribute("error", error);
+					model.addAttribute("search", new User());
+					
+					return "users";
+				}
+			}
+			if(firstname != null && !firstname.isEmpty()){
+				found = true;
+				users = userService.getUsersByFirstname(firstname);
+				model.addAttribute("users", users);
+				model.addAttribute("error", error);
+				model.addAttribute("search", new User());
+				
+				return "users";
+			}
+			if(lastname != null && !lastname.isEmpty()){
+				found = true;
+				users = userService.getUsersByLastname(lastname);
+				model.addAttribute("users", users);
+				model.addAttribute("error", error);
+				model.addAttribute("search", new User());
+				
+				return "users";
+			}
+			if(!email.isEmpty() && email != null){ // if username is entered
+				user = userService.getUserByUsername(email);
+				
+				if(user != null){
+					found = true;
+					users.add(user);
+					model.addAttribute("users", users);
+					model.addAttribute("error", error);
+					model.addAttribute("search", new User());
+					
+					return "users";
+				}
+			}
+		}
+			
 		
 		try{
-			username = principal.getName();
-			model.addAttribute("username", username);
+			signedUser = principal.getName();
+			model.addAttribute("username", signedUser);
 		}
 		catch(NullPointerException ex){
 			model.addAttribute("username", null);
 			return "login";
 		}
 		
-		if(user == null)
-			error = "The user with given employee number is not exist.";
+		if(found == false)
+			error = "The user is not found.";
 			
-		model.addAttribute("user", user);
+		model.addAttribute("users", users);
 		model.addAttribute("error", error);
+		model.addAttribute("search", new User());
+		
 		return "users";
 	}
 	
@@ -159,7 +244,7 @@ public class UsersController {
 			
 			
 			if(username != null){
-				user = userService.getUser(username);
+				user = userService.getUserByUsername(username);
 				logger.info("User ----> " + user.toString());
 			}
 			else{
