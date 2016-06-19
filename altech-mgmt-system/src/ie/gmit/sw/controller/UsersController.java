@@ -9,13 +9,10 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,6 +25,9 @@ public class UsersController {
 	private static Logger logger = Logger.getLogger(UsersController.class);
 	
 	private UsersService userService;
+	private List<User> users = null;
+	private String error = null;
+	private String message = null;
 	
 	@Autowired
 	public void setUserService(UsersService userService) {
@@ -48,9 +48,7 @@ public class UsersController {
 		try{
 			model.addAttribute("username", getUsername(principal)); // is user logged in
 			
-			List<User> users = null;
-			
-			model.addAttribute("users", users);
+			model.addAttribute("users", null);
 			model.addAttribute("search", new User());
 			
 			return "users";
@@ -122,9 +120,7 @@ public class UsersController {
 	public String showUserById(Model model, User search, Principal principal){
 		
 		String signedUser = null;
-		List<User> users = null;
 		User user = null;
-		String error = null;
 		boolean found = false;
 		
 		// Searcing parameters
@@ -133,6 +129,8 @@ public class UsersController {
 		String firstname = search.getFirstname();
 		String lastname = search.getLastname();
 		String email = search.getEmail();
+		
+		logger.info("Users email ---> " + email);
 		
 		// check if user is signed in.
 		try{
@@ -162,7 +160,8 @@ public class UsersController {
 					found = true;
 					users.add(user);
 					model.addAttribute("users", users);
-					model.addAttribute("error", error);
+					model.addAttribute("error", null);
+					model.addAttribute("message", "Result: 1 user is found.");
 					model.addAttribute("search", new User());
 					
 					return "users";
@@ -175,45 +174,59 @@ public class UsersController {
 					found = true;
 					users.add(user);
 					model.addAttribute("users", users);
-					model.addAttribute("error", error);
+					model.addAttribute("error", null);
+					model.addAttribute("message", "Result: 1 user is found.");
 					model.addAttribute("search", new User());
 					
 					return "users";
 				}
 			}
-			if(firstname != null && !firstname.isEmpty()){
+			if(firstname != null && !firstname.isEmpty()){ // if firstname is entered
 				users = userService.getUsersByFirstname(firstname);
 				
 				if(users.size() > 0){
+					if(users.size() == 1)
+						message = "Result: 1 user is found.";
+					else {
+						message = "Result: " + users.size() + " users are found.";
+					}
 					found = true;
 					model.addAttribute("users", users);
-					model.addAttribute("error", error);
+					model.addAttribute("error", null);
+					model.addAttribute("message", message);
 					model.addAttribute("search", new User());
 					
 					return "users";
 				}
 			}
-			if(lastname != null && !lastname.isEmpty()){
+			if(lastname != null && !lastname.isEmpty()){ // if lastname was entered
 				users = userService.getUsersByLastname(lastname);
 				
 				if(users.size() > 0){
+					if(users.size() == 1)
+						message = "Result: 1 user is found.";
+					else {
+						message = "Result: " + users.size() + " users are found.";
+					}
 					found = true;
 					users = userService.getUsersByLastname(lastname);
 					model.addAttribute("users", users);
-					model.addAttribute("error", error);
+					model.addAttribute("error", null);
+					model.addAttribute("message", message);
 					model.addAttribute("search", new User());
 					
 					return "users";
 				}
 			}
-			if(!email.isEmpty() && email != null){ // if username is entered
-				user = userService.getUserByUsername(email);
+			if(!email.isEmpty() && email != null){ // if email is entered
+				user = userService.getUserByEmail(email);
 				
 				if(user != null){
 					found = true;
 					users.add(user);
 					model.addAttribute("users", users);
-					model.addAttribute("error", error);
+					model.addAttribute("error", null);
+					model.addAttribute("message", "Result: 1 user is found.");
 					model.addAttribute("search", new User());
 					
 					return "users";
@@ -224,8 +237,9 @@ public class UsersController {
 		if(found == false)
 			error = "The user is not found.";
 			
-		model.addAttribute("users", users);
+		model.addAttribute("users", null);
 		model.addAttribute("error", error);
+		model.addAttribute("message", null);
 		model.addAttribute("search", new User());
 		
 		return "users";
@@ -237,34 +251,26 @@ public class UsersController {
 	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@RequestMapping(value="/edituser", method=RequestMethod.GET)
 	public String goToUpdateUserForm(HttpServletRequest request, Model model, Principal principal){
-		
-		User user = null;
-		String username = null;
 
 		try{
 			model.addAttribute("username", getUsername(principal)); // is user logged in
-			
-			username = request.getParameter("u");
-			logger.info("You choose the edit user option (" + username + ") ........");
-			
-			
-			if(username != null){
-				user = userService.getUserByUsername(username);
-				logger.info("User ----> " + user.toString());
-			}
-			else{
-				user = new User();
-				logger.info("User ----> " + user.toString());
-			}
-			
-			model.addAttribute("user", user);
-			
-			return "edituserform";
 		}
 		catch(NullPointerException ex){
 			model.addAttribute("username", null);
 			
 			return "login";
+		}
+		
+		try{
+			
+			model.addAttribute("user", userService.getUserByUsername(request.getParameter("u")));
+			
+			return "edituserform";
+		}
+		catch(NullPointerException ex){
+			
+			error = "Some issues with retrieving user's data.";
+			return "users";
 		}
 	}
 	
@@ -287,21 +293,30 @@ public class UsersController {
 		}
 		*/
 		
-		String username = null;
 		try{
-			username = principal.getName();
-			model.addAttribute("username", username);
+			model.addAttribute("username", principal.getName());
 		}
 		catch(NullPointerException ex){
 			model.addAttribute("username", null);
 			return "login";
 		}
 		
-		logger.info("User ---> " + user.toString());
-		userService.update(user);
-		//model.addAttribute("user", user);
+		if(userService.update(user) == 1){
+			model.addAttribute("message", "User have being udated.");
+			model.addAttribute("users", null);
+			model.addAttribute("error", null);
+			model.addAttribute("search", new User());
+			
+			return "users";
+		}
+		else{
+			model.addAttribute("message", null);
+			model.addAttribute("users", null);
+			model.addAttribute("error", "Users havn't being updated.");
+			model.addAttribute("search", new User());
+		}
 		
-		return "userupdated";
+		return "users";
 	}
 	
 	
@@ -310,9 +325,6 @@ public class UsersController {
 	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@RequestMapping(value="/deleteuser", method=RequestMethod.GET)
 	public String deleteUser(HttpServletRequest request, Model model, Principal principal){
-
-		String username = null;
-		String message = null;
 
 		try{
 			model.addAttribute("username", getUsername(principal)); // is user logged in
@@ -323,17 +335,22 @@ public class UsersController {
 			return "login";
 		}
 		
-		username = request.getParameter("u");
-		
-		if(username != null){
-			if(userService.deleteUser(username)){
-				message = "The user was permanently deleted.";
-			}
+		if(userService.deleteUser(request.getParameter("u"))){
+			model.addAttribute("message", "The user was permanently deleted.");
+			model.addAttribute("search", new User());
+			model.addAttribute("users", null);
+			model.addAttribute("error", null);
+			
+			return "users";
 		}
-		
-		model.addAttribute("message", message);
-		model.addAttribute("search", new User());
-		
-		return "users";
+		else{
+
+			model.addAttribute("message", null);
+			model.addAttribute("search", new User());
+			model.addAttribute("users", null);
+			model.addAttribute("error", "Deletion is failed. User havn't being deleted.");
+			
+			return "users";
+		}
 	}
 }

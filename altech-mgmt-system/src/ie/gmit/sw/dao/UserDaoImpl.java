@@ -1,7 +1,5 @@
 package ie.gmit.sw.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -9,8 +7,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -205,5 +201,21 @@ public class UserDaoImpl implements UserDAO {
 		params.addValue("lastname", lastname);
 		String sql = "SELECT * FROM users WHERE	 lastname=:lastname;";
 		return jdbc.query(sql, params, BeanPropertyRowMapper.newInstance(User.class));
+	}
+
+
+	@Override
+	public User getUsersByEmail(String email) {
+		
+		try{
+			MapSqlParameterSource param = new MapSqlParameterSource();
+			param.addValue("email", email);
+			
+			String sql = "SELECT * FROM users WHERE email=:email";
+			return jdbc.queryForObject(sql, param, new UserRowMapper());
+		}
+		catch(DataAccessException ex){
+			return null;
+		}
 	}
 }

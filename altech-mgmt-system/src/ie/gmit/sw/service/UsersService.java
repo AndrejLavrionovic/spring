@@ -56,4 +56,8 @@ public class UsersService {
 	public List<User> getUsersByLastname(String lastname) {
 		return userDao.getUsersByLastname(lastname);
 	}
+
+	public User getUserByEmail(String email) {
+		return userDao.getUsersByEmail(email);
+	}
 }

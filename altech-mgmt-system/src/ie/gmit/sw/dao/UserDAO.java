@@ -13,4 +13,5 @@ public interface UserDAO {
 	public boolean deleteUser(String username);
 	public List<User> getUsersByFirstname(String firstname);
 	public List<User> getUsersByLastname(String lastname);
+	public User getUsersByEmail(String email);
 }
