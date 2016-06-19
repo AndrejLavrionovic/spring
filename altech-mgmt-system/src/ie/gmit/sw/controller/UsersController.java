@@ -334,7 +334,7 @@ public class UsersController {
 			
 			return "login";
 		}
-		
+			
 		if(userService.deleteUser(request.getParameter("u"))){
 			model.addAttribute("message", "The user was permanently deleted.");
 			model.addAttribute("search", new User());
@@ -343,14 +343,12 @@ public class UsersController {
 			
 			return "users";
 		}
-		else{
-
-			model.addAttribute("message", null);
-			model.addAttribute("search", new User());
-			model.addAttribute("users", null);
-			model.addAttribute("error", "Deletion is failed. User havn't being deleted.");
-			
-			return "users";
-		}
+		
+		model.addAttribute("message", null);
+		model.addAttribute("search", new User());
+		model.addAttribute("users", null);
+		model.addAttribute("error", "Deletion is failed. User havn't being deleted.");
+		
+		return "users";
 	}
 }

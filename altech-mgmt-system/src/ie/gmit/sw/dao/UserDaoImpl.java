@@ -59,7 +59,7 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public List<User> getAllUsers() {
 		
-		String sql = "SELECT * FROM users;";
+		String sql = "SELECT * FROM users ORDER BY empnum ASC;";
 		return jdbc.query(sql, BeanPropertyRowMapper.newInstance(User.class));
 	}
 	
@@ -99,19 +99,6 @@ public class UserDaoImpl implements UserDAO {
 			return null;
 		}
 	}
-	
-
-	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	// DELETE USER BY ID
-	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//	public int deleteUser(int userid){
-//		
-//		MapSqlParameterSource params = new MapSqlParameterSource();
-//		params.addValue("userid", userid);
-//		
-//		String sql = "DELETE FROM users WHERE userid=:userid";
-//		return jdbc.update(sql, params);
-//	}
 	
 	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -189,21 +176,27 @@ public class UserDaoImpl implements UserDAO {
 		
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("firstname", firstname);
-		String sql = "SELECT * FROM users WHERE	 firstname=:firstname;";
+		String sql = "SELECT * FROM users WHERE	 firstname=:firstname ORDER BY empnum ASC;";
 		return jdbc.query(sql, params, BeanPropertyRowMapper.newInstance(User.class));
 	}
-
-
+	
+	
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// SEARCH USER BY LASTNAME
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@Override
 	public List<User> getUsersByLastname(String lastname) {
 		
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("lastname", lastname);
-		String sql = "SELECT * FROM users WHERE	 lastname=:lastname;";
+		String sql = "SELECT * FROM users WHERE	 lastname=:lastname ORDER BY empnum ASC;";
 		return jdbc.query(sql, params, BeanPropertyRowMapper.newInstance(User.class));
 	}
-
-
+	
+	
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// SEARCH USER BY EMAIL
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@Override
 	public User getUsersByEmail(String email) {
 		
