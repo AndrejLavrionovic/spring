@@ -134,7 +134,15 @@ public class UsersController {
 		String lastname = search.getLastname();
 		String email = search.getEmail();
 		
-		
+		// check if user is signed in.
+		try{
+			signedUser = principal.getName();
+			model.addAttribute("username", signedUser);
+		}
+		catch(NullPointerException ex){
+			model.addAttribute("username", null);
+			return "login";
+		}
 		
 		if(empnum == null &&
 		   username.isEmpty() &&
@@ -174,22 +182,29 @@ public class UsersController {
 				}
 			}
 			if(firstname != null && !firstname.isEmpty()){
-				found = true;
 				users = userService.getUsersByFirstname(firstname);
-				model.addAttribute("users", users);
-				model.addAttribute("error", error);
-				model.addAttribute("search", new User());
 				
-				return "users";
+				if(users.size() > 0){
+					found = true;
+					model.addAttribute("users", users);
+					model.addAttribute("error", error);
+					model.addAttribute("search", new User());
+					
+					return "users";
+				}
 			}
 			if(lastname != null && !lastname.isEmpty()){
-				found = true;
 				users = userService.getUsersByLastname(lastname);
-				model.addAttribute("users", users);
-				model.addAttribute("error", error);
-				model.addAttribute("search", new User());
 				
-				return "users";
+				if(users.size() > 0){
+					found = true;
+					users = userService.getUsersByLastname(lastname);
+					model.addAttribute("users", users);
+					model.addAttribute("error", error);
+					model.addAttribute("search", new User());
+					
+					return "users";
+				}
 			}
 			if(!email.isEmpty() && email != null){ // if username is entered
 				user = userService.getUserByUsername(email);
@@ -204,16 +219,6 @@ public class UsersController {
 					return "users";
 				}
 			}
-		}
-			
-		
-		try{
-			signedUser = principal.getName();
-			model.addAttribute("username", signedUser);
-		}
-		catch(NullPointerException ex){
-			model.addAttribute("username", null);
-			return "login";
 		}
 		
 		if(found == false)
