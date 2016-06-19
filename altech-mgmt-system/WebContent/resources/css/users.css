@@ -58,7 +58,11 @@
 	width: 150px;
 }
 .col5{
-	width: 100px;
+}
+
+.userControl{
+	width: 40px;
+	text-align: center;
 }
 
 #divoptions{

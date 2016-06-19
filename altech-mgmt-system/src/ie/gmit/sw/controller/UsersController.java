@@ -316,23 +316,24 @@ public class UsersController {
 
 		try{
 			model.addAttribute("username", getUsername(principal)); // is user logged in
-			
-			username = request.getParameter("u");
-			
-			if(username != null){
-				if(userService.deleteUser(username)){
-					message = "The user was permanently deleted.";
-				}
-			}
-			
-			model.addAttribute("message", message);
-			
-			return "users";
 		}
 		catch(NullPointerException ex){
 			model.addAttribute("username", null);
 			
 			return "login";
 		}
+		
+		username = request.getParameter("u");
+		
+		if(username != null){
+			if(userService.deleteUser(username)){
+				message = "The user was permanently deleted.";
+			}
+		}
+		
+		model.addAttribute("message", message);
+		model.addAttribute("search", new User());
+		
+		return "users";
 	}
 }

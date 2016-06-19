@@ -105,15 +105,17 @@
 		<table id="tblGetUsers">
 		
 			<thead class="tblHeader">
-				<tr><td class="col1">Emp No.</td><td class="col2">Firstname</td><td class="col3">Lastname</td><td class="col4">Email</td><td class="col5">Tel</td></tr>
+				<tr><td class="col1">Emp No.</td><td class="col2">Firstname</td><td class="col3">Lastname</td><td class="col4">Email</td><td class="col5" colspan="3"></td></tr>
 			</thead>
 			<tbody class="tblBody"><c:forEach var="user" items="${users}">
-				<tr>
+				<tr id="rowUsersContent">
 					<td><c:out value="${user.empnum }"></c:out></td>
 					<td><c:out value="${user.firstname }"></c:out></td>
 					<td><c:out value="${user.lastname }"></c:out></td>
 					<td><c:out value="${user.email }"></c:out></td>
-					<td><c:out value="${user.tel }"></c:out></td>
+					<td class="userControl"><a href=""><img src="${pageContext.request.contextPath}/src/img/user_info_16.png"></a></td>
+					<td class="userControl"><a href="<c:url value='/edituser?u=${user.username}' />"><img src="${pageContext.request.contextPath}/src/img/user_edit_16.png"></a></td>
+					<td class="userControl"><a href="<c:url value='/deleteuser?u=${user.username}' />"><img src="${pageContext.request.contextPath}/src/img/user_delete_16.png"></a></td>
 				</tr>
 			</c:forEach></tbody>
 		

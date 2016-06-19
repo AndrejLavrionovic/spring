@@ -148,10 +148,11 @@ public class User {
 		int result = 1;
 		result = prime * result + ((authority == null) ? 0 : authority.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + empnum;
+		result = prime * result + ((empnum == null) ? 0 : empnum.hashCode());
 		result = prime * result + (enabled ? 1231 : 1237);
 		result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
 		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + tel;
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
@@ -176,7 +177,10 @@ public class User {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (empnum != other.empnum)
+		if (empnum == null) {
+			if (other.empnum != null)
+				return false;
+		} else if (!empnum.equals(other.empnum))
 			return false;
 		if (enabled != other.enabled)
 			return false;
@@ -189,6 +193,11 @@ public class User {
 			if (other.lastname != null)
 				return false;
 		} else if (!lastname.equals(other.lastname))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
 			return false;
 		if (tel != other.tel)
 			return false;
