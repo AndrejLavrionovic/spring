@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+#userInfoBlock{
+	
+}
+
+.btmMngUsers{
+	height: 30px;
+	width: 150px;
+	border: 1px solid #303030;
+	background-color: #e6e6e6;
+}

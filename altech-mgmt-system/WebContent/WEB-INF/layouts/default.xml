@@ -33,6 +33,10 @@
 		<put-attribute name="userssection" value="/WEB-INF/tiles/userupdated.jsp"></put-attribute>
 	</definition>
 	
+	<definition name="userinfo.content" extends="usersdefault">
+		<put-attribute name="userssection" value="/WEB-INF/tiles/userinfo.jsp"></put-attribute>
+	</definition>
+	
 	<definition name="showmsgs.content" extends="usersdefault">
 		<put-attribute name="userssection" value="/WEB-INF/tiles/showmsgs.jsp"></put-attribute>
 	</definition>
@@ -199,6 +203,17 @@
 			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/user.css" />
 			<add-attribute value="/src/css/edituser.css" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="userinfo" extends="altech.base">
+		<put-attribute name="title" value="AMS User Info."></put-attribute>
+		<put-attribute name="content" value="userinfo.content"></put-attribute>
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="/src/css/normalize.css" />
+			<add-attribute value="/src/css/main.css" />
+			<add-attribute value="/src/css/user.css" />
+			<add-attribute value="/src/css/userinfo.css" />
 		</put-list-attribute>
 	</definition>
 	

@@ -351,4 +351,22 @@ public class UsersController {
 		
 		return "users";
 	}
+	
+	
+	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// USERINFO.JSP
+	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	@RequestMapping("/userinfo")
+	public String showUserinfo(Model model, Principal principal){
+
+		try{
+			model.addAttribute("username", principal.getName());
+		}
+		catch(NullPointerException ex){
+			model.addAttribute("username", null);
+			return "login";
+		}
+		
+		return "userinfo";
+	}
 }

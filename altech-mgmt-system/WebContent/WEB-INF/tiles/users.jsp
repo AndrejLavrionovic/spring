@@ -113,7 +113,7 @@
 					<td><c:out value="${user.firstname }"></c:out></td>
 					<td><c:out value="${user.lastname }"></c:out></td>
 					<td><c:out value="${user.email }"></c:out></td>
-					<td class="userControl"><a href=""><img alt="User info" src="${pageContext.request.contextPath}/src/img/user_info_16.png"></a></td>
+					<td class="userControl"><a href="<c:url value='/userinfo?u=${user.username} }' />"><img alt="User info" src="${pageContext.request.contextPath}/src/img/user_info_16.png"></a></td>
 					<td class="userControl"><a href="<c:url value='/edituser?u=${user.username}' />"><img alt="Edit user" src="${pageContext.request.contextPath}/src/img/user_edit_16.png"></a></td>
 					<td class="userControl"><a href="<c:url value='/deleteuser?u=${user.username}' />"><img alt="Delete user" src="${pageContext.request.contextPath}/src/img/user_delete_16.png"></a></td>
 				</tr>
