@@ -356,15 +356,43 @@ public class UsersController {
 	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// USERINFO.JSP
 	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	@RequestMapping("/userinfo")
-	public String showUserinfo(Model model, Principal principal){
+	@RequestMapping(value="/userinfo", method=RequestMethod.GET)
+	public String showUserinfo(HttpServletRequest request, Model model, Principal principal){
 
+		User user = null;
+		String username;
+		
 		try{
 			model.addAttribute("username", principal.getName());
 		}
 		catch(NullPointerException ex){
 			model.addAttribute("username", null);
 			return "login";
+		}
+		
+		username = request.getParameter("u");
+		
+		try{
+			if(!username.isEmpty() && username != null){ // if username is entered
+				user = userService.getUserByUsername(username);
+				model.addAttribute("user", user);
+			}
+			else{
+				model.addAttribute("message", null);
+				model.addAttribute("search", new User());
+				model.addAttribute("users", null);
+				model.addAttribute("error", "Error: System couldn't retrieve user's info. Try again later.");
+				
+				return "users";
+			}
+		}
+		catch(NullPointerException ex){
+			model.addAttribute("message", null);
+			model.addAttribute("search", new User());
+			model.addAttribute("users", null);
+			model.addAttribute("error", "Error: System couldn't retrieve user's info. Try again later.");
+			
+			return "users";
 		}
 		
 		return "userinfo";

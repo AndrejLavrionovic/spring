@@ -93,8 +93,8 @@ a.btnlink:hover{
 
 a.btnlink:active{
 	border: 1px solid #ed380c;
-background-color: #9a9a9a;
-color: #cff3fe;
+	background-color: #9a9a9a;
+	color: #cff3fe;
 }
 
 #msg{

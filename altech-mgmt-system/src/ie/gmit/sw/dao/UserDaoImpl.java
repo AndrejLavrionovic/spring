@@ -74,7 +74,7 @@ public class UserDaoImpl implements UserDAO {
 			MapSqlParameterSource param = new MapSqlParameterSource();
 			param.addValue("empnum", empnum);
 			
-			String sql = "SELECT * FROM users WHERE empnum=:empnum";
+			String sql = "SELECT * FROM users WHERE empnum=:empnum ORDER BY empnum ASC";
 			return jdbc.queryForObject(sql, param, new UserRowMapper());
 		}catch(DataAccessException ex){
 			return null;
@@ -92,7 +92,7 @@ public class UserDaoImpl implements UserDAO {
 			MapSqlParameterSource param = new MapSqlParameterSource();
 			param.addValue("username", username);
 			
-			String sql = "SELECT * FROM users WHERE username=:username";
+			String sql = "SELECT * FROM users WHERE username=:username ORDER BY empnum ASC";
 			return jdbc.queryForObject(sql, param, new UserRowMapper());
 		}
 		catch(DataAccessException ex){
@@ -175,8 +175,8 @@ public class UserDaoImpl implements UserDAO {
 	public List<User> getUsersByFirstname(String firstname) {
 		
 		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("firstname", firstname);
-		String sql = "SELECT * FROM users WHERE	 firstname=:firstname ORDER BY empnum ASC;";
+		params.addValue("firstname", "%" + firstname + "%");
+		String sql = "SELECT * FROM users WHERE	 firstname LIKE :firstname ORDER BY empnum ASC;";
 		return jdbc.query(sql, params, BeanPropertyRowMapper.newInstance(User.class));
 	}
 	
@@ -188,8 +188,8 @@ public class UserDaoImpl implements UserDAO {
 	public List<User> getUsersByLastname(String lastname) {
 		
 		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("lastname", lastname);
-		String sql = "SELECT * FROM users WHERE	 lastname=:lastname ORDER BY empnum ASC;";
+		params.addValue("lastname", "%" + lastname + "%");
+		String sql = "SELECT * FROM users WHERE	 lastname LIKE :lastname ORDER BY empnum ASC;";
 		return jdbc.query(sql, params, BeanPropertyRowMapper.newInstance(User.class));
 	}
 	
@@ -204,7 +204,7 @@ public class UserDaoImpl implements UserDAO {
 			MapSqlParameterSource param = new MapSqlParameterSource();
 			param.addValue("email", email);
 			
-			String sql = "SELECT * FROM users WHERE email=:email";
+			String sql = "SELECT * FROM users WHERE email=:email ORDER BY empnum ASC";
 			return jdbc.queryForObject(sql, param, new UserRowMapper());
 		}
 		catch(DataAccessException ex){

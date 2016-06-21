@@ -14,14 +14,17 @@
 	<header id="hdrParagraph">
 	Here you can search for user by providing one or more of his details such as username, employee number,
 	fersname, lastname, email.<br />
+	Using firstname, lastname and email fields you can insert
+	just part of appropriate values to get results that consists of that values or
+	'%' symbol to get all existing users.<br />
 	When user is found you can look his details, change user's details, delete user.
 	<p>Note, that if you have provided more then one parameter, then user will be searched in following order:</p>
 	<ol style="margin-left:16px;">
-		<li>Employee Number</li>
-		<li>Username</li>
-		<li>Firstname</li>
-		<li>Lastname</li>
-		<li>Email</li>
+		<li>Employee Number (full number)</li>
+		<li>Username (full username)</li>
+		<li>Firstname (one or more characters)</li>
+		<li>Lastname (one or more characters)</li>
+		<li>Email (full email)</li>
 	</ol>
 	</header>
 	
@@ -113,7 +116,7 @@
 					<td><c:out value="${user.firstname }"></c:out></td>
 					<td><c:out value="${user.lastname }"></c:out></td>
 					<td><c:out value="${user.email }"></c:out></td>
-					<td class="userControl"><a href="<c:url value='/userinfo?u=${user.username} }' />"><img alt="User info" src="${pageContext.request.contextPath}/src/img/user_info_16.png"></a></td>
+					<td class="userControl"><a href="<c:url value='/userinfo?u=${user.username}' />"><img alt="User info" src="${pageContext.request.contextPath}/src/img/user_info_16.png"></a></td>
 					<td class="userControl"><a href="<c:url value='/edituser?u=${user.username}' />"><img alt="Edit user" src="${pageContext.request.contextPath}/src/img/user_edit_16.png"></a></td>
 					<td class="userControl"><a href="<c:url value='/deleteuser?u=${user.username}' />"><img alt="Delete user" src="${pageContext.request.contextPath}/src/img/user_delete_16.png"></a></td>
 				</tr>
