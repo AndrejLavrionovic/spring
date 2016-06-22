@@ -26,7 +26,10 @@ public class AmsMsgDaoImpl implements AmsMsgDao {
 	@Override
 	public List<AmsMessage> getAllMsgs() {
 		
-		String sql = "select * from systemmsg, users where systemmsg.username = users.username order by systemmsg.date desc, systemmsg.msgid desc limit 10;";
+		String sql = "select * from systemmsg, userinfo, users " +
+				"where systemmsg.username = users.username and userinfo.username = users.username " +
+				"order by systemmsg.date desc, systemmsg.msgid desc " +
+				"limit 10;";
 		return jdbc.query(sql, new AmsMsgRowMapper());
 	}
 	

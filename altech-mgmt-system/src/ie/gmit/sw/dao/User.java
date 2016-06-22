@@ -1,5 +1,7 @@
 package ie.gmit.sw.dao;
 
+import java.sql.Date;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -39,6 +41,7 @@ public class User {
 	
 	private int tel;
 	private Integer empnum;
+	private Date dob;
 	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// CONSTRUCTORS
@@ -46,7 +49,7 @@ public class User {
 	public User(){}
 	
 	public User(String username, String password, boolean enabled, String email, Integer empnum,
-			String firstname, String lastname, int tel, String authority) {
+			String firstname, String lastname, int tel, String authority, Date dob) {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
@@ -56,6 +59,7 @@ public class User {
 		this.lastname = lastname;
 		this.tel = tel;
 		this.authority = authority;
+		this.dob = dob;
 	}
 
 	public String getUsername() {
@@ -129,11 +133,19 @@ public class User {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
+	
+	public Date getDob(){
+		return dob;
+	}
+	
+	public void setDob(Date dob){
+		this.dob = dob;
+	}
 
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", email=" + email + ", empnum=" + empnum + ", firstname=" + firstname
-				+ ", lastname=" + lastname + ", tel=" + tel + ", authority=" + authority + "]";
+				+ ", lastname=" + lastname + ", tel=" + tel + ", authority=" + authority + ", dob=" + dob + "]";
 	}
 
 	@Override
@@ -141,6 +153,7 @@ public class User {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((authority == null) ? 0 : authority.hashCode());
+		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((empnum == null) ? 0 : empnum.hashCode());
 		result = prime * result + (enabled ? 1231 : 1237);
@@ -165,6 +178,11 @@ public class User {
 			if (other.authority != null)
 				return false;
 		} else if (!authority.equals(other.authority))
+			return false;
+		if (dob == null) {
+			if (other.dob != null)
+				return false;
+		} else if (!dob.toString().equals(other.dob.toString()))
 			return false;
 		if (email == null) {
 			if (other.email != null)
@@ -193,8 +211,8 @@ public class User {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (tel != other.tel)
-			return false;
+		//if (tel != other.tel)
+			//return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;

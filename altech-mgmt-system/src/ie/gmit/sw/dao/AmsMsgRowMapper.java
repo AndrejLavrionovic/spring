@@ -12,13 +12,14 @@ public class AmsMsgRowMapper implements RowMapper<AmsMessage>{
 		
 		User user = new User();
 		
-		user.setFirstname(rs.getString("users.firstname"));
-		user.setLastname(rs.getString("users.lastname"));
-		user.setEmail(rs.getString("users.email"));
-		user.setUsername(rs.getString("users.username"));
-		user.setEmpnum(rs.getInt("users.empnum"));
-		user.setTel(rs.getInt("users.tel"));
+		user.setFirstname(rs.getString("firstname"));
+		user.setLastname(rs.getString("lastname"));
+		user.setEmail(rs.getString("email"));
+		user.setUsername(rs.getString("username"));
+		user.setEmpnum(rs.getInt("empnum"));
+		user.setTel(rs.getInt("tel"));
 		user.setAuthority(rs.getString("authority"));
+		user.setDob(rs.getDate("dob"));
 		
 		AmsMessage msg = new AmsMessage();
 		msg.setMsgid(rs.getInt("systemmsg.msgid"));

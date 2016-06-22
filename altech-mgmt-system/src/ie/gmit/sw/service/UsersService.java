@@ -58,6 +58,6 @@ public class UsersService {
 	}
 
 	public User getUserByEmail(String email) {
-		return userDao.getUsersByEmail(email);
+		return userDao.getUserByEmail(email);
 	}
 }

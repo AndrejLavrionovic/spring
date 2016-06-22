@@ -59,7 +59,7 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public List<User> getAllUsers() {
 		
-		String sql = "SELECT * FROM users ORDER BY empnum ASC;";
+		String sql = "SELECT * FROM users, userinfo where userinfo.username=users.username ORDER BY empnum ASC;";
 		return jdbc.query(sql, BeanPropertyRowMapper.newInstance(User.class));
 	}
 	
@@ -75,7 +75,7 @@ public class UserDaoImpl implements UserDAO {
 			param.addValue("empnum", empnum);
 			
 			String sql = " SELECT " +
-					"u.username, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email " +
+					"u.username, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
 					"FROM users u INNER JOIN userinfo i ON i.username=u.username " +
 					"WHERE u.empnum=:empnum " +
 					"ORDER BY u.empnum ASC";
@@ -96,7 +96,11 @@ public class UserDaoImpl implements UserDAO {
 			MapSqlParameterSource param = new MapSqlParameterSource();
 			param.addValue("username", username);
 			
-			String sql = "SELECT * FROM users WHERE username=:username ORDER BY empnum ASC";
+			String sql = " SELECT " +
+					"u.username, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
+					"FROM users u INNER JOIN userinfo i ON i.username=u.username " +
+					"WHERE u.username=:username " +
+					"ORDER BY u.empnum ASC";
 			return jdbc.queryForObject(sql, param, new UserRowMapper());
 		}
 		catch(DataAccessException ex){
@@ -108,29 +112,41 @@ public class UserDaoImpl implements UserDAO {
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// CREATE USER
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	@Override
 	@Transactional
 	public boolean createUser(User user){
 		
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
 		
-		String users = "insert into users (username, password, email, firstname, lastname, tel, authority)" +
-		" VALUES (:username, :password, :email, :firstname, :lastname, :tel, :authority)";
+		String users = "insert into users (username, password, authority)" +
+		" VALUES (:username, :password, :authority)";
+		
+		String userinfo = "insert into userinfo (username, email, firstname, lastname, tel, dob)" +
+		" VALUES (:username, :email, :firstname, :lastname, :tel, :dob)";
 
-		return jdbc.update(users, params) == 1;
+		if(jdbc.update(users, params) == 1)
+			return jdbc.update(userinfo, params) == 1;
+		return false;
 	}
 	
 
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// CREATE BUNCH OF USERS
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	@Override
+	@Transactional
 	public int[] createUsers(List<User> users){
 
-		String sql = "insert into users (username, password, email, empnum, firstname, lastname, tel)" +
-				" VALUES (:username, :password, :email, :empnum, :firstname, :lastname, :tel)";
+		String dbusers = "insert into users (username, password, authority)" +
+				" VALUES (:username, :password, :authority)";
+		
+		String dbuserinfo = "insert into userinfo (username, firstname, lastname, email, tel, dob)" +
+				" VALUES (:username, :firstname, :lastname, :email, :tel, :dob)";
 		
 		SqlParameterSource[] batchArgs = SqlParameterSourceUtils.createBatch(users.toArray());
 		
-		return jdbc.batchUpdate(sql, batchArgs);
+		jdbc.batchUpdate(dbusers, batchArgs);
+		return jdbc.batchUpdate(dbuserinfo, batchArgs);
 	}
 	
 	
@@ -180,7 +196,12 @@ public class UserDaoImpl implements UserDAO {
 		
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("firstname", "%" + firstname + "%");
-		String sql = "SELECT * FROM users WHERE	 firstname LIKE :firstname ORDER BY empnum ASC;";
+		
+		String sql = "SELECT " +
+				"u.username, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
+				"FROM users u INNER JOIN userinfo i ON i.username=u.username " +
+				"WHERE i.firstname LIKE :firstname " +
+				"ORDER BY empnum ASC;";
 		return jdbc.query(sql, params, BeanPropertyRowMapper.newInstance(User.class));
 	}
 	
@@ -193,7 +214,12 @@ public class UserDaoImpl implements UserDAO {
 		
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("lastname", "%" + lastname + "%");
-		String sql = "SELECT * FROM users WHERE	 lastname LIKE :lastname ORDER BY empnum ASC;";
+		
+		String sql = "SELECT " +
+				"u.username, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
+				"FROM users u INNER JOIN userinfo i ON i.username=u.username " +
+				"WHERE i.lastname LIKE :lastname " +
+				"ORDER BY empnum ASC;";
 		return jdbc.query(sql, params, BeanPropertyRowMapper.newInstance(User.class));
 	}
 	
@@ -202,13 +228,17 @@ public class UserDaoImpl implements UserDAO {
 	// SEARCH USER BY EMAIL
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@Override
-	public User getUsersByEmail(String email) {
+	public User getUserByEmail(String email) {
 		
 		try{
 			MapSqlParameterSource param = new MapSqlParameterSource();
 			param.addValue("email", email);
 			
-			String sql = "SELECT * FROM users WHERE email=:email ORDER BY empnum ASC";
+			String sql = " SELECT " +
+					"u.username, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
+					"FROM users u INNER JOIN userinfo i ON i.username=u.username " +
+					"WHERE i.email=:email " +
+					"ORDER BY u.empnum ASC;";
 			return jdbc.queryForObject(sql, param, new UserRowMapper());
 		}
 		catch(DataAccessException ex){
