@@ -97,6 +97,13 @@ a.btnlink:active{
 	color: #cff3fe;
 }
 
+a .imgusermanagement{
+	opacity: 0.3;
+}
+a .imgusermanagement:hover{
+	opacity: 1;
+}
+
 #msg{
 	width: 560px;
 	height: 30px;
