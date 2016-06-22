@@ -86,6 +86,15 @@ public class UsersController {
 	@RequestMapping(value="/docreate", method=RequestMethod.POST)
 	public String doCreate(@Valid User user, BindingResult result, Model model, Principal principal){
 		
+		
+		try{
+			model.addAttribute("username", principal.getName());
+		}
+		catch(NullPointerException ex){
+			model.addAttribute("username", null);
+			return "login";
+		}
+		
 		// Validation #1
 		//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 		if(result.hasErrors()){
@@ -98,15 +107,6 @@ public class UsersController {
 		} catch (DuplicateKeyException e) {
 			result.rejectValue("username", "DuplicateKey.users.username", "This username allready exists!");
 			return "create";
-		}
-		
-		String username = null;
-		try{
-			username = principal.getName();
-			model.addAttribute("username", username);
-		}
-		catch(NullPointerException ex){
-			model.addAttribute("username", null);
 		}
 		
 		return "usercreated";

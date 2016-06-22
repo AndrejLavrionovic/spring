@@ -18,9 +18,13 @@
 	    				<label class="lblNew" id="lblLastname">Lastname:</label>
 	    				<sf:input path="lastname" class="txtNew" type="text" id="txtLastname" name="lastname" />
 	    				<div id="divError"><sf:errors path="lastname" cssClass="error"></sf:errors></div></br>
+	    				
+	    				<!-- 	
 	    				<label class="lblNew" id="lblEmpnum">Employee Num:</label>
 	    				<sf:input path="empnum" class="txtNew" type="text" id="txtEmpnum" name="empnum" />
 	    				<div id="divError"><sf:errors path="empnum" cssClass="error"></sf:errors></div></br>
+	    				-->
+	    				
 	    				<label class="lblNew" id="lblTel">Telephone Num:</label>
 	    				<sf:input path="tel" class="txtNew" type="text" id="txtTel" name="tel" />
 	    				<div id="divError"><sf:errors path="tel" cssClass="error"></sf:errors></div></br>

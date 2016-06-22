@@ -74,7 +74,11 @@ public class UserDaoImpl implements UserDAO {
 			MapSqlParameterSource param = new MapSqlParameterSource();
 			param.addValue("empnum", empnum);
 			
-			String sql = "SELECT * FROM users WHERE empnum=:empnum ORDER BY empnum ASC";
+			String sql = " SELECT " +
+					"u.username, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email " +
+					"FROM users u INNER JOIN userinfo i ON i.username=u.username " +
+					"WHERE u.empnum=:empnum " +
+					"ORDER BY u.empnum ASC";
 			return jdbc.queryForObject(sql, param, new UserRowMapper());
 		}catch(DataAccessException ex){
 			return null;
@@ -109,8 +113,8 @@ public class UserDaoImpl implements UserDAO {
 		
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
 		
-		String users = "insert into users (username, password, email, empnum, firstname, lastname, tel, authority)" +
-		" VALUES (:username, :password, :email, :empnum, :firstname, :lastname, :tel, :authority)";
+		String users = "insert into users (username, password, email, firstname, lastname, tel, authority)" +
+		" VALUES (:username, :password, :email, :firstname, :lastname, :tel, :authority)";
 
 		return jdbc.update(users, params) == 1;
 	}

@@ -1,8 +1,5 @@
 package ie.gmit.sw.dao;
 
-import java.util.Date;
-
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -29,10 +26,6 @@ public class User {
 	@Pattern(regexp=".*\\@.*\\..*", message="Email is not valid.")
 	private String email;
 	
-	@NotNull(message="Employee number field must be completed.")
-	@Min(value=100000, message="Employee number must be higher than 100000.")
-	private Integer empnum;
-	
 	@Size(min=3, max=40, message="The name must be 3-40 characters long.")
 	@NotNull
 	private String firstname;
@@ -41,10 +34,11 @@ public class User {
 	@NotNull
 	private String lastname;
 	
-	private int tel;
-	
 	@NotNull
 	private String authority;
+	
+	private int tel;
+	private Integer empnum;
 	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// CONSTRUCTORS
@@ -208,6 +202,4 @@ public class User {
 			return false;
 		return true;
 	}
-	
-	
 }
