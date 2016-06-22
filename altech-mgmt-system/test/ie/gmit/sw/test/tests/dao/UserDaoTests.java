@@ -63,8 +63,8 @@ public class UserDaoTests {
 		users.add(user);
 		users.add(new User("user1", "user1", true, "user1@user.com", null, "Andrej1", "Andrej1", 861234568, "admin", dob));
 		users.add(new User("user3", "user3", true, "user3@user.com", null, "Andrej3", "Andrej3", 861234569, "admin", dob));
-		users.add(new User("user4", "user4", true, "user4@user.com", null, "Andrej4", "Andrej4", 861234560, "admin", dob));
-		users.add(new User("user5", "user5", true, "user5@user.com", 100004, "Andrej1", "Andrej1", 861234568, "admin", dob));
+		users.add(new User("user4", "user4", true, "user4@user.com", 100004, "Andrej4", "Andrej4", 861234560, "admin", dob));
+		users.add(new User("user5", "user5", true, "user5@user.com", 100005, "Andrej1", "Andrej1", 861234568, "admin", dob));
 		users.add(new User("user6", "user6", true, "user6@user.com", null, "Alexej", "Alexejs", 861234575, "admin", dob));
 	}
 	
@@ -131,7 +131,6 @@ public class UserDaoTests {
 		
 		userdao.createUsers(users);
 		User u = userdao.getUserByUsername(userdao.getAllUsers().get(2).getUsername());
-		logger.info("---> User u" + u.toString());
 		assertTrue("User should exist after he was assigned usiung username", userdao.exists(u.getUsername()));
 	}
 	
@@ -141,14 +140,13 @@ public class UserDaoTests {
 		
 		userdao.createUsers(users);
 		
+		logger.info("---> Get all users buy given pattern of firstname.");
 		List<User> u = userdao.getUsersByFirstname("And");
 		assertEquals("List should consist of 5 users", 5, u.size());
-		u.get(4).setEmpnum(100004);
-		logger.info("--->empnum: " + u.get(4).getEmpnum());
 		
-		logger.info("--->user getted: " + u.get(4));
-		logger.info("--->user test:   " + users.get(4));
-		
+		logger.info("---> Make sure that users are complies.");
+		u.get(4).setEmpnum(100005);
+		u.get(4).setPassword("user5");
 		assertTrue("Users must be eqals", u.get(4).equals(users.get(4)));
 	}
 	
@@ -158,13 +156,13 @@ public class UserDaoTests {
 		
 		userdao.createUsers(users);
 		
+		logger.info("---> Get all users buy given pattern of lastname.");
 		List<User> u = userdao.getUsersByLastname("rej");
 		assertEquals("List should consist of 5 users", 5, u.size());
-		u.get(3).setEmpnum(null);
 		
-		logger.info("--->user getted: " + u.get(3));
-		logger.info("--->user test  : " + users.get(3));
-		
+		logger.info("---> Make sure that users are complies.");
+		u.get(3).setEmpnum(100004);
+		u.get(3).setPassword("user4");
 		assertTrue("Users must be eqals", u.get(3).equals(users.get(3)));
 	}
 	

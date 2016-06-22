@@ -211,8 +211,8 @@ public class User {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		//if (tel != other.tel)
-			//return false;
+		if (tel != other.tel)
+			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;

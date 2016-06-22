@@ -75,7 +75,7 @@ public class UserDaoImpl implements UserDAO {
 			param.addValue("empnum", empnum);
 			
 			String sql = " SELECT " +
-					"u.username, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
+					"u.username, u.enabled, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
 					"FROM users u INNER JOIN userinfo i ON i.username=u.username " +
 					"WHERE u.empnum=:empnum " +
 					"ORDER BY u.empnum ASC";
@@ -97,7 +97,7 @@ public class UserDaoImpl implements UserDAO {
 			param.addValue("username", username);
 			
 			String sql = " SELECT " +
-					"u.username, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
+					"u.username, u.enabled, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
 					"FROM users u INNER JOIN userinfo i ON i.username=u.username " +
 					"WHERE u.username=:username " +
 					"ORDER BY u.empnum ASC";
@@ -198,7 +198,7 @@ public class UserDaoImpl implements UserDAO {
 		params.addValue("firstname", "%" + firstname + "%");
 		
 		String sql = "SELECT " +
-				"u.username, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
+				"u.username, u.enabled, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
 				"FROM users u INNER JOIN userinfo i ON i.username=u.username " +
 				"WHERE i.firstname LIKE :firstname " +
 				"ORDER BY empnum ASC;";
@@ -216,7 +216,7 @@ public class UserDaoImpl implements UserDAO {
 		params.addValue("lastname", "%" + lastname + "%");
 		
 		String sql = "SELECT " +
-				"u.username, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
+				"u.username, u.enabled, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
 				"FROM users u INNER JOIN userinfo i ON i.username=u.username " +
 				"WHERE i.lastname LIKE :lastname " +
 				"ORDER BY empnum ASC;";
@@ -235,7 +235,7 @@ public class UserDaoImpl implements UserDAO {
 			param.addValue("email", email);
 			
 			String sql = " SELECT " +
-					"u.username, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
+					"u.username, u.enabled, u.empnum, u.authority, i.firstname, i.lastname, i.tel, i.email, i.dob " +
 					"FROM users u INNER JOIN userinfo i ON i.username=u.username " +
 					"WHERE i.email=:email " +
 					"ORDER BY u.empnum ASC;";
