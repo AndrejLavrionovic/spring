@@ -245,4 +245,24 @@ public class UserDaoImpl implements UserDAO {
 			return null;
 		}
 	}
+
+	/*
+	@Override
+	public int populateUserinfo() {
+		List<User> u;
+		int count = 0;
+		String sql = "SELECT * FROM users";
+		u = jdbc.query(sql, BeanPropertyRowMapper.newInstance(User.class));
+		
+		for(User user : u){
+			BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
+			String insert = "insert into userinfo (firstname, lastname, tel, email, dob, username) " +
+					"values (:firstname, :lastname, :tel, :email, DATE(NOW()), :username);";
+			jdbc.update(insert, params);
+			count++;
+		}
+		return count;
+		
+	}
+	*/
 }
