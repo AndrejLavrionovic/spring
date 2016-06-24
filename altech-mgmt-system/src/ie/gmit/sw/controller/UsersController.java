@@ -94,6 +94,12 @@ public class UsersController {
 			model.addAttribute("username", null);
 			return "login";
 		}
+		try{
+			user.setDob();
+		}catch(NullPointerException ex){
+			logger.info("---> DOB: " + user.getDob().toString());
+			return "create";
+		}
 		
 		// Validation #1
 		//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

@@ -7,6 +7,9 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ie.gmit.sw.dao.user.UserDobConverter;
 
 public class User {
 	
@@ -47,9 +50,15 @@ public class User {
 	private Integer year;
 	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// INSTANCES
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
+	private UserDobConverter dobConverter = new UserDobConverter();
+	
+	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// CONSTRUCTORS
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::
-	public User(){}
+	public User(){
+	}
 	
 	public User(String username, String password, boolean enabled, String email, Integer empnum,
 			String firstname, String lastname, Integer tel, String authority, Date dob) {
@@ -144,6 +153,11 @@ public class User {
 	public void setDob(Date dob){
 		this.dob = dob;
 	}
+	
+	public void setDob(){
+		dobConverter.setCalendarDob(this.year, this.month, this.day);
+		this.dob = dobConverter.getDateDob(dobConverter.getCalendarDob());
+	}
 
 	public Integer getMonth() {
 		return month;
@@ -168,11 +182,14 @@ public class User {
 	public void setYear(Integer year) {
 		this.year = year;
 	}
+	
+	
 
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", email=" + email + ", empnum=" + empnum + ", firstname=" + firstname
-				+ ", lastname=" + lastname + ", tel=" + tel + ", authority=" + authority + ", dob=" + dob + "]";
+		return "User [username=" + username + ", enabled=" + enabled + ", email=" + email + ", firstname=" + firstname
+				+ ", lastname=" + lastname + ", authority=" + authority + ", tel=" + tel + ", empnum=" + empnum
+				+ ", dob=" + dob + ", month=" + month + ", day=" + day + ", year=" + year + "]";
 	}
 
 	@Override
@@ -180,14 +197,17 @@ public class User {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((authority == null) ? 0 : authority.hashCode());
+		result = prime * result + ((day == null) ? 0 : day.hashCode());
 		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((empnum == null) ? 0 : empnum.hashCode());
 		result = prime * result + (enabled ? 1231 : 1237);
 		result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
 		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
+		result = prime * result + ((month == null) ? 0 : month.hashCode());
 		result = prime * result + ((tel == null) ? 0 : tel.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		result = prime * result + ((year == null) ? 0 : year.hashCode());
 		return result;
 	}
 
