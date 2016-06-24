@@ -4,6 +4,12 @@
 	
 }
 
+#pageTitle{
+	font: normal 22px verdana;
+	color: #303030;
+	font-style: oblique;
+}
+
 #frmUser{
 	border: 1px solid #cccccc;
 	padding: 10px;

@@ -75,6 +75,15 @@ div, section, article, header, footer, nav
 	margin-bottom: 20px;
 }
 
+#hdrParagraph{
+	font: normal 12px verdana;
+	color: #303030;
+	display: block;
+	padding-left: 10px;
+	border-left: 8px solid #909090;
+	margin: 20px 0 50px 0;
+}
+
 #mainFooter{
 	clear: both;
 	padding: 40px 20px;

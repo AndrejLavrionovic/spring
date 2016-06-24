@@ -4,7 +4,22 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	    	
-	    		<header id="hdrTitle">Register new user:</header>
+	    		<header id="pageTitle">New user registration form.</header>
+
+				<header id="hdrParagraph">
+				AMS (Altech Management System) providing the "New user registration form." This page is
+				available only for permitted users such as admin and HR.<br />
+				Form consist of several text inputs and dropdown lists. All fields must be completed to proceed
+				the registration. 
+				<p>There is some rules must be followed while registration:</p>
+				<ol style="margin-left:16px;">
+					<li>Firstname and lastname must not be longer than 45 characters.</li>
+					<li>User must be older then 16 and younger than 80.</li>
+					<li>Phone number must be with Irish provider (+353)</li>
+					<li>Username must be unique.</li>
+					<li>Password must be save and must contain atleast one number, one character.</li>
+				</ol>
+				</header>
 	    		
 	    		
 	    		<!-- :::::::::::::::::::::: FORM NEW USER ::::::::::::::::::::: -->
