@@ -12,11 +12,21 @@
 	    			<sf:form method="post" action="${pageContext.request.contextPath}/docreate" id="frmNewUser" commandName="user">
 	    			
 	    			<div id="frmUser">
-	    				<label class="lblNew" id="lblFirstname">Firstname:</label>
-	    				<sf:input path="firstname" class="txtNew" type="text" id="txtFirstname" name="firstname" />
+	    				<div id="nameBlock">
+	    					<div id="lblNameBlock">
+	    						<label class="lblNew" id="lblName">User name:</label>
+	    					</div>
+	    					<div id="txtFirstnameBlock">
+	    						<label class="lblTops" id="lblFirstname" for="txtFirstname"t>Firstname:</label>
+	    						<sf:input path="firstname" class="txtNew" type="text" id="txtFirstname" name="firstname" />
+	    					</div>
+	    					<div id="txtLastnameBlock">
+	    						<label class="lblTops" id="lblLastname" for="lblLastname"t>Lastname:</label>
+	    						<sf:input path="lastname" class="txtNew" type="text" id="txtLastname" name="lastname" />
+	    					</div>
+	    				</div>
+	    				
 	    				<div id="divError"><sf:errors path="firstname" cssClass="error"></sf:errors></div></br>
-	    				<label class="lblNew" id="lblLastname">Lastname:</label>
-	    				<sf:input path="lastname" class="txtNew" type="text" id="txtLastname" name="lastname" />
 	    				<div id="divError"><sf:errors path="lastname" cssClass="error"></sf:errors></div></br>
 	    				
 	    				<!-- 	
@@ -34,11 +44,27 @@
 							</div>
 	    				</div>
 	    				
-	    				<label class="lblNew" id="lblTel" for="txtTel">Telephone Num:</label>
-	    				<sf:input path="tel" class="txtNew" type="text" id="txtTel" name="tel" />
+	    				
+	    				<div id="contactsBlock">
+	    					<div id="lblContactsBlock">
+	    						<label class="lblNew" id="lblContacts">User Contacts:</label>
+	    					</div>
+	    					<div id="txtTelBlock">
+	    						<label class="lblTops" id="lblTel" for="txtTel"t>Tel. number</label>
+	    						<div>
+	    							<select style="display: inline-block; background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white; -webkit-appearance: none; -moz-appearance: none;" class="selNew" id="selTelPrefix"></select>
+	    							<sf:input path="tel" class="txtNew" type="text" id="txtTel" name="tel" style="display: inline-block;" />
+	    						</div>
+	    						
+	    					</div>
+	    					<div id="txtEmailBlock">
+	    						<label class="lblTops" id="lblEmail" for="txtEmail"t>Email</label>
+	    						<sf:input path="email" class="txtNew" type="text" id="txtEmail" name="email" />
+	    					</div>
+	    				</div>
+	    				
+	    				
 	    				<div id="divError"><sf:errors path="tel" cssClass="error"></sf:errors></div></br>
-	    				<label class="lblNew" id="lblEmail">Email:</label>
-	    				<sf:input path="email" class="txtNew" type="text" id="txtEmail" name="email" />
 	    				<div id="divError"><sf:errors path="email" cssClass="error"></sf:errors></div></br>
 	    				
 	    				<label class="lblNew id="lblStatus">Authority:</label>

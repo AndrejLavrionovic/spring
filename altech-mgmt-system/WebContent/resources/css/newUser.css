@@ -34,15 +34,20 @@
 .lblNew{
 	display: inline-block;
 	width: 150px;
-	font: normal 14px verdana;
+	font: normal 16px verdana;
 	color: #2D2C2C;
 	margin: 0 0 5px 0;
 }
 
+.lblTops{
+	font: normal 13px verdana;
+	color: #909090;
+}
+
 .txtNew{
 	display: inline-block;
-	width: 180px;
-	border: 1px solid #2D2C2C;
+	border: 1px solid #606060;
+	border-radius: 3px;
 	height: 30px;
 	padding: 0 10px;
 	font: bolder 14px calibri;
@@ -62,6 +67,25 @@
 }
 
 /********************************/
+/*:::::::::NAME SECTION::::::::::*/
+#nameBlock{
+	border: 0px solid #606060;
+}
+#nameBlock div{
+	display: inline-block;
+	border: 0px solid red;
+}
+#lblNameBlock{
+	width: 150px;
+}
+#txtFirstnameBlock, #txtLastnameBlock{
+	width: 190px;
+}
+#txtFirstname, #txtLastname{
+	width: 160px;
+}
+
+/********************************/
 /*:::::::::DOB SECTION::::::::::*/
 #blockDob{
 	height: 32px;
@@ -77,6 +101,7 @@
 	display: block;
 	padding-left: 10px;
 	color: #303030;
+	font: normal 14px verdana;
 }
 
 #blockDob select, .selNew{
@@ -84,6 +109,7 @@
 	height: 30px;
 	border: 1px solid #606060;
 	border-radius: 2px;
+	font: bolder 14px calibri;
 }
 
 select#pickMonth{
@@ -96,5 +122,31 @@ select#pickDay{
 
 select#pickYear{
 	width: 100px;
+}
+
+/****************************************/
+/*:::::::::TEL + EMAIL SECTION::::::::::*/
+#contactsBlock{
+	border: 0px solid #606060;
+	margin: 20px 0 30px 0;
+}
+#contactsBlock div{
+	display: inline-block;
+	border: 0px solid red;
+}
+#txtTelBlock{
+	width: 190px;
+}
+#txtEmailBlock{
+	width: 200px;
+}
+#selTelPrefix{
+	width: 80px
+}
+#txtTel{
+	width: 80px;
+}
+#txtEmail{
+	width: 170px;
 }
 
