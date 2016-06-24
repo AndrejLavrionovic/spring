@@ -39,7 +39,7 @@ public class User {
 	@NotNull
 	private String authority;
 	
-	private int tel;
+	private Integer tel;
 	private Integer empnum;
 	private Date dob;
 	
@@ -49,7 +49,7 @@ public class User {
 	public User(){}
 	
 	public User(String username, String password, boolean enabled, String email, Integer empnum,
-			String firstname, String lastname, int tel, String authority, Date dob) {
+			String firstname, String lastname, Integer tel, String authority, Date dob) {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
@@ -118,11 +118,11 @@ public class User {
 		this.lastname = lastname;
 	}
 
-	public int getTel() {
+	public Integer getTel() {
 		return tel;
 	}
 
-	public void setTel(int tel) {
+	public void setTel(Integer tel) {
 		this.tel = tel;
 	}
 
@@ -159,8 +159,7 @@ public class User {
 		result = prime * result + (enabled ? 1231 : 1237);
 		result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
 		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + tel;
+		result = prime * result + ((tel == null) ? 0 : tel.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -206,12 +205,10 @@ public class User {
 				return false;
 		} else if (!lastname.equals(other.lastname))
 			return false;
-		if (password == null) {
-			if (other.password != null)
+		if (tel == null) {
+			if (other.tel != null)
 				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (tel != other.tel)
+		} else if (!tel.equals(other.tel))
 			return false;
 		if (username == null) {
 			if (other.username != null)

@@ -25,7 +25,16 @@
 	    				<div id="divError"><sf:errors path="empnum" cssClass="error"></sf:errors></div></br>
 	    				-->
 	    				
-	    				<label class="lblNew" id="lblTel">Telephone Num:</label>
+	    				<div id="blockDob">
+							<label class="lblNew" id="lblDatePicker" for="inDatePicker">Date of birth:</label>
+							<div id="inDatePicker">
+								<sf:select path="month" style="background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white; -webkit-appearance: none; -moz-appearance: none;" class="selNew" id="pickMonth"></sf:select>
+								<sf:select path="day" style="background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white; -webkit-appearance: none; -moz-appearance: none;" class="selNew" id="pickDay"></sf:select>
+								<sf:select path="year" style="background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white; -webkit-appearance: none; -moz-appearance: none;" class="selNew" id="pickYear"></sf:select>
+							</div>
+	    				</div>
+	    				
+	    				<label class="lblNew" id="lblTel" for="txtTel">Telephone Num:</label>
 	    				<sf:input path="tel" class="txtNew" type="text" id="txtTel" name="tel" />
 	    				<div id="divError"><sf:errors path="tel" cssClass="error"></sf:errors></div></br>
 	    				<label class="lblNew" id="lblEmail">Email:</label>
@@ -34,7 +43,7 @@
 	    				
 	    				<label class="lblNew id="lblStatus">Authority:</label>
 	    				
-	    				<select class="txtNew" name="authority" style="width: 193px; height: 22px">
+	    				<select class="selNew" name="authority" style="width: 193px; background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white; -webkit-appearance: none; -moz-appearance: none;" >
 	    					<option selected="selected" value="0"></option>
 							<option value="user" >Employee</option>
 						 	<option value="man">Office Manager</option>
@@ -63,4 +72,6 @@
 	    			</div>
 	    			
 	    			</sf:form>
+	    			
+	    			<script src="${pageContext.request.contextPath}/src/js/dataPicker.js"></script>
 	    		</div>
