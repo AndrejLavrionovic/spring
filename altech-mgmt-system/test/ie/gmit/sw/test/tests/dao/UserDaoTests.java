@@ -113,6 +113,8 @@ public class UserDaoTests {
 		userdao.createUser(user);
 		User u = userdao.getAllUsers().get(0);
 		u.setEmpnum(100001);
+		logger.info("--->" + u);
+		logger.info("--->"+ user);
 		assertTrue("Created user should be adentical to retrieved user", user.equals(u));
 	}
 	
