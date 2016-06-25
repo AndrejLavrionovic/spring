@@ -64,7 +64,7 @@ public class amsMsgDaoTest {
 	@Test
 	public void createMsgTest(){
 		
-		User user = new User("user", "user", true, "user@altech.ie", 100001, "User", "User", 1234567890, "hr", dob);
+		User user = new User("user", "user", true, "user@altech.ie", 100001, "User", "User", "1234567890", "hr", dob);
 		logger.info("User ---> " + user.toString());
 		
 		if(userdao.createUser(user)){

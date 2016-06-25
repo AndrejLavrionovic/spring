@@ -42,7 +42,9 @@ public class User {
 	@NotNull
 	private String authority;
 	
-	private Integer tel;
+	private Integer telNumber;
+	private String telPrefix;
+	private String tel;
 	private Integer empnum;
 	private Date dob;
 	private Integer month;
@@ -61,7 +63,7 @@ public class User {
 	}
 	
 	public User(String username, String password, boolean enabled, String email, Integer empnum,
-			String firstname, String lastname, Integer tel, String authority, Date dob) {
+			String firstname, String lastname, String tel, String authority, Date dob) {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
@@ -130,12 +132,16 @@ public class User {
 		this.lastname = lastname;
 	}
 
-	public Integer getTel() {
+	public String getTel() {
 		return tel;
 	}
 
-	public void setTel(Integer tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
+	}
+	
+	public void setTel(String telPrefix, Integer telNumber){
+		this.tel = telPrefix.concat(String.format("%d", telNumber));
 	}
 
 	public String getAuthority() {
@@ -183,13 +189,25 @@ public class User {
 		this.year = year;
 	}
 	
-	
+	public String getTelPrefix(){
+		return this.telPrefix;
+	}
+	public void setTelPrefix(String telPrefix){
+		this.telPrefix = telPrefix;
+	}
+	public Integer getTelNumber(){
+		return this.telNumber;
+	}
+	public void setTelNumber(Integer telNumber){
+		this.telNumber = telNumber;
+	}
 
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", enabled=" + enabled + ", email=" + email + ", firstname=" + firstname
-				+ ", lastname=" + lastname + ", authority=" + authority + ", tel=" + tel + ", empnum=" + empnum
-				+ ", dob=" + dob + ", month=" + month + ", day=" + day + ", year=" + year + "]";
+				+ ", lastname=" + lastname + ", authority=" + authority + ", telNumber=" + telNumber + ", telPrefix="
+				+ telPrefix + ", tel=" + tel + ", empnum=" + empnum + ", dob=" + dob + ", month=" + month + ", day="
+				+ day + ", year=" + year + "]";
 	}
 
 	@Override
@@ -205,7 +223,10 @@ public class User {
 		result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
 		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
 		result = prime * result + ((month == null) ? 0 : month.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((tel == null) ? 0 : tel.hashCode());
+		result = prime * result + ((telNumber == null) ? 0 : telNumber.hashCode());
+		result = prime * result + ((telPrefix == null) ? 0 : telPrefix.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		result = prime * result + ((year == null) ? 0 : year.hashCode());
 		return result;
@@ -251,6 +272,11 @@ public class User {
 			if (other.lastname != null)
 				return false;
 		} else if (!lastname.equals(other.lastname))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
 			return false;
 		if (tel == null) {
 			if (other.tel != null)

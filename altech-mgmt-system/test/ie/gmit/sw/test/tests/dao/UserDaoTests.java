@@ -58,14 +58,14 @@ public class UserDaoTests {
 		
 		dob = new Date(date.getTime().getTime());
 		
-		user = new User("user", "user", true, "user@user.com", 100001, "Andrej", "Andrej", 861234567, "admin", dob);
+		user = new User("user", "user", true, "user@user.com", 100001, "Andrej", "Andrej", "0861234567", "admin", dob);
 		
 		users.add(user);
-		users.add(new User("user1", "user1", true, "user1@user.com", null, "Andrej1", "Andrej1", 861234568, "admin", dob));
-		users.add(new User("user3", "user3", true, "user3@user.com", null, "Andrej3", "Andrej3", 861234569, "admin", dob));
-		users.add(new User("user4", "user4", true, "user4@user.com", 100004, "Andrej4", "Andrej4", 861234560, "admin", dob));
-		users.add(new User("user5", "user5", true, "user5@user.com", 100005, "Andrej1", "Andrej1", 861234568, "admin", dob));
-		users.add(new User("user6", "user6", true, "user6@user.com", null, "Alexej", "Alexejs", 861234575, "admin", dob));
+		users.add(new User("user1", "user1", true, "user1@user.com", null, "Andrej1", "Andrej1", "0861234568", "admin", dob));
+		users.add(new User("user3", "user3", true, "user3@user.com", null, "Andrej3", "Andrej3", "0861234569", "admin", dob));
+		users.add(new User("user4", "user4", true, "user4@user.com", 100004, "Andrej4", "Andrej4", "0861234560", "admin", dob));
+		users.add(new User("user5", "user5", true, "user5@user.com", 100005, "Andrej1", "Andrej1", "0861234568", "admin", dob));
+		users.add(new User("user6", "user6", true, "user6@user.com", null, "Alexej", "Alexejs", "0861234575", "admin", dob));
 	}
 	
 	@Test

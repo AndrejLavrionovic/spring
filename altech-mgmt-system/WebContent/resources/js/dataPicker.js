@@ -2,6 +2,7 @@
 
 var monthsNames = ["Jnuary", "February", "March", "April", "May", "June", "July",
 "August", "September", "October", "November", "December" ];
+var telPrefix = ["085", "086", "087", "089"];
 var d = new Date();var year = d.getFullYear();
 var globalMonthValue=null;var globalYearValue=null;var globalDayValue=null;
 function monthOptons(m){
@@ -46,12 +47,17 @@ function yearOptions(start, end){
         sel.appendChild(opt);
     }
 }
-function alertDob(d, m, y){
-    if(d != null && m != null && y != null){alert("DOB: " + d + "/" + m + "/" + y);}
+function telPrefixOptions(){
+	var sel = document.getElementById("selTelPrefix");
+	for (i=0,y=0;i<=telPrefix.length;i++){
+		var opt = document.createElement("option");
+		if(i===0){opt.text="";opt.value=-1;}else{opt.text=telPrefix[y];opt.value=telPrefix[y++];}
+		sel.appendChild(opt);
+	}
 }
 
 {
-    monthOptons(monthsNames);dayOptions(null, null);yearOptions((year-80),(year-16));
+    monthOptons(monthsNames);dayOptions(null, null);yearOptions((year-80),(year-16));telPrefixOptions()
     var selectMonthChange = document.getElementById("pickMonth");
     selectMonthChange.addEventListener("change", function(){
         globalMonthValue = this.options[this.selectedIndex].value;

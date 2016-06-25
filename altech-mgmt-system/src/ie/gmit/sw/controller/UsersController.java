@@ -96,6 +96,7 @@ public class UsersController {
 		}
 		try{
 			user.setDob();
+			user.setTel(user.getTelPrefix(), user.getTelNumber());
 		}catch(NullPointerException ex){
 			logger.info("---> DOB: " + user.getDob().toString());
 			return "create";

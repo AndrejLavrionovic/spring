@@ -17,7 +17,7 @@ public class AmsMsgRowMapper implements RowMapper<AmsMessage>{
 		user.setEmail(rs.getString("email"));
 		user.setUsername(rs.getString("username"));
 		user.setEmpnum(rs.getInt("empnum"));
-		user.setTel(rs.getInt("tel"));
+		user.setTel(rs.getString("tel"));
 		user.setAuthority(rs.getString("authority"));
 		user.setDob(rs.getDate("dob"));
 		
