@@ -20,7 +20,8 @@
 					<li>Username must begin with any letter (NOT a number or symbol).</li>
 					<li>Username must NOT contain any symbols.</li>
 					<li>Username must be 4 - 10 characters long.</li>
-					<li>Password must be save and must contain atleast one number, one character.</li>
+					<li>Password must contain atleast one number, uppercase letter, lowercase letter, non-letter symbol.</li>
+					<li>Password must be 8-16 characters long.</li>
 				</ol>
 				</header>
 	    		
@@ -37,20 +38,14 @@
 	    						<label class="lblNew" id="lblName">User name:</label>
 	    					</div>
 	    					<div id="txtFirstnameBlock">
-	    						<label class="lblTops" id="lblFirstname" for="txtFirstname"t>Firstname:</label>
-	    						<sf:input path="firstname" class="txtNew" type="text" id="txtFirstname" name="firstname" />
+	    						<label class="lblTops" id="lblFirstname" for="txtFirstname">Firstname:</label>
+	    						<sf:input path="firstname" class="txtNew" type="text" id="txtFirstname" />
 	    					</div>
 	    					<div id="txtLastnameBlock">
-	    						<label class="lblTops" id="lblLastname" for="lblLastname"t>Lastname:</label>
-	    						<sf:input path="lastname" class="txtNew" type="text" id="txtLastname" name="lastname" />
+	    						<label class="lblTops" id="lblLastname" for="lblLastname">Lastname:</label>
+	    						<sf:input path="lastname" class="txtNew" type="text" id="txtLastname" />
 	    					</div>
 	    				</div>
-	    				
-	    				<!-- 	
-	    				<label class="lblNew" id="lblEmpnum">Employee Num:</label>
-	    				<sf:input path="empnum" class="txtNew" type="text" id="txtEmpnum" name="empnum" />
-	    				<div id="divError"><sf:errors path="empnum" cssClass="error"></sf:errors></div></br>
-	    				-->
 	    				
 	    				<div id="blockDob">
 							<label class="lblNew" id="lblDatePicker" for="inDatePicker">Date of birth:</label>
@@ -64,41 +59,41 @@
 	    				
 	    				<div id="contactsBlock">
 	    					<div id="lblContactsBlock">
-	    						<label class="lblNew" id="lblContacts">User Contacts:</label>
+	    						<label class="lblNew" id="lblContacts" for="txtTelBlock">User Contacts:</label>
 	    					</div>
 	    					<div id="txtTelBlock">
-	    						<label class="lblTops" id="lblTel" for="txtTel"t>Tel. number</label>
+	    						<label class="lblTops" id="lblTel" for="txtTel">Tel. number</label>
 	    						<div>
 	    							<sf:select path="telPrefix" style="display: inline-block; background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white; -webkit-appearance: none; -moz-appearance: none;" class="selNew" id="selTelPrefix"></sf:select>
-	    							<sf:input path="telNumber" class="txtNew" type="text" id="txtTel" name="telNumber" style="display: inline-block;" />
+	    							<sf:input path="telNumber" class="txtNew" type="text" id="txtTel" style="display: inline-block;" />
 	    						</div>
 	    						
 	    					</div>
 	    					<div id="txtEmailBlock">
-	    						<label class="lblTops" id="lblEmail" for="txtEmail"t>Email</label>
-	    						<sf:input path="email" class="txtNew" type="text" id="txtEmail" name="email" />
+	    						<label class="lblTops" id="lblEmail" for="txtEmail">Email</label>
+	    						<sf:input path="email" class="txtNew" type="text" id="txtEmail" />
 	    					</div>
 	    				</div>
 	    				
-	    				<label class="lblNew id="lblStatus">Authority:</label>
+	    				<label class="lblNew" id="lblStatus" for="selAuthority">Authority:</label>
 	    				
-	    				<select class="selNew" name="authority" style="width: 193px; background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white; -webkit-appearance: none; -moz-appearance: none;" >
+	    				<select id="selAuthority" class="selNew" name="authority" style="width: 193px; background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white; -webkit-appearance: none; -moz-appearance: none;" >
 	    					<option selected="selected" value="0"></option>
 							<option value="user" >Employee</option>
 						 	<option value="man">Office Manager</option>
 						 	<option value="head">Head Manager</option>
 						 	<option value="hr">HR Admin</option>
 					 	</select>
-	    				</br>
+	    				<br />
 	    			</div>
 	    			
 	    			<div id="login">
 	    				<label class="lblNew" id="lblUsername" for="txtUsername">Username:</label>
-	    				<sf:input path="username" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" name="username" id="txtUsername" /><br />
-	    				<label class="lblNew" id="lblPassword">Password:</label>
-	    				<sf:input path="password" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtPassword" name="password" /><br />
+	    				<sf:input path="username" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtUsername" /><br />
+	    				<label class="lblNew" id="lblPassword" for="txtPassword">Password:</label>
+	    				<sf:input path="password" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtPassword" /><br />
 	    				<label class="lblNew" id="lblConfirm">Confirm password:</label>
-	    				<input class="txtNew" type="text" id="txtConfirm" name="confirm" /></br>
+	    				<input class="txtNew" type="text" id="txtConfirm" name="confirm" /><br />
 	    			</div>
 
 	    			
