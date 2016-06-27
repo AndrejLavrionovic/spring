@@ -14,14 +14,11 @@ public class User {
 	
 	// fields
 	@NotBlank(message="Username cannot be blank.")
-	@Size(min=4, max=10, message="Username must be 4-10 characters long")
-	@Pattern(regexp = "^[A-Z,a-z]\\w{3,9}$", message="The username is not match conditions.")
+	@Pattern(regexp = "^[A-Z,a-z]\\w{3,9}$", message="The username is not match conditions. (Look conditions: 4-7)")
 	private String username;
 	
-	@Size(min=4, max=16, message="The password must be 3-40 characters long.")
-	@NotNull
 	@NotBlank(message="Password cannot be blank.")
-	@Pattern(regexp="^\\S+$", message="Password cannot contain spaces.")
+	@Pattern(regexp="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[_\\W]).{8,16}$", message="Password is not match conditions. (Look: 8-10)")
 	private String password;
 	
 	private boolean enabled = false;

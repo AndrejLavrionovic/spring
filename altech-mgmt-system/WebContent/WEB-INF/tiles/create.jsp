@@ -96,7 +96,7 @@
 	    				<label class="lblNew" id="lblUsername" for="txtUsername">Username:</label>
 	    				<sf:input path="username" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" name="username" id="txtUsername" /><br />
 	    				<label class="lblNew" id="lblPassword">Password:</label>
-	    				<sf:input path="password" class="txtNew" type="text" id="txtPassword" name="password" /><br />
+	    				<sf:input path="password" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtPassword" name="password" /><br />
 	    				<label class="lblNew" id="lblConfirm">Confirm password:</label>
 	    				<input class="txtNew" type="text" id="txtConfirm" name="confirm" /></br>
 	    			</div>
