@@ -14,8 +14,8 @@ public class User {
 	
 	// fields
 	@NotBlank(message="Username cannot be blank.")
-	@Size(min=4, max=16, message="The username must be 4-16 characters long.")
-	@Pattern(regexp = "^\\w{4,}$")
+	@Size(min=4, max=10, message="Username must be 4-10 characters long")
+	@Pattern(regexp = "^[A-Z,a-z]\\w{3,9}$", message="The username is not match conditions.")
 	private String username;
 	
 	@Size(min=4, max=16, message="The password must be 3-40 characters long.")

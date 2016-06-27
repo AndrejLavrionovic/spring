@@ -17,6 +17,9 @@
 					<li>User must be older then 16 and younger than 80.</li>
 					<li>Phone number must be with Irish provider (+353)</li>
 					<li>Username must be unique.</li>
+					<li>Username must begin with any letter (NOT a number or symbol).</li>
+					<li>Username must NOT contain any symbols.</li>
+					<li>Username must be 4 - 10 characters long.</li>
 					<li>Password must be save and must contain atleast one number, one character.</li>
 				</ol>
 				</header>
@@ -25,6 +28,8 @@
 	    		<!-- :::::::::::::::::::::: FORM NEW USER ::::::::::::::::::::: -->
 	    		<div id="newUserSection">
 	    			<sf:form method="post" action="${pageContext.request.contextPath}/docreate" id="frmNewUser" commandName="user">
+	    			
+	    			<sf:errors path="*" cssClass="error" element="div"></sf:errors>
 	    			
 	    			<div id="frmUser">
 	    				<div id="nameBlock">
@@ -40,9 +45,6 @@
 	    						<sf:input path="lastname" class="txtNew" type="text" id="txtLastname" name="lastname" />
 	    					</div>
 	    				</div>
-	    				
-	    				<div id="divError"><sf:errors path="firstname" cssClass="error"></sf:errors></div></br>
-	    				<div id="divError"><sf:errors path="lastname" cssClass="error"></sf:errors></div></br>
 	    				
 	    				<!-- 	
 	    				<label class="lblNew" id="lblEmpnum">Employee Num:</label>
@@ -78,10 +80,6 @@
 	    					</div>
 	    				</div>
 	    				
-	    				
-	    				<div id="divError"><sf:errors path="tel" cssClass="error"></sf:errors></div></br>
-	    				<div id="divError"><sf:errors path="email" cssClass="error"></sf:errors></div></br>
-	    				
 	    				<label class="lblNew id="lblStatus">Authority:</label>
 	    				
 	    				<select class="selNew" name="authority" style="width: 193px; background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white; -webkit-appearance: none; -moz-appearance: none;" >
@@ -95,12 +93,10 @@
 	    			</div>
 	    			
 	    			<div id="login">
-	    				<label class="lblNew" id="lblUsername">Username:</label>
-	    				<sf:input path="username" class="txtNew" type="text" id="txtUsername" name="username" />
-	    				<div id="divError"><sf:errors path="username" cssClass="error"></sf:errors></div></br>
+	    				<label class="lblNew" id="lblUsername" for="txtUsername">Username:</label>
+	    				<sf:input path="username" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" name="username" id="txtUsername" /><br />
 	    				<label class="lblNew" id="lblPassword">Password:</label>
-	    				<sf:input path="password" class="txtNew" type="text" id="txtPassword" name="password" />
-	    				<div id="divError"><sf:errors path="password" cssClass="error"></sf:errors></div></br>
+	    				<sf:input path="password" class="txtNew" type="text" id="txtPassword" name="password" /><br />
 	    				<label class="lblNew" id="lblConfirm">Confirm password:</label>
 	    				<input class="txtNew" type="text" id="txtConfirm" name="confirm" /></br>
 	    			</div>

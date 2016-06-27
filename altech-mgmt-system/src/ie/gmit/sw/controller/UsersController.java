@@ -13,6 +13,9 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -84,7 +87,7 @@ public class UsersController {
 	// CREATE USER FORM EXECUTION
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	@RequestMapping(value="/docreate", method=RequestMethod.POST)
-	public String doCreate(@Valid User user, BindingResult result, Model model, Principal principal){
+	public String doCreate(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, Principal principal){
 		
 		
 		try{
@@ -105,7 +108,23 @@ public class UsersController {
 		// Validation #1
 		//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 		if(result.hasErrors()){
-			logger.info("Data is Not Valid");
+			logger.info("DATA IS NOT VALID");
+			logger.warn("Object name --> " + result.getObjectName());
+			logger.warn("Errors --> " + result.getErrorCount());
+			List<String> fields = new ArrayList<String>();
+			List<FieldError> f = result.getFieldErrors();
+			for(FieldError fe : f){
+				String field = "";
+				if(!fields.contains(fe.getField())){
+					fields.add(fe.getField());
+				}
+				
+			}
+			logger.info("Wrong fields -> " + fields.size());
+			for(String fld : fields){
+				logger.info("--> " + fld);
+			}
+			
 			return "create";
 		}
 		
