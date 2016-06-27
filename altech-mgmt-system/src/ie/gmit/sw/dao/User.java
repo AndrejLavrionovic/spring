@@ -7,7 +7,6 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import ie.gmit.sw.dao.user.UserDobConverter;
 
@@ -15,8 +14,8 @@ public class User {
 	
 	// fields
 	@NotBlank(message="Username cannot be blank.")
-	@Size(min=3, max=45, message="The username must be 3-40 characters long.")
-	@NotNull
+	@Size(min=4, max=16, message="The username must be 4-16 characters long.")
+	@Pattern(regexp = "^\\w{4,}$")
 	private String username;
 	
 	@Size(min=4, max=16, message="The password must be 3-40 characters long.")
@@ -26,22 +25,10 @@ public class User {
 	private String password;
 	
 	private boolean enabled = false;
-	
-	@NotNull
-	@Pattern(regexp=".*\\@.*\\..*", message="Email is not valid.")
 	private String email;
-	
-	@Size(min=3, max=40, message="The name must be 3-40 characters long.")
-	@NotNull
 	private String firstname;
-	
-	@Size(min=3, max=40, message="The lastname must be 3-40 characters long.")
-	@NotNull
 	private String lastname;
-	
-	@NotNull
 	private String authority;
-	
 	private Integer telNumber;
 	private String telPrefix;
 	private String tel;
