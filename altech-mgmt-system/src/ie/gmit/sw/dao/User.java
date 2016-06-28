@@ -2,6 +2,8 @@ package ie.gmit.sw.dao;
 
 import java.sql.Date;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -34,13 +36,16 @@ public class User {
 	@NotNull(message="Number must not be null")
 	@Pattern(regexp="\\d{7}", message="Number is not valid.")
 	private String telNumber;
-	@Pattern(regexp="\\d{3}", message="Prefix must be selected")
+	@Pattern(regexp="\\d{3}", message="Tel. number prefix must be selected.")
 	private String telPrefix;
 	private String tel;
 	private Integer empnum;
 	private Date dob;
+	@Min(value=0, message="Select DOB:Month.")
 	private Integer month;
+	@Min(value=1, message="Select DOB:Day.")
 	private Integer day;
+	@Min(value=1900, message="Select DOB:Year.")
 	private Integer year;
 	
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::

@@ -50,9 +50,9 @@
 	    				<div id="blockDob">
 							<label class="lblNew" id="lblDatePicker" for="inDatePicker">Date of birth:</label>
 							<div id="inDatePicker">
-								<sf:select path="month" style="background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white; -webkit-appearance: none; -moz-appearance: none;" class="selNew" id="pickMonth"></sf:select>
-								<sf:select path="day" style="background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white; -webkit-appearance: none; -moz-appearance: none;" class="selNew" id="pickDay"></sf:select>
-								<sf:select path="year" style="background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white; -webkit-appearance: none; -moz-appearance: none;" class="selNew" id="pickYear"></sf:select>
+								<sf:select path="month" cssClass="selNew" cssErrorClass="selNew selError" id="pickMonth"></sf:select>
+								<sf:select path="day" cssClass="selNew" cssErrorClass="selNew selError" id="pickDay"></sf:select>
+								<sf:select path="year" cssClass="selNew" cssErrorClass="selNew selError" id="pickYear"></sf:select>
 							</div>
 	    				</div>
 	    				
