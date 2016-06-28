@@ -64,8 +64,8 @@
 	    					<div id="txtTelBlock">
 	    						<label class="lblTops" id="lblTel" for="txtTel">Tel. number</label>
 	    						<div>
-	    							<sf:select path="telPrefix" style="display: inline-block; background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white; -webkit-appearance: none; -moz-appearance: none;" class="selNew" id="selTelPrefix"></sf:select>
-	    							<sf:input path="telNumber" class="txtNew" type="text" id="txtTel" style="display: inline-block;" />
+	    							<sf:select path="telPrefix" cssClass="selNew" cssErrorClass="selNew selError" id="selTelPrefix"></sf:select>
+	    							<sf:input path="telNumber" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtTel" style="display: inline-block;" />
 	    						</div>
 	    						
 	    					</div>

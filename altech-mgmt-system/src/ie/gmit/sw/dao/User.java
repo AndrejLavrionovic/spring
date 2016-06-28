@@ -2,7 +2,9 @@ package ie.gmit.sw.dao;
 
 import java.sql.Date;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -27,7 +29,12 @@ public class User {
 	private String firstname;
 	private String lastname;
 	private String authority;
-	private Integer telNumber;
+	
+	@NotBlank(message="Number must not be blank")
+	@NotNull(message="Number must not be null")
+	@Pattern(regexp="\\d{7}", message="Number is not valid.")
+	private String telNumber;
+	@Pattern(regexp="\\d{3}", message="Prefix must be selected")
 	private String telPrefix;
 	private String tel;
 	private Integer empnum;
@@ -125,8 +132,8 @@ public class User {
 		this.tel = tel;
 	}
 	
-	public void setTel(String telPrefix, Integer telNumber){
-		this.tel = telPrefix.concat(String.format("%d", telNumber));
+	public void setTel(String telPrefix, String telNumber){
+		this.tel = telPrefix.concat(String.format("%s", telNumber));
 	}
 
 	public String getAuthority() {
@@ -180,10 +187,10 @@ public class User {
 	public void setTelPrefix(String telPrefix){
 		this.telPrefix = telPrefix;
 	}
-	public Integer getTelNumber(){
+	public String getTelNumber(){
 		return this.telNumber;
 	}
-	public void setTelNumber(Integer telNumber){
+	public void setTelNumber(String telNumber){
 		this.telNumber = telNumber;
 	}
 

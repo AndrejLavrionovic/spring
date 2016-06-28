@@ -123,6 +123,10 @@ public class UsersController {
 				logger.info("--> " + fld);
 			}
 			
+			Integer selectFields = new Integer(1);
+			
+			model.addAttribute("selctFields", selectFields);
+			
 			return "create";
 		}
 		

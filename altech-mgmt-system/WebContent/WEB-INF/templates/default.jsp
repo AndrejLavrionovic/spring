@@ -15,6 +15,19 @@
 <c:forEach var="css" items="${stylesheets}">
 	<link href="<c:url value="${css}" />" type="text/css" rel="stylesheet" />
 </c:forEach>
+<c:if test="${selctFields == 1}">
+	<style type="text/css">
+		.selNew{
+			display: inline-block;
+			background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+		}
+		.selError{
+			background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right #FFE0DD;
+		}
+	</style>
+</c:if>
 <title><tiles:insertAttribute name="title"></tiles:insertAttribute></title>
 </head>
 <body>
