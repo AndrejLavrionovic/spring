@@ -39,11 +39,11 @@
 	    					</div>
 	    					<div id="txtFirstnameBlock">
 	    						<label class="lblTops" id="lblFirstname" for="txtFirstname">Firstname:</label>
-	    						<sf:input path="firstname" class="txtNew" type="text" id="txtFirstname" />
+	    						<sf:input path="firstname" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtFirstname" />
 	    					</div>
 	    					<div id="txtLastnameBlock">
 	    						<label class="lblTops" id="lblLastname" for="lblLastname">Lastname:</label>
-	    						<sf:input path="lastname" class="txtNew" type="text" id="txtLastname" />
+	    						<sf:input path="lastname" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtLastname" />
 	    					</div>
 	    				</div>
 	    				
@@ -77,13 +77,13 @@
 	    				
 	    				<label class="lblNew" id="lblStatus" for="selAuthority">Authority:</label>
 	    				
-	    				<select id="selAuthority" class="selNew" name="authority" style="width: 193px; background:url('${pageContext.request.contextPath}/src/img/select_arrow_20x30.png') no-repeat right white; -webkit-appearance: none; -moz-appearance: none;" >
-	    					<option selected="selected" value="0"></option>
+	    				<sf:select path="authority" id="selAuthority" cssClass="selNew" cssErrorClass="selNew selError" >
+	    					<option selected="selected" value=""></option>
 							<option value="user" >Employee</option>
 						 	<option value="man">Office Manager</option>
 						 	<option value="head">Head Manager</option>
 						 	<option value="hr">HR Admin</option>
-					 	</select>
+					 	</sf:select>
 	    				<br />
 	    			</div>
 	    			
