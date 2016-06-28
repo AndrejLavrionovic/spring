@@ -20,6 +20,9 @@ public class User {
 	private String password;
 	
 	private boolean enabled = false;
+	
+	@NotBlank(message="Email cannot be blank.")
+	@Pattern(regexp="^[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*@altech\\.ie$", message="Email is not valid.")
 	private String email;
 	private String firstname;
 	private String lastname;

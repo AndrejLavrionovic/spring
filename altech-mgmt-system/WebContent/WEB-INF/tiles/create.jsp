@@ -71,7 +71,7 @@
 	    					</div>
 	    					<div id="txtEmailBlock">
 	    						<label class="lblTops" id="lblEmail" for="txtEmail">Email</label>
-	    						<sf:input path="email" class="txtNew" type="text" id="txtEmail" />
+	    						<sf:input path="email" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtEmail" />
 	    					</div>
 	    				</div>
 	    				
