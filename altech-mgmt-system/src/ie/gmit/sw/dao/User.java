@@ -15,10 +15,10 @@ public class User {
 	
 	// fields
 	@NotBlank(message="Username cannot be blank.")
-	@Pattern(regexp = "^[A-Z,a-z]\\w{3,9}$", message="The username is not match conditions. (Look conditions: 4-7)")
+	@Pattern(regexp = "^[A-Z,a-z]\\w{3,19}$", message="The username is not match conditions. (Look conditions: 4-7)")
 	private String username;
 	@NotBlank(message="Password cannot be blank.")
-	@Pattern(regexp="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[_\\W]).{8,16}$", message="Password is not match conditions. (Look: 8-10)")
+	@Pattern(regexp="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[_\\W]).{8,32}$", message="Password is not match conditions. (Look: 8-10)")
 	private String password;
 	private boolean enabled = false;
 	@NotBlank(message="Email cannot be blank.")

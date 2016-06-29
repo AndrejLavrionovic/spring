@@ -19,9 +19,9 @@
 					<li>Username must be unique.</li>
 					<li>Username must begin with any letter (NOT a number or symbol).</li>
 					<li>Username must NOT contain any symbols.</li>
-					<li>Username must be 4 - 10 characters long.</li>
+					<li>Username must be 4 - 20 characters long.</li>
 					<li>Password must contain atleast one number, uppercase letter, lowercase letter, non-letter symbol.</li>
-					<li>Password must be 8-16 characters long.</li>
+					<li>Password must be 8-32 characters long.</li>
 				</ol>
 				</header>
 	    		
