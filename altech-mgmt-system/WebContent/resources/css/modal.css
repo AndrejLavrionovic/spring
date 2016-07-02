@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+.spanModal{
+	display: inline-block;
+	padding: 0px 0px 0px 5px;
+	font: bold 14px calibri;
+	border: 0px solid black;
+	vertical-align: top;
+	color: #303030;
+	width: 15px;
+	cursor: pointer;
+}

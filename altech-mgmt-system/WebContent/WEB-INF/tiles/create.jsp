@@ -39,11 +39,11 @@
 	    						<label class="lblNew" id="lblName">User name:</label>
 	    					</div>
 	    					<div id="txtFirstnameBlock">
-	    						<label class="lblTops" id="lblFirstname" for="txtFirstname">Firstname:</label>
+	    						<label class="lblTops" id="lblFirstname" for="txtFirstname">Firstname:<span class="spanModal" id="modalDob">(?)</span></label>
 	    						<sf:input path="firstname" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtFirstname" />
 	    					</div>
 	    					<div id="txtLastnameBlock">
-	    						<label class="lblTops" id="lblLastname" for="lblLastname">Lastname:</label>
+	    						<label class="lblTops" id="lblLastname" for="lblLastname">Lastname:<span class="spanModal" id="modalDob">(?)</span></label>
 	    						<sf:input path="lastname" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtLastname" />
 	    					</div>
 	    				</div>
@@ -63,7 +63,7 @@
 	    						<label class="lblNew" id="lblContacts" for="txtTelBlock">User Contacts:</label>
 	    					</div>
 	    					<div id="txtTelBlock">
-	    						<label class="lblTops" id="lblTel" for="txtTel">Tel. number</label>
+	    						<label class="lblTops" id="lblTel" for="txtTel">Tel. number<span class="spanModal" id="modalDob">(?)</span></label>
 	    						<div>
 	    							<sf:select path="telPrefix" cssClass="selNew" cssErrorClass="selNew selError" id="selTelPrefix"></sf:select>
 	    							<sf:input path="telNumber" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtTel" style="display: inline-block;" />
@@ -71,7 +71,7 @@
 	    						
 	    					</div>
 	    					<div id="txtEmailBlock">
-	    						<label class="lblTops" id="lblEmail" for="txtEmail">Email</label>
+	    						<label class="lblTops" id="lblEmail" for="txtEmail">Email<span class="spanModal" id="modalDob">(?)</span></label>
 	    						<sf:input path="email" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtEmail" />
 	    					</div>
 	    				</div>
@@ -89,9 +89,9 @@
 	    			</div>
 	    			
 	    			<div id="login">
-	    				<label class="lblNew" id="lblUsername" for="txtUsername">Username:</label>
+	    				<label class="lblNew" id="lblUsername" for="txtUsername">Username:<span class="spanModal" id="modalDob">(?)</span></label>
 	    				<sf:input path="username" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtUsername" /><br />
-	    				<label class="lblNew" id="lblPassword" for="txtPassword">Password:</label>
+	    				<label class="lblNew" id="lblPassword" for="txtPassword">Password:<span class="spanModal" id="modalDob">(?)</span></label>
 	    				<sf:input path="password" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtPassword" /><br />
 	    				<label class="lblNew" id="lblConfirm">Confirm password:</label>
 	    				<input class="txtNew" type="text" id="txtConfirm" name="confirm" /><br />

@@ -192,6 +192,7 @@
 			<add-attribute value="/src/css/main.css" />
 			<add-attribute value="/src/css/user.css" />
 			<add-attribute value="/src/css/newUser.css" />
+			<add-attribute value="/src/css/modal.css" />
 		</put-list-attribute>
 	</definition>
 	
