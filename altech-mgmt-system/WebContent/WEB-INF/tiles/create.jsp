@@ -63,7 +63,7 @@
 	    						<label class="lblNew" id="lblContacts" for="txtTelBlock">User Contacts:</label>
 	    					</div>
 	    					<div id="txtTelBlock">
-	    						<label class="lblTops" id="lblTel" for="txtTel">Tel. number<span class="spanModal" id="modalDob">(?)</span></label>
+	    						<label class="lblTops" id="lblTel" for="txtTel">Tel. number<span class="spanModal" id="modalTel">(?)</span></label>
 	    						<div>
 	    							<sf:select path="telPrefix" cssClass="selNew" cssErrorClass="selNew selError" id="selTelPrefix"></sf:select>
 	    							<sf:input path="telNumber" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtTel" style="display: inline-block;" />
@@ -71,7 +71,7 @@
 	    						
 	    					</div>
 	    					<div id="txtEmailBlock">
-	    						<label class="lblTops" id="lblEmail" for="txtEmail">Email<span class="spanModal" id="modalDob">(?)</span></label>
+	    						<label class="lblTops" id="lblEmail" for="txtEmail">Email<span class="spanModal" id="modalEmail">(?)</span></label>
 	    						<sf:input path="email" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtEmail" />
 	    					</div>
 	    				</div>
@@ -91,7 +91,7 @@
 	    			<div id="login">
 	    				<label class="lblNew" id="lblUsername" for="txtUsername">Username:<span class="spanModal" id="modalUsername">(?)</span></label>
 	    				<sf:input path="username" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtUsername" /><br />
-	    				<label class="lblNew" id="lblPassword" for="txtPassword">Password:<span class="spanModal" id="modalDob">(?)</span></label>
+	    				<label class="lblNew" id="lblPassword" for="txtPassword">Password:<span class="spanModal" id="modalPassword">(?)</span></label>
 	    				<sf:input path="password" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtPassword" /><br />
 	    				<label class="lblNew" id="lblConfirm">Confirm password:</label>
 	    				<input class="txtNew" type="text" id="txtConfirm" name="confirm" /><br />
@@ -105,7 +105,20 @@
 	    			</div>
 	    			
 	    			</sf:form>
-	    			
-	    			<script src="${pageContext.request.contextPath}/src/js/dataPicker.js"></script>
-	    			<script src="${pageContext.request.contextPath}/src/js/modal.js"></script>
 	    		</div>
+	    		
+	    		<div id="myModal" class="modal">
+		            <div id="modalwindow" class="modalwindow">
+		
+		                <header id="modalHeader"><img id="imgClose" src="${pageContext.request.contextPath}/src/img/close_32.png" /></header>
+		                <section id="modalContent">
+		                    <h3 id="fieldName"></h3>
+		                    <ul id="conditions">
+		                    </ul>
+		                </section>
+		
+		            </div>
+		        </div>
+	    			
+    			<script src="${pageContext.request.contextPath}/src/js/dataPicker.js"></script>
+    			<script src="${pageContext.request.contextPath}/src/js/modal.js"></script>
