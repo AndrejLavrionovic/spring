@@ -15,21 +15,21 @@ public class User {
 	
 	// fields
 	@NotBlank(message="Username cannot be blank.")
-	@Pattern(regexp = "^[A-Z,a-z]\\w{3,19}$", message="The username is not match conditions. (Look conditions: 4-7)")
+	@Pattern(regexp = "^[A-Z,a-z]\\w{3,32}$", message="The username is not match conditions. (Look conditions: 4-7)")
 	private String username;
 	@NotBlank(message="Password cannot be blank.")
 	@Pattern(regexp="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[_\\W]).{8,32}$", message="Password is not match conditions. (Look: 8-10)")
 	private String password;
 	private boolean enabled = false;
 	@NotBlank(message="Email cannot be blank.")
-	@Pattern(regexp="^[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*@altech\\.ie$", message="Email is not valid.")
+	@Pattern(regexp="^[A-Za-z0-9]{1,25}(\\.[A-Za-z0-9]{1,25})*@altech\\.ie$", message="Email is not valid.")
 	private String email;
 	@NotBlank(message="Enter firstname.")
-	@Pattern(regexp="^[A-Z][a-z]{1,20}(-[A-Za-z][a-z]{0,20})*(\\s[A-Za-z][a-z]{0,20})*$", message="Firstame is not valid.")
+	@Pattern(regexp="^[A-Z][a-z']{1,24}(-[A-Za-z][a-z]{0,20})*(\\s[A-Za-z][a-z]{0,20})*$", message="Firstame is not valid.")
 	@Size(max=45, message="Firstname is to long.")
 	private String firstname;
 	@NotBlank(message="Enter lastname.")
-	@Pattern(regexp="^[A-Z][a-z]{1,20}(-[A-Za-z][a-z]{0,20})*(\\s[A-Za-z][a-z]{0,20})*$", message="Lastname is not valid.")
+	@Pattern(regexp="^[A-Z][a-z']{1,24}(-[A-Za-z][a-z]{0,20})*(\\s[A-Za-z][a-z]{0,20})*$", message="Lastname is not valid.")
 	@Size(max=45, message="Lastname is to long.")
 	private String lastname;
 	@Pattern(regexp="\\w+", message="Select authority.")

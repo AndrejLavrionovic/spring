@@ -6,27 +6,49 @@ $(document).ready(function(){
 	
 	var cond = [
 	    {
-	    	'field' : '',
-	    	'condition' : []
+	    	'field' : 'Firstname',
+	    	'condition' : [
+	    	    'Firstname starts with capital letter',
+	    	    'Firstname contains letters and could contain apostrophe (\')',
+	    	    'Firstname could contain two parts separated by hyphen (-)',
+	    	    'Firstname could contain two parts separated by white spase',
+	    	    'Firstname must be at most 25 letters long',
+	    	    'If firstname contains two parts separated by hyphen or white spase, the second part must be at most 20 letters long'
+	    	]
 	    },
 	    {
-	    	'field' : '',
-	    	'condition' : []
+	    	'field' : 'Lastname',
+	    	'condition' : [
+                'Lastname starts with uppercase letter',
+                'Lastname contains letters and could contain apostrophe (\')',
+                'Lastname could contain two parts separated by hyphen (-)',
+	    	    'Lastname could contain two parts separated by white spase',
+	    	    'Lastname must be at most 25 letters long',
+	    	    'If Lastname contains two parts separated by hyphen or white spase, the second part must be at most 20 letters long'
+	        ]
 	    },
 	    {
-	    	'field' : '',
-	    	'condition' : []
+	    	'field' : 'Telephone',
+	    	'condition' : [
+	    	    'Telephone must contain only numbers (0-9)',
+	    	    'Second part of telephone number must be 7 digits long'
+	    	]
 	    },
 	    {
-	    	'field' : '',
-	    	'condition' : []
+	    	'field' : 'Email',
+	    	'condition' : [
+	    	    'Email contains @altech.ie sufix',
+	    	    'Email address could contain two parts separated by dot (.)',
+	    	    'Each part of email must be at most 25 charachters',
+	    	    'Email could consist of letters and numbers'
+	    	]
 	    },
         {
             'field' : 'Username',
             'condition' : [
                 'Username must be unique',
-                'Username must be 8 characters min',
-                'Username must not content symbols'
+                'Username must be 3-32 characters long',
+                'Username could contain uppercase, lowercase letters, numbers or underscore (_)'
             ]
         },
         {
