@@ -39,11 +39,11 @@
 	    						<label class="lblNew" id="lblName">User name:</label>
 	    					</div>
 	    					<div id="txtFirstnameBlock">
-	    						<label class="lblTops" id="lblFirstname" for="txtFirstname">Firstname:<span class="spanModal" id="modalDob">(?)</span></label>
+	    						<label class="lblTops" id="lblFirstname" for="txtFirstname">Firstname:<span class="spanModal" id="modalFirstname">(?)</span></label>
 	    						<sf:input path="firstname" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtFirstname" />
 	    					</div>
 	    					<div id="txtLastnameBlock">
-	    						<label class="lblTops" id="lblLastname" for="lblLastname">Lastname:<span class="spanModal" id="modalDob">(?)</span></label>
+	    						<label class="lblTops" id="lblLastname" for="lblLastname">Lastname:<span class="spanModal" id="modalLastname">(?)</span></label>
 	    						<sf:input path="lastname" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtLastname" />
 	    					</div>
 	    				</div>
@@ -89,7 +89,7 @@
 	    			</div>
 	    			
 	    			<div id="login">
-	    				<label class="lblNew" id="lblUsername" for="txtUsername">Username:<span class="spanModal" id="modalDob">(?)</span></label>
+	    				<label class="lblNew" id="lblUsername" for="txtUsername">Username:<span class="spanModal" id="modalUsername">(?)</span></label>
 	    				<sf:input path="username" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtUsername" /><br />
 	    				<label class="lblNew" id="lblPassword" for="txtPassword">Password:<span class="spanModal" id="modalDob">(?)</span></label>
 	    				<sf:input path="password" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtPassword" /><br />
@@ -107,4 +107,5 @@
 	    			</sf:form>
 	    			
 	    			<script src="${pageContext.request.contextPath}/src/js/dataPicker.js"></script>
+	    			<script src="${pageContext.request.contextPath}/src/js/modal.js"></script>
 	    		</div>
