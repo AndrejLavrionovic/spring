@@ -24,6 +24,16 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<url>http://52.50.110.186:8080/manager/text</url>
+					<server>TomcatServer</server>
+					<path>/altech-mgmt-system</path>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
