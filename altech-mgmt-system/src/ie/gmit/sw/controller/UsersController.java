@@ -130,6 +130,12 @@ public class UsersController {
 			return "create";
 		}
 		
+		if(userService.exists(user.getUsername())){
+			System.out.println("Caught duplcate username!");
+			result.rejectValue("username", "DuplicateKey.users.username", "This username allready exists!");
+			return "create";
+		}
+		
 		try { // if username allready exists
 			userService.create(user);
 		} catch (DuplicateKeyException e) {

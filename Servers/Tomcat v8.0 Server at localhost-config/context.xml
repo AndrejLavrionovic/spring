@@ -36,16 +36,18 @@
     -->
     
     <!-- ::::::::::::::::::::JNDI pulled datasource :::::::::::::::::::::::::-->
-    <!-- 
+    <!--
     <Resource name="jdbc/altechDB" auth="Container" type="javax.sql.DataSource"
                maxTotal="100" maxIdle="30" maxWaitMillis="10000"
                username="g00196984" password="ZqGbpU$8" driverClassName="com.mysql.jdbc.Driver"
                url="jdbc:mysql://altech.cjvklrqzvmym.eu-west-1.rds.amazonaws.com:3306/altechdb"/>
-               
-    -->
+    -->          
+    
                
     <Resource name="jdbc/altechDB" auth="Container" type="javax.sql.DataSource"
                maxTotal="100" maxIdle="30" maxWaitMillis="10000"
                username="root" password="" driverClassName="com.mysql.jdbc.Driver"
                url="jdbc:mysql://localhost:3306/altechdb"/>
+			   
+	
 </Context>
