@@ -39,8 +39,8 @@
 
 .lblNew{
 	display: inline-block;
-	width: 150px;
-	font: normal 16px verdana;
+	width: 160px;
+	font: normal 14px verdana;
 	color: #2D2C2C;
 	margin: 0 0 5px 0;
 }
@@ -91,7 +91,7 @@
 	border: 0px solid red;
 }
 #lblNameBlock{
-	width: 150px;
+	width: 160px;
 }
 #txtFirstnameBlock, #txtLastnameBlock{
 	width: 190px;
