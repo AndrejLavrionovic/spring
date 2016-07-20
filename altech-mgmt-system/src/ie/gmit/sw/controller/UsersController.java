@@ -1,7 +1,9 @@
 package ie.gmit.sw.controller;
 
 import java.security.Principal;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -409,6 +411,8 @@ public class UsersController {
 		try{
 			if(!username.isEmpty() && username != null){ // if username is entered
 				user = userService.getUserByUsername(username);
+				logger.info("User Age: " + getUserAge(user.getDob()));
+				model.addAttribute("age", getUserAge(user.getDob()));
 				model.addAttribute("user", user);
 			}
 			else{
@@ -430,5 +434,29 @@ public class UsersController {
 		}
 		
 		return "userinfo";
+	}
+	
+	public int getUserAge(Date dateOfBirth){
+		
+		// convert sql.Date into Calendar
+		Calendar dob = Calendar.getInstance();
+		dob.setTime(dateOfBirth);
+		
+		// Current time
+		Calendar now = Calendar.getInstance();
+		
+		int days = now.get(Calendar.DAY_OF_MONTH) - dob.get(Calendar.DAY_OF_MONTH);
+		int months = now.get(Calendar.MONTH) - dob.get(Calendar.MONTH);
+		int years = now.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+		
+		// age algorithm
+		if (months < 0)
+			--years;
+		else if(months == 0){
+			if(days < 0)
+				--years;
+		}
+		
+		return years;
 	}
 }

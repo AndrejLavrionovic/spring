@@ -12,6 +12,9 @@
 	border: 1px solid #a5a5a5;
 }
 
+/*****************************************
+****PERSONAL INFORMATION HEADER DESIGN****
+******************************************/
 #hdrPersonalInfo{
 	font: bold 16px verdana;
 	margin-bottom:20px;
@@ -19,11 +22,117 @@
 	padding-left: 10px;
 	height: 25px;
 }
+#hdrPersonalInfo #title{
+	display: inline-block;
+	border: 0px solid orange;
+	width: 430px;
+	font-family: calibri;
+}
+#hdrPersonalInfo #controls{
+	display: inline-block;
+	border: 0px solid green;
+	width: 120px;
+	text-align: right;
+}
+#hdrPersonalInfo #controls div{
+	display: inline-block;
+	border:0px solid blue;
+	width: 20px;
+}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*****************************************
+***PERSONAL INFORMATION SECTION DESIGN****
+******************************************/
 #secPersonalInfo{
 	margin-bottom: 20px;
 	padding: 10px;
 }
+#secPersonalInfo #leftBlock{
+	display: inline-block;
+	border: 1px solid red;
+	height: 132px;
+	width: 102px;
+	vertical-align: top;
+	margin-right: 50px;
+}
+#secPersonalInfo #mainBlock{
+	display: inline-block;
+	border: 0px solid red;
+	width: 350px;
+	vertical-align: top;
+}
+#usrName{
+	font-weight: bold;
+	font-size: 20px;
+	padding-bottom: 10px;
+}
+table .infoname{
+	width: 150px;
+	font: bold 12px calibri;
+}
+table .infovalue{
+	border: 0px solid red;
+	font: normal 12px calibri;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .btmMngUsers{
 	display: inline-block;
@@ -48,11 +157,3 @@
 /*****************************************************************
 /// PERSONAL USER INFO TABLE
 *****************************************************************/
-table .infoname{
-	width: 200px;
-}
-
-table .infovalue{
-	border: 0px solid red;
-	width: 300px;
-}
