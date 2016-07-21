@@ -1,6 +1,7 @@
 package ie.gmit.sw.dao;
 
 import java.sql.Date;
+import java.util.Calendar;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -165,7 +166,12 @@ public class User {
 	}
 
 	public Integer getMonth() {
-		return month;
+		if(this.month == null && this.dob != null){
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(dob);
+			this.month = cal.get(Calendar.MONTH);
+		}
+		return this.month;
 	}
 
 	public void setMonth(Integer month) {
@@ -173,7 +179,12 @@ public class User {
 	}
 
 	public Integer getDay() {
-		return day;
+		if(this.day == null && this.dob != null){
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(dob);
+			this.day = cal.get(Calendar.DAY_OF_MONTH);
+		}
+		return this.day;
 	}
 
 	public void setDay(Integer day) {
@@ -181,7 +192,12 @@ public class User {
 	}
 
 	public Integer getYear() {
-		return year;
+		if(this.year == null && this.dob != null){
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(dob);
+			this.year = cal.get(Calendar.YEAR);
+		}
+		return this.year;
 	}
 
 	public void setYear(Integer year) {
@@ -189,12 +205,18 @@ public class User {
 	}
 	
 	public String getTelPrefix(){
+		if(this.telPrefix == null && this.tel != null){
+			this.telPrefix = this.tel.substring(0, 3);
+		}
 		return this.telPrefix;
 	}
 	public void setTelPrefix(String telPrefix){
 		this.telPrefix = telPrefix;
 	}
 	public String getTelNumber(){
+		if(this.telNumber == null && this.tel != null){
+			this.telNumber = this.tel.substring(3, 10);
+		}
 		return this.telNumber;
 	}
 	public void setTelNumber(String telNumber){
