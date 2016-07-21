@@ -1,7 +1,23 @@
 @CHARSET "UTF-8";
 
 #editUserSection{
-	
+	border: 1px solid #a5a5a5;
+}
+/********************************************
+************EDIT USER HEADER*****************
+*********************************************/
+#editUserSection > header{
+	font: bold 16px calibri;
+	margin-bottom:20px;
+	background-color: #a5a5a5;
+	padding-left: 10px;
+	height: 25px;
+}
+#editUserSection > header #title{
+	display: inline-block;
+	border: 0px solid orange;
+	width: 430px;
+	color: #000
 }
 
 #frmEditUser{

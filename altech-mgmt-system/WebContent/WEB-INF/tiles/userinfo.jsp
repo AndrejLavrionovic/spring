@@ -25,7 +25,7 @@
 					<tr><td class="infoname">Username:</td><td class="infovalue"><c:out value="${user.username}" /></td></tr>
 					<tr><td class="infoname">Telephone number:</td><td class="infovalue"><c:out value="${user.tel}" /></td></tr>
 					<tr><td class="infoname">Email address:</td><td class="infovalue"><c:out value="${user.email}" /></td></tr>
-					<tr><td class="infoname">Age:</td><td class="infovalue"><c:out value="${age}" /></td></tr>
+					<tr><td class="infoname">Age:</td><td class="infovalue"><c:out value="${age }" /></td></tr>
 				</table>
 			</div>
 		</section>

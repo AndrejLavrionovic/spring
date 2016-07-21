@@ -4,13 +4,17 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-	    	
-	    		<header id="hdrTitle">Edit user:</header>
 	    		
 	    		
 	    		<!-- :::::::::::::::::::::: FORM EDIT USER ::::::::::::::::::::: -->
 	    		<div id="editUserSection">
+	    			<header>
+	    				<div id="title"><c:out value="${user.firstname}" /> user edit.</div>
+	    			</header>
+	    			<section>
+	    				
+	    			</section>
+	    			<footer></footer>
 	    			
 	    			
 	    			<sf:form method="post" action="${pageContext.request.contextPath}/doupdateuser" id="frmUpdateUser" commandName="user">

@@ -16,7 +16,7 @@
 ****PERSONAL INFORMATION HEADER DESIGN****
 ******************************************/
 #hdrPersonalInfo{
-	font: bold 16px verdana;
+	font: bold 16px calibri;
 	margin-bottom:20px;
 	background-color: #a5a5a5;
 	padding-left: 10px;
@@ -26,7 +26,6 @@
 	display: inline-block;
 	border: 0px solid orange;
 	width: 430px;
-	font-family: calibri;
 }
 #hdrPersonalInfo #controls{
 	display: inline-block;
@@ -39,38 +38,6 @@
 	border:0px solid blue;
 	width: 20px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*****************************************
 ***PERSONAL INFORMATION SECTION DESIGN****
@@ -106,33 +73,6 @@ table .infovalue{
 	border: 0px solid red;
 	font: normal 12px calibri;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .btmMngUsers{
 	display: inline-block;
