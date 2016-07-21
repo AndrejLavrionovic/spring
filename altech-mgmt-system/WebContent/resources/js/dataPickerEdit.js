@@ -7,14 +7,17 @@ var d = new Date();var year = d.getFullYear();
 var globalMonthValue=null;var globalYearValue=null;var globalDayValue=null;
 function monthOptons(m){
     var sel = document.getElementById("pickMonth");
+    var month = document.getElementById("month").value;
     for(i = 0, y = 0; i <= m.length; i++){
         var opt = document.createElement("option");
         if(i===0){opt.text="";opt.value=-1;}else{opt.text = m[y];opt.value = y++;}
+        if(month != null && month == i){opt.selected = true;}
         sel.appendChild(opt);
     }
 }
 function dayOptions(m, y){
     var sel = document.getElementById("pickDay");
+    var day = document.getElementById("day").value;
     
     var d = 31;
     if(m==null){d=31;}
@@ -36,22 +39,27 @@ function dayOptions(m, y){
         var opt = document.createElement("option");
         if(i===0){opt.text="";opt.value=-1;}else{opt.text = i;opt.value=i;}
         if(i==globalDayValue){opt.selected = true;}
+        if(day != null && day < d && i == day){opt.selected = true}
         sel.appendChild(opt);
     }
 }
 function yearOptions(start, end){
     var sel = document.getElementById("pickYear");
+    var year = document.getElementById("year").value;
     var range = end - start;
     for(i = 0; i <= range; i++){
         var opt = document.createElement("option");
+        if(year != null && year == start){opt.selected = true;}
         if(i===0){opt.text="";opt.value=-1;}else{opt.text = start;opt.value = start++;}
         sel.appendChild(opt);
     }
 }
 function telPrefixOptions(){
 	var sel = document.getElementById("selTelPrefix");
+	var telPref = document.getElementById("telPref").value;
 	for (i=0,y=0;i<=telPrefix.length;i++){
 		var opt = document.createElement("option");
+		if(telPref != null && telPref == telPrefix[y]){opt.selected = true;}
 		if(i===0){opt.text="";opt.value=-1;}else{opt.text=telPrefix[y];opt.value=telPrefix[y++];}
 		sel.appendChild(opt);
 	}

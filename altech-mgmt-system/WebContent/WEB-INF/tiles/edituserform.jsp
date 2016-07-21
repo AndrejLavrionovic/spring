@@ -98,5 +98,5 @@
 		            </div>
 		        </div>
 	    			
-    			<script src="${pageContext.request.contextPath}/src/js/dataPicker.js"></script>
+    			<script src="${pageContext.request.contextPath}/src/js/dataPickerEdit.js"></script>
     			<script src="${pageContext.request.contextPath}/src/js/modal.js"></script>
