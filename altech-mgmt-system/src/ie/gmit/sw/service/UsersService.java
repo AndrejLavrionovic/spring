@@ -38,6 +38,15 @@ public class UsersService {
 	}
 
 	public int update(User user) {
+		
+		// set tel and dob params
+		try{
+			user.setTel(user.getTelPrefix(), user.getTelNumber());
+			user.setDob(user.getYear(), user.getMonth(), user.getDay());
+		}catch(NullPointerException ex){
+			return 0;
+		}
+		
 		return userDao.updateUser(user);
 	}
 

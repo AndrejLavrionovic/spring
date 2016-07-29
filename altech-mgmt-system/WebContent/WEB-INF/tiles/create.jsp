@@ -31,6 +31,14 @@
 	    		<div id="newUserSection">
 	    			<sf:form method="post" action="${pageContext.request.contextPath}/docreate" id="frmNewUser" commandName="user">
 	    			
+    				    <input type="hidden" id="day" value="${user.day}" />
+    					<input type="hidden" id="month" value="${user.month}" />
+    					<input type="hidden" id="year" value="${user.year}" />
+    					<input type="hidden" id="telPref" value="${user.telPrefix}" />
+    					<input type="hidden" id="username" value="${user.username}" />
+    					<input type="hidden" id="auth" value="${user.authority}" />
+    			
+	    			
 	    			<sf:errors path="*" cssClass="error" element="div"></sf:errors>
 	    			
 	    			<div id="frmUser">
@@ -78,13 +86,7 @@
 	    				
 	    				<label class="lblNew" id="lblStatus" for="selAuthority">Authority:</label>
 	    				
-	    				<sf:select path="authority" id="selAuthority" cssClass="selNew" cssErrorClass="selNew selError" >
-	    					<option selected="selected" value=""></option>
-							<option value="user" >Employee</option>
-						 	<option value="man">Office Manager</option>
-						 	<option value="head">Head Manager</option>
-						 	<option value="hr">HR Admin</option>
-					 	</sf:select>
+	    				<sf:select path="authority" id="selAuthority" cssClass="selNew" cssErrorClass="selNew selError" ></sf:select>
 	    				<br />
 	    			</div>
 	    			
@@ -120,5 +122,6 @@
 		            </div>
 		        </div>
 	    			
-    			<script src="${pageContext.request.contextPath}/src/js/dataPicker.js"></script>
+    			<script src="${pageContext.request.contextPath}/src/js/dataPickerEdit.js"></script>
     			<script src="${pageContext.request.contextPath}/src/js/modal.js"></script>
+    			<script src="${pageContext.request.contextPath}/src/js/authPicker.js"></script>

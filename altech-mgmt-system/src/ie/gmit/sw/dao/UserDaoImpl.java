@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -15,6 +16,8 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import ie.gmit.sw.controller.UsersController;
+
 @Component("userDaoImpl")
 public class UserDaoImpl implements UserDAO {
 	
@@ -24,6 +27,8 @@ public class UserDaoImpl implements UserDAO {
 	public void setDataSource(DataSource jdbc){
 		this.jdbc = new NamedParameterJdbcTemplate(jdbc);
 	}
+	
+	private static Logger logger = Logger.getLogger(UserDaoImpl.class);
 	
 
 	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -156,10 +161,13 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public int updateUser(User user){
 		
+		logger.info("==> USER-DAO: " + user);
+		logger.info("==> TelPrefix: " + user.getTelPrefix());
+		
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
 		
-		String sql = "UPDATE users SET firstname=:firstname, lastname=:lastname," +
-				" tel=:tel, email=:email WHERE username=:username";
+		String sql = "UPDATE userinfo SET firstname=:firstname, lastname=:lastname," +
+				" tel=:tel, email=:email, dob=:dob WHERE username=:username";
 				return jdbc.update(sql, params);
 	}
 	

@@ -160,8 +160,8 @@ public class User {
 		this.dob = dob;
 	}
 	
-	public void setDob(){
-		dobConverter.setCalendarDob(this.year, this.month, this.day);
+	public void setDob(Integer year, Integer month, Integer day){
+		dobConverter.setCalendarDob(year, month, day);
 		this.dob = dobConverter.getDateDob(dobConverter.getCalendarDob());
 	}
 

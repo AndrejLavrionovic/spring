@@ -10,8 +10,7 @@ function monthOptons(m){
     var month = document.getElementById("month").value;
     for(i = 0, y = 0; i <= m.length; i++){
         var opt = document.createElement("option");
-        if(i===0){opt.text="";opt.value=-1;}else{opt.text = m[y];opt.value = y++;}
-        if(month != null && month == i){opt.selected = true;}
+        if(i===0){opt.text="";opt.value=-1;}else{if (month != "" && month == y){opt.selected = true;}opt.text = m[y];opt.value = y++;}
         sel.appendChild(opt);
     }
 }
@@ -45,28 +44,28 @@ function dayOptions(m, y){
 }
 function yearOptions(start, end){
     var sel = document.getElementById("pickYear");
-    var year = document.getElementById("year").value;
+    var y = document.getElementById("year").value;
     var range = end - start;
     for(i = 0; i <= range; i++){
         var opt = document.createElement("option");
-        if(year != null && year == start){opt.selected = true;}
+        if(y != null && y == start){opt.selected = true;}
         if(i===0){opt.text="";opt.value=-1;}else{opt.text = start;opt.value = start++;}
         sel.appendChild(opt);
     }
 }
-function telPrefixOptions(){
+function telPrefixOptions(telpr){
 	var sel = document.getElementById("selTelPrefix");
 	var telPref = document.getElementById("telPref").value;
-	for (i=0,y=0;i<=telPrefix.length;i++){
+	for (i=0,y=0;i<=telpr.length;i++){
 		var opt = document.createElement("option");
-		if(telPref != null && telPref == telPrefix[y]){opt.selected = true;}
-		if(i===0){opt.text="";opt.value=-1;}else{opt.text=telPrefix[y];opt.value=telPrefix[y++];}
+		if(telPref != null && telPref == telpr[y]){opt.selected = true;}
+		if(i===0){opt.text="";opt.value=-1;}else{opt.text=telpr[y];opt.value=telpr[y++];}
 		sel.appendChild(opt);
 	}
 }
 
 {
-    monthOptons(monthsNames);dayOptions(null, null);yearOptions((year-80),(year-16));telPrefixOptions()
+    monthOptons(monthsNames);dayOptions(null, null);yearOptions((year-80),(year-16));telPrefixOptions(telPrefix);
     var selectMonthChange = document.getElementById("pickMonth");
     selectMonthChange.addEventListener("change", function(){
         globalMonthValue = this.options[this.selectedIndex].value;

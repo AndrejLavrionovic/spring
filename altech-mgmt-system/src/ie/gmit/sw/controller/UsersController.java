@@ -99,7 +99,7 @@ public class UsersController {
 			return "login";
 		}
 		try{
-			user.setDob();
+			user.setDob(user.getYear(), user.getMonth(), user.getDay());
 			user.setTel(user.getTelPrefix(), user.getTelNumber());
 		}catch(NullPointerException ex){
 			//logger.info("---> DOB: " + user.getDob().toString());

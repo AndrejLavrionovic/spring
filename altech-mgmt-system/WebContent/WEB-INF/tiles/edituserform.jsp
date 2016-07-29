@@ -8,19 +8,18 @@
 	    		
 	    		<!-- :::::::::::::::::::::: FORM EDIT USER ::::::::::::::::::::: -->
 	    		<div id="editUserSection">
-	    			<header>
-	    				<div id="title"><c:out value="${user.firstname}" /> user edit.</div>
-	    			</header>
-	    			<section>
-	    				
-	    				
-	    				<sf:form method="post" action="${pageContext.request.contextPath}/doupdateuser" id="frmUpdateUser" commandName="user">
-	    				
-	    					
-	    					<input type="hidden" id="day" name="day" value="${user.day}" />
-	    					<input type="hidden" id="month" name="month" value="${user.month}" />
-	    					<input type="hidden" id="year" name="year" value="${user.year}" />
-	    					<input type="hidden" id="telPref" name="telPrefix" value="${user.telPrefix}" />
+	    		
+	    			<sf:form method="post" action="${pageContext.request.contextPath}/doupdateuser" id="frmUpdateUser" commandName="user">
+	    			
+		    			<header>
+		    				<div id="title"><c:out value="${user.firstname}" /> user edit.</div>
+		    			</header>
+		    			<section>
+	    					<input type="hidden" id="day" value="${user.day}" />
+	    					<input type="hidden" id="month" value="${user.month}" />
+	    					<input type="hidden" id="year" value="${user.year}" />
+	    					<input type="hidden" id="telPref" value="${user.telPrefix}" />
+	    					<input type="hidden" id="username" name="username" value="${user.username}" />
 	    					
 			    			<sf:errors path="*" cssClass="error" element="div"></sf:errors>
 			    			
@@ -42,12 +41,11 @@
 			    				<div id="blockDob">
 									<label class="lblNew" id="lblDatePicker" for="inDatePicker">Date of birth:</label>
 									<div id="inDatePicker">
-										<sf:select path="month" cssClass="selNew" cssErrorClass="selNew selError" id="pickMonth" ></sf:select>
-										<sf:select path="day" cssClass="selNew" cssErrorClass="selNew selError" id="pickDay" selected="${user.day}"></sf:select>
+										<sf:select path="month" cssClass="selNew" cssErrorClass="selNew selError" id="pickMonth"></sf:select>
+										<sf:select path="day" cssClass="selNew" cssErrorClass="selNew selError" id="pickDay"></sf:select>
 										<sf:select path="year" cssClass="selNew" cssErrorClass="selNew selError" id="pickYear"></sf:select>
 									</div>
 			    				</div>
-			    				
 			    				
 			    				<div id="contactsBlock">
 			    					<div id="lblContactsBlock">
@@ -59,7 +57,6 @@
 			    							<sf:select path="telPrefix" cssClass="selNew" cssErrorClass="selNew selError" id="selTelPrefix"></sf:select>
 			    							<sf:input path="telNumber" cssClass="txtNew" cssErrorClass="txtNew txtError" type="text" id="txtTel" style="display: inline-block;" />
 			    						</div>
-			    						
 			    					</div>
 			    					<div id="txtEmailBlock">
 			    						<label class="lblTops" id="lblEmail" for="txtEmail">Email<span class="spanModal" id="modalEmail">(?)</span></label>
@@ -67,21 +64,15 @@
 			    					</div>
 			    				</div>
 			    			</div>
+		    			</section>
+		    			<footer>
+			    			<div id="frmBtns">
+			    				<input class="buttons" type="button" id="btnClear" name="clear" value="Clear" />
+			    				<input class="buttons" type="submit" id="btnEditUser" name="edituser" value="Save Updates" />
+			    			</div>
+			    		</footer>
 		    			 
-		    			</sf:form>
-	    			
-	    			
-	    			</section>
-	    			<footer>
-
-	    			
-		    			<div id="frmBtns">
-		    				<input class="buttons" type="button" id="btnClear" name="clear" value="Clear" />
-		    				<input class="buttons" type="submit" id="btnEditUser" name="edituser" value="Save Updates" />
-		    			</div>
-		    			
-		    			
-		    		</footer>
+		    		</sf:form>
 	    			
 	    		</div>
 	    		
