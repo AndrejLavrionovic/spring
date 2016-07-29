@@ -12,7 +12,7 @@
 	    			<sf:form method="post" action="${pageContext.request.contextPath}/doupdateuser" id="frmUpdateUser" commandName="user">
 	    			
 		    			<header>
-		    				<div id="title"><c:out value="${user.firstname}" /> user edit.</div>
+		    				<div id="title">(<c:out value="${user.firstname}" />) user edit.</div>
 		    			</header>
 		    			<section>
 	    					<input type="hidden" id="day" value="${user.day}" />
@@ -68,7 +68,7 @@
 		    			<footer>
 			    			<div id="frmBtns">
 			    				<input class="buttons" type="button" id="btnClear" name="clear" value="Clear" />
-			    				<input class="buttons" type="submit" id="btnEditUser" name="edituser" value="Save Updates" />
+			    				<input class="buttons" type="submit" id="btnEditUser" name="edituser" value="Save" />
 			    			</div>
 			    		</footer>
 		    			 

@@ -6,12 +6,13 @@
 /********************************************
 ************EDIT USER HEADER*****************
 *********************************************/
-#editUserSection > header{
+#editUserSection header{
 	font: bold 16px calibri;
-	margin-bottom:20px;
+	margin-bottom: 20px;
 	background-color: #a5a5a5;
 	padding-left: 10px;
 	height: 25px;
+	border: 0px solid black;
 }
 #editUserSection > header #title{
 	display: inline-block;
@@ -23,7 +24,7 @@
 /**********************************************
 **************EDIT USER SECTION****************
 ***********************************************/
-#editUserSection > section{
+#editUserSection section{
 	padding: 20px;
 }
 
